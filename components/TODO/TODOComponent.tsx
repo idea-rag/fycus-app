@@ -4,13 +4,13 @@ import { StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { COLORS } from "@/styles/colors";
 
-interface Iprops {
+interface IProps {
     name: string;
     importance: number; // 1, 2, 3
     onChange: (e: any) => void;
 }
 
-export default function TODOComponent(props: Iprops) {
+export default function TODOComponent(props: IProps) {
     const { name, importance, onChange } = props;
     const [checked, setChecked] = useState(false);
 
