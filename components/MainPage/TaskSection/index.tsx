@@ -1,5 +1,6 @@
 import DefaultSection from "@/components/DefaultSection";
 import {View} from "react-native";
+import TaskFrame from "@/components/MainPage/TaskSection/TaskFrame";
 
 export default function TaskSection() {
 
@@ -43,9 +44,7 @@ export default function TaskSection() {
 
     return (
        <DefaultSection title={'오늘의 할일'}>
-           <View>
-
-           </View>
+           <TaskFrame tasks={tasks} />
        </DefaultSection>
     );
 }

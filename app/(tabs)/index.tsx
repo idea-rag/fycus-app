@@ -5,6 +5,7 @@ import {FONTS} from "@/styles/fonts";
 import {COLORS} from "@/styles/colors";
 import Header from "@/components/MainPage/Header";
 import FocusSection from "@/components/MainPage/FocusSection";
+import TaskSection from "@/components/MainPage/TaskSection";
 
 export default function HomeScreen() {
   return (
@@ -16,6 +17,7 @@ export default function HomeScreen() {
             <Text style={styles.headContainerBody}>어제의 공부시간은 12시간이었어요, 오늘 하루도 열심히 화이팅!</Text>
           </View>
           <FocusSection/>
+          <TaskSection/>
         </SafeAreaView>
       </SafeAreaProvider>
   );

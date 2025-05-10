@@ -4,31 +4,28 @@ import { StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { COLORS } from "@/styles/colors";
 
-interface IProps {
+interface Iprops {
     name: string;
-    importance: number; // 1, 2, 3
-    onChange: (e: any) => void;
+    importance: number;
+    isChecked: boolean;
+    onChange?: (checked: boolean) => void;
 }
 
-export default function Index(props: IProps) {
-    const { name, importance, onChange } = props;
-    const [checked, setChecked] = useState(false);
+export default function TaskComponent({ name, importance, isChecked, onChange }: Iprops) {
+    const [checked, setChecked] = useState(isChecked);
 
     const toggleCheck = () => {
-        setChecked(!checked);
-        onChange(!checked);
+        const next = !checked;
+        setChecked(next);
+        onChange?.(next);
     };
 
     const getImportanceColor = () => {
         switch (importance) {
-            case 3:
-                return COLORS.brand.high;
-            case 2:
-                return COLORS.brand.primary;
-            case 1:
-                return COLORS.brand.secondary;
-            default:
-                return COLORS.text.forth;
+            case 3: return COLORS.brand.high;
+            case 2: return COLORS.brand.primary;
+            case 1: return COLORS.brand.secondary;
+            default: return COLORS.text.forth;
         }
     };
 
@@ -37,10 +34,7 @@ export default function Index(props: IProps) {
             <View style={styles.headContainer}>
                 <Pressable
                     onPress={toggleCheck}
-                    style={[
-                        styles.checkBox,
-                        checked && styles.checkBoxChecked
-                    ]}
+                    style={[styles.checkBox, checked && styles.checkBoxChecked]}
                 >
                     {checked && (
                         <MaterialIcons name="check" size={13} color={COLORS.bng.primary} />
@@ -50,7 +44,7 @@ export default function Index(props: IProps) {
                     {name}
                 </Text>
             </View>
-            <Text style={{ color: getImportanceColor() }}>{importance}</Text>
+            <Text style={{ color: getImportanceColor() }}>중요도 {importance}</Text>
         </View>
     );
 }
@@ -72,12 +66,10 @@ const styles = StyleSheet.create({
     checkBox: {
         width: 20,
         height: 20,
-        borderWidth: 1,
-        borderColor: COLORS.brand.primary,
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 3,
-        backgroundColor: COLORS.bng.primary,
+        backgroundColor: COLORS.text.forth,
     },
     checkBoxChecked: {
         backgroundColor: COLORS.brand.primary,
