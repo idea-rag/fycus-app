@@ -10,7 +10,7 @@ interface IProps {
     onChange: (e: any) => void;
 }
 
-export default function TODOComponent(props: IProps) {
+export default function Index(props: IProps) {
     const { name, importance, onChange } = props;
     const [checked, setChecked] = useState(false);
 
