@@ -1,17 +1,19 @@
-import {Text,TextStyle} from "react-native";
+import { Text, TextStyle } from "react-native";
+import { ReactNode } from "react";
 
 interface IProps {
-    text: string;
+    children: ReactNode;
     textColor?: string;
     fontSize?: number;
     fontWeight?: TextStyle["fontWeight"];
+    style?: any;
 }
 
-export default function CustomText(props: IProps){
-    const {text, textColor, fontSize, fontWeight} = props;
+export default function CustomText(props: IProps) {
+    const { children, textColor, fontSize, fontWeight, style } = props;
     return (
-        <Text style={{color: textColor, fontSize : fontSize, fontWeight : fontWeight}}>
-            {text}
+        <Text style={{ color: textColor, fontSize, fontWeight, ...style }}>
+            {children}
         </Text>
-    )
+    );
 }

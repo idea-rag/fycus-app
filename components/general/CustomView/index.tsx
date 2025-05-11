@@ -4,8 +4,8 @@ import {StyleSheet} from "react-native";
 interface IProps {
     children: any;
     style?: any;
-    width?: number;
-    height?: number;
+    width?: any;
+    height?: any;
     justifyContent?: any;
     alignItems?: any;
     flexDirection?: any;
