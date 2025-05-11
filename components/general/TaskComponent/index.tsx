@@ -3,6 +3,7 @@ import { useState } from "react";
 import { StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { COLORS } from "@/styles/colors";
+import {FONTS} from "@/styles/fonts";
 
 interface Iprops {
     name: string;
@@ -40,11 +41,11 @@ export default function TaskComponent({ name, importance, isChecked, onChange }:
                         <MaterialIcons name="check" size={13} color={COLORS.bng.primary} />
                     )}
                 </Pressable>
-                <Text style={{ color: checked ? COLORS.text.primary : COLORS.text.third }}>
+                <Text style={{ color: checked ? COLORS.text.primary : COLORS.text.third , fontSize:FONTS.size.small}}>
                     {name}
                 </Text>
             </View>
-            <Text style={{ color: getImportanceColor() }}>중요도 {importance}</Text>
+            <Text style={{ color: getImportanceColor(), fontSize: FONTS.size.small}}>중요도 {importance}</Text>
         </View>
     );
 }
