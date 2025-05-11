@@ -8,6 +8,8 @@ import FocusSection from "@/components/MainPage/FocusSection";
 import TaskSection from "@/components/MainPage/TaskSection";
 import CustomView from "@/components/general/CustomView";
 import CustomText from "@/components/general/CustomText";
+import AISection from "@/components/MainPage/AISection";
+import HardwareSection from "@/components/MainPage/HardwareSection";
 
 export default function HomeScreen() {
   return (
@@ -24,6 +26,11 @@ export default function HomeScreen() {
           </CustomView>
           <FocusSection/>
           <TaskSection/>
+          <CustomView paddingVertical={SPACING.superTiny} paddingHorizontal={SPACING.medium} flexDirection={'row'} gap={SPACING.medium} alignItems={'flex-start' +
+              ''} justifyContent={'space-between'}>
+            <AISection/>
+            <HardwareSection battery={70} connection={true}/>
+          </CustomView>
         </SafeAreaView>
       </SafeAreaProvider>
   );

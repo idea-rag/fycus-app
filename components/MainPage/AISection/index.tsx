@@ -13,9 +13,9 @@ export default function AISection() {
             gap={SPACING.medium}
             justifyContent={'flex-start'}
             alignItems={'flex-start'}
-            width={170}
+            width='45%'
         >
-            <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.primary}>AI의 한마디</CustomText>
+            <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.primary} >AI의 한마디</CustomText>
             <CustomView width={'100%'} alignItems={'center'} justifyContent={'center'}>
                 <CustomView width={75} height={75} borderRadius={100} alignItems={'center'} justifyContent={'center'} style={styles.circle}>
                     <Logo width={40} height={40}/>

@@ -1,7 +1,7 @@
 import { ScrollView, View, Text, StyleSheet } from "react-native";
 import { SPACING } from "@/styles/spacing";
 import FocusTimeCard from "@/components/MainPage/FocusSection/FocusTimeCard";
-import DefaultSection from "@/components/DefaultSection";
+import DefaultSection from "@/components/general/DefaultSection";
 
 export default function FocusSection() {
     return (

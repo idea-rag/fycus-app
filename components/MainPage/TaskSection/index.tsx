@@ -1,4 +1,4 @@
-import DefaultSection from "@/components/DefaultSection";
+import DefaultSection from "@/components/general/DefaultSection";
 import {View} from "react-native";
 import TaskFrame from "@/components/MainPage/TaskSection/TaskFrame";
 

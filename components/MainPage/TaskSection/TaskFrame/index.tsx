@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import { sortTasksByImportance } from "@/feature/sortTaskByImportance";
 import {StyleSheet} from "react-native";
-import TaskComponent from "@/components/TaskComponent";
+import TaskComponent from "@/components/general/TaskComponent";
 import CustomButton from "@/components/general/CustomButton";
 import {SPACING} from "@/styles/spacing";
 import {FONTS} from "@/styles/fonts";

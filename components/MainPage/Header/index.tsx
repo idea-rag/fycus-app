@@ -1,6 +1,6 @@
 import {View} from "react-native";
-import Logo from "@/components/Logo";
-import Profile from "@/components/Profile";
+import Logo from "@/components/general/Logo";
+import Profile from "@/components/general/Profile";
 import {StyleSheet} from "react-native";
 import {SPACING} from "@/styles/spacing";
 

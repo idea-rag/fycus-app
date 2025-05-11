@@ -15,11 +15,11 @@ type ButtonProps = {
 
 export default function CustomButton({
                                         width, height,
-                                         backgroundColor = "#000", // 기본 배경색
-                                         borderColor = "#fff", // 기본 보더 색상
+                                         backgroundColor,
+                                         borderColor,
                                          hasBorder = false, // 기본적으로 보더 비활성화
                                          text = "", // 기본 텍스트 비어 있음
-                                         textColor = "#FFFFFF", // 텍스트 기본 색상
+                                         textColor = "#111", // 텍스트 기본 색상
                                          fontSize = 16, // 텍스트 기본 크기
                                          onPress = () => {}, // 기본 클릭 이벤트
                                      }: ButtonProps) {
