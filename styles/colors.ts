@@ -13,7 +13,8 @@ export const COLORS = {
       primary : "#111",
         second : "#363636",
         third : "#595959",
-        forth : '#C4C4C4'
+        forth : '#C4C4C4',
+        fifth : '#7D7D7D',
     },
     bng :{
       primary : '#FFFFFF',

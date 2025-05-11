@@ -10,6 +10,7 @@ import CustomView from "@/components/general/CustomView";
 import CustomText from "@/components/general/CustomText";
 import AISection from "@/components/MainPage/AISection";
 import HardwareSection from "@/components/MainPage/HardwareSection";
+import TimeSection from "@/components/MainPage/TimeSection";
 
 export default function HomeScreen() {
   return (
@@ -31,6 +32,7 @@ export default function HomeScreen() {
             <AISection/>
             <HardwareSection battery={70} connection={true}/>
           </CustomView>
+          <TimeSection/>
         </SafeAreaView>
       </SafeAreaProvider>
   );
@@ -41,4 +43,5 @@ const styles = StyleSheet.create({
     flex: 1,
     gap: SPACING.medium
   },
+
 })
