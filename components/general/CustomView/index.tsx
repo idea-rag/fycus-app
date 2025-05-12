@@ -2,7 +2,7 @@ import {View} from "react-native";
 import {StyleSheet} from "react-native";
 
 interface IProps {
-    children: any;
+    children?: any;
     style?: any;
     width?: any;
     height?: any;

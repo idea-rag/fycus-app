@@ -1,11 +1,16 @@
 import { ScrollView, View, Text, StyleSheet } from "react-native";
 import { SPACING } from "@/styles/spacing";
 import FocusTimeCard from "@/components/MainPage/FocusSection/FocusTimeCard";
-import DefaultSection from "@/components/general/DefaultSection";
+import SectionDefault from "../../general/SectionDefault";
+import {navigate} from "expo-router/build/global-state/routing";
 
 export default function FocusSection() {
+
     return (
-        <DefaultSection title={"일주일간 집중내역"} titleLinkText={"자세히 보러가기"}>
+        <SectionDefault
+            title={"일주일간 집중내역"}
+            titleLinkText={"자세히 보러가기"}
+            onHandleLinkTextClick={() => navigate('/(tabs)/timePage')}>
             <ScrollView
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -19,7 +24,7 @@ export default function FocusSection() {
                 <FocusTimeCard isFocus={false} time={12} day={8} isNotPassed={true} />
                 <FocusTimeCard isFocus={false} time={12} day={8} isNotPassed={true} />
             </ScrollView>
-        </DefaultSection>
+        </SectionDefault>
     );
 }
 

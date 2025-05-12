@@ -6,20 +6,12 @@ import { COLORS } from "@/styles/colors";
 interface IProps {
     title: string;
     children: any;
-    titleLinkText?: string; // 링크 텍스트
-    titleLink?: string; // 링크 URL
+    onHandleLinkTextClick?: () => void;
+    titleLinkText?: string;
 }
 
-export default function DefaultSection(props: IProps) {
-    const { title, children, titleLinkText, titleLink } = props;
-
-    const handleLinkTextClick = () => {
-        if (titleLink) {
-            Linking.openURL(titleLink).catch(err =>
-                console.error("Failed to open URL:", err)
-            );
-        }
-    };
+export default function SectionDefault(props: IProps) {
+    const { title, children, onHandleLinkTextClick, titleLinkText} = props;
 
     return (
         <View style={styles.container}>
@@ -34,11 +26,9 @@ export default function DefaultSection(props: IProps) {
                 }}
             >
                 <Text style={styles.title}>{title}</Text>
-                {titleLinkText && (
-                    <TouchableOpacity onPress={handleLinkTextClick}>
+                    <TouchableOpacity onPress={onHandleLinkTextClick}>
                         <Text style={styles.linkText}>{titleLinkText}</Text>
                     </TouchableOpacity>
-                )}
             </View>
             {children}
         </View>

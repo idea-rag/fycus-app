@@ -14,7 +14,6 @@ import TimeSection from "@/components/MainPage/TimeSection";
 
 export default function HomeScreen() {
   return (
-      <SafeAreaProvider>
         <SafeAreaView style={styles.container}>
           <Header/>
           <CustomView width='100%' alignItems={'flex-start'} gap={SPACING.superTiny} paddingHorizontal={SPACING.medium}>
@@ -34,14 +33,13 @@ export default function HomeScreen() {
           </CustomView>
           <TimeSection/>
         </SafeAreaView>
-      </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container : {
     flex: 1,
-    gap: SPACING.medium
+    gap: SPACING.medium,
+    backgroundColor:'#fff'
   },
-
 })
