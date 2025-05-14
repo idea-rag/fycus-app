@@ -3,17 +3,9 @@ import CustomView from "@/components/general/CustomView";
 import {StyleSheet} from "react-native";
 import {COLORS} from "@/styles/colors";
 import CustomText from "@/components/general/CustomText";
+import {TimeBarTypes} from "@/interface/TimeBarTypes";
 
-interface IProps {
-    width: number;
-    height: number;
-    isDetail: boolean;
-    focusTime: number;
-    measureTime: number;
-    maxTime: number;
-}
-
-export function TimeBar(props: IProps) {
+export function TimeBar(props: TimeBarTypes) {
     const { width, height, isDetail, focusTime, measureTime, maxTime} = props;
 
     const convertTimeHeight = (time: number) => {
