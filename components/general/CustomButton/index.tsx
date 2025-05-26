@@ -13,6 +13,7 @@ type ButtonProps = {
     fontSize?: number; // 텍스트 크기
     onPress?: () => void; // 버튼 클릭 이벤트
     style? : any;
+    justifyText?: any;
 };
 
 export default function CustomButton({
@@ -24,7 +25,7 @@ export default function CustomButton({
                                          textColor = "#111", // 텍스트 기본 색상
                                          fontSize = 16, // 텍스트 기본 크기
                                          onPress = () => {}, // 기본 클릭 이벤트
-    style, textWeight
+    style, textWeight, justifyText
                                      }: ButtonProps) {
     // 버튼 스타일 동적 설정
     const buttonStyle: StyleProp<ViewStyle> = {
@@ -32,8 +33,8 @@ export default function CustomButton({
         borderColor: hasBorder ? borderColor : "transparent",
         borderWidth: hasBorder ? 1 : 0,
         borderRadius: 8, // 버튼의 모서리를 약간 둥글게
-        alignItems: "center",
-        justifyContent: "center",
+        alignItems: "center" ,
+        justifyContent: justifyText ? justifyText : "center",
         flexDirection: "row",
     };
 

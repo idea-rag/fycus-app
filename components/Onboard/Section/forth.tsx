@@ -6,8 +6,13 @@ import {ScrollView} from "react-native";
 import BluetoothCard from "@/components/Onboard/BluetoothCard";
 import CustomInput from "@/components/general/CustomInput";
 import SelectCard from "@/components/general/SelectCard";
+import ModalContainer from "@/components/general/Modal";
+import {useState} from "react";
 
 export default function Forth() {
+
+
+
     return (
         <CustomView style={{flex : 1, width: '100%'}} alignItems={'center'} justifyContent={'center'}>
             <CustomView
