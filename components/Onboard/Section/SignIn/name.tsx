@@ -23,6 +23,7 @@ export default function Name(){
         submitNameSetter(name);
     }
 
+
     return (
 
             <CustomView
