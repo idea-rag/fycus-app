@@ -13,7 +13,6 @@ export default function NavBar(){
             </CustomView>
             <CustomView>
                 <NavBarIcon name={'일정'} icon={'calendar'}/>
-
             </CustomView>
         </CustomView>
     )

@@ -5,6 +5,7 @@ import {FONTS} from "@/styles/fonts";
 import {ScrollView} from "react-native";
 import BluetoothCard from "@/components/Onboard/BluetoothCard";
 import CustomInput from "@/components/general/CustomInput";
+import SelectCard from "@/components/general/SelectCard";
 
 export default function Forth() {
     return (
@@ -22,6 +23,7 @@ export default function Forth() {
                 <CustomText fontSize={FONTS.size.body}>bluetooth</CustomText>
                 <BluetoothCard name={'test'} isConnected={false}/>
                 <CustomInput width={'100%'} height={40} placeholder={'이름을 입력하세요...'}/>
+                <SelectCard isChecked={false} name={'test'}/>
             </CustomView>
         </CustomView>
     )
