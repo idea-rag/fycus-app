@@ -8,6 +8,9 @@ import {COLORS} from "@/styles/colors";
 import NextButton from "@/components/Onboard/NextButton";
 import {useState} from "react";
 import ModalContainer from "@/components/general/Modal";
+import SchoolSelector from "@/components/Onboard/SchoolSelector";
+import SelectCard from "@/components/general/SelectCard";
+import GradeSelector from "@/components/Onboard/GradeSelector";
 
 export default function School() {
 
@@ -75,14 +78,10 @@ export default function School() {
                 <NextButton/>
             </CustomView>
             <ModalContainer isVisible={isSchoolModalVisible} onClose={closeSchoolModal}>
-                <CustomView>
-
-                </CustomView>
+                <SchoolSelector schoolName={'선린인터넷고'}/>
             </ModalContainer>
             <ModalContainer isVisible={isGradeModalVisible} onClose={closeGradeModal}>
-                <CustomView>
-
-                </CustomView>
+                <GradeSelector/>
             </ModalContainer>
         </>
 )}

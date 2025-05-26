@@ -1,6 +1,6 @@
 interface SchoolInfo {
     name: string;
-    where: string;
+    locate: string;
 }
 
 export async function schoolRequest(schoolName: string): Promise<SchoolInfo | null> {
@@ -9,11 +9,11 @@ export async function schoolRequest(schoolName: string): Promise<SchoolInfo | nu
         const data = await response.json();
 
         // 데이터가 정상적으로 응답되었는지 확인
-        if (data?.schoolInfo?.[1]?.row?.length > 0) {
-            const school = data.schoolInfo.row[0]; // 첫 번째 학교 정보 사용
+        if (data?.schoolInfo?.length > 0) {
+            const school = data.schoolInfo; // 첫 번째 학교 정보 사용
             return {
                 name: school.SCHUL_NM,   // 학교 이름
-                where: school.ORG_RDNMA, // 주소
+                locate: school.ORG_RDNMA, // 주소
             };
         }
 

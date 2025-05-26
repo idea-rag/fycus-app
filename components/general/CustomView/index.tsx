@@ -25,7 +25,7 @@ export default function CustomView(props: IProps) {
                 display:'flex',
                 justifyContent: justifyContent,
                 alignItems: alignItems,
-                flexDirection: flexDirection ? flexDirection : 'row',
+                flexDirection: flexDirection ? flexDirection : 'column',
                 gap: gap,
                 paddingVertical: paddingVertical,
                 paddingHorizontal: paddingHorizontal,

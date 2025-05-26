@@ -31,6 +31,7 @@ export default function SelectCard(props: IProps) {
             height={height ? height : 28}
             alignItems={'center'}
             justifyContent={'center'}
+            flexDirection={'row'}
             paddingHorizontal={SPACING.small}
             paddingVertical={SPACING.superTiny}
             gap={SPACING.tiny}
