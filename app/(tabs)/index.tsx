@@ -11,8 +11,9 @@ import CustomText from "@/components/general/CustomText";
 import AISection from "@/components/MainPage/AISection";
 import HardwareSection from "@/components/MainPage/HardwareSection";
 import TimeSection from "@/components/MainPage/TimeSection";
+import CustomButton from "@/components/general/CustomButton";
 
-export default function HomeScreen() {
+export default function HomePage() {
   return (
         <SafeAreaView style={styles.container}>
           <Header/>

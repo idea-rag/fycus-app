@@ -7,13 +7,13 @@ import FocusByHourCard from "@/components/TimePage/FocusByHourSection/FocusByHou
 import {TimeBar} from "@/components/TimePage/TimeBar";
 import FocusByHourDetail from "@/components/TimePage/FocusByHourDetail";
 
-export default function TabTwoScreen() {
+export default function TimePage() {
   return (
     <PageDefault title={'시간'}>
       <SectionDefault title={'시간대별 집중내역'}>
           <FocusByHourSection/>
-          <FocusByHourDetail/>
       </SectionDefault>
+        <FocusByHourDetail/>
     </PageDefault>
   );
 }

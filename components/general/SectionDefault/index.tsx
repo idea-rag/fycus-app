@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         width: "100%",
         paddingHorizontal: SPACING.medium,
         paddingVertical: SPACING.superTiny,
-        gap: SPACING.superTiny,
+        gap: SPACING.medium,
     },
     title: {
         fontSize: FONTS.size.body,

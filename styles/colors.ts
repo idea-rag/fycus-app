@@ -20,7 +20,7 @@ export const COLORS = {
       primary : '#FFFFFF',
     },
     state : {
-      correct : '#35FF71',
+      correct : '#0CDF4A',
         uncorrect : '#FF3535'
     }
 };

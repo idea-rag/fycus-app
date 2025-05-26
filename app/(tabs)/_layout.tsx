@@ -28,7 +28,14 @@ export default function TabLayout() {
                 <Tabs.Screen
                     name="timePage"
                     options={{
-                        title: 'Explore',
+                        title: 'Time',
+                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                    }}
+                />
+                <Tabs.Screen
+                    name="onboard"
+                    options={{
+                        title: 'onboard',
                         tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
                     }}
                 />
