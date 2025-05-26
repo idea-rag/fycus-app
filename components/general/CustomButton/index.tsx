@@ -2,15 +2,17 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, StyleProp, ViewStyle } from "react-native";
 
 type ButtonProps = {
-    width?: number; // 버튼 너비
+    width?: any; // 버튼 너비
     height?: number; // 버튼 높이
     backgroundColor?: string; // 배경 색상
     borderColor?: string; // 보더 색상
     hasBorder?: boolean; // 보더 활성화 여부
     text?: string; // 버튼 내부의 텍스트
     textColor?: string; // 텍스트 색상
+    textWeight?: any,
     fontSize?: number; // 텍스트 크기
     onPress?: () => void; // 버튼 클릭 이벤트
+    style? : any;
 };
 
 export default function CustomButton({
@@ -22,6 +24,7 @@ export default function CustomButton({
                                          textColor = "#111", // 텍스트 기본 색상
                                          fontSize = 16, // 텍스트 기본 크기
                                          onPress = () => {}, // 기본 클릭 이벤트
+    style, textWeight
                                      }: ButtonProps) {
     // 버튼 스타일 동적 설정
     const buttonStyle: StyleProp<ViewStyle> = {
@@ -35,12 +38,8 @@ export default function CustomButton({
     };
 
     return (
-        <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-            <View style={[styles.buttonContainer, buttonStyle, {width, height}]}>
-                {text !== "" && (
-                    <Text style={[styles.text, { color: textColor, fontSize }]}>{text}</Text>
-                )}
-            </View>
+        <TouchableOpacity onPress={onPress} activeOpacity={0.8} style={[styles.buttonContainer, buttonStyle, {width, height},style ]}>
+            <Text style={[ { color: textColor, fontSize, fontWeight: textWeight,  }]}>{text}</Text>
         </TouchableOpacity>
     );
 }
@@ -50,8 +49,5 @@ const styles = StyleSheet.create({
         flexDirection: "row", // 버튼 텍스트를 가로 정렬
         alignItems: "center", // 수직 정렬
         justifyContent: "center", // 가로 정렬
-    },
-    text: {
-        fontWeight: "500", // 기본 텍스트 스타일
     },
 });

@@ -3,6 +3,7 @@ import CustomView from "@/components/general/CustomView";
 import {TextInput} from "react-native";
 import {StyleSheet} from "react-native";
 import {SPACING} from "@/styles/spacing";
+import {FONTS} from "@/styles/fonts";
 
 interface IProps {
     width ?: any,
@@ -13,7 +14,7 @@ interface IProps {
 export default function CustomInput(props : IProps) {
     const {width, height, placeholder} = props;
     return (
-        <TextInput style={[{ width: width, height: height }, styles.container]} placeholder={placeholder}/>
+        <TextInput style={[{ width: width, height: height, fontSize:FONTS.size.small }, styles.container]} placeholder={placeholder}/>
     )
 }
 
