@@ -6,8 +6,11 @@ import CustomInput from "@/components/general/CustomInput";
 import CustomButton from "@/components/general/CustomButton";
 import {COLORS} from "@/styles/colors";
 import NextButton from "@/components/Onboard/NextButton";
+import {useState} from "react";
 
 export default function School() {
+
+
     return (
         <CustomView
             width={322}
