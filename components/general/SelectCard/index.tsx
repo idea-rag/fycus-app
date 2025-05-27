@@ -43,9 +43,9 @@ export default function SelectCard(props: IProps) {
         >
             <Pressable
                 onPress={toggleCheck}
-                style={[styles.checkBox, checked && styles.checkBoxChecked]}
+                style={[styles.checkBox, isChecked && styles.checkBoxChecked]}
             >
-                {checked && (
+                {isChecked && (
                     <MaterialIcons name="check" size={13} color={COLORS.bng.primary} />
                 )}
             </Pressable>

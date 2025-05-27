@@ -11,9 +11,11 @@ import ModalContainer from "@/components/general/Modal";
 import SchoolSelector from "@/components/Onboard/SchoolSelector";
 import SelectCard from "@/components/general/SelectCard";
 import GradeSelector from "@/components/Onboard/GradeSelector";
+import useForm from "@/store/useForm";
 
 export default function School() {
-
+    //@ts-ignore
+    const { submitSchool, submitGrade } = useForm();
 
     const [isSchoolModalVisible, setIsSchoolModalVisible] = useState(false);
 
@@ -44,8 +46,8 @@ export default function School() {
                 >
                     <CustomText fontSize={FONTS.size.small}>학교</CustomText>
                     <CustomButton
-                        text={'학교를 선택하세요'}
-                        textColor={'rgba(54,54,54,0.25)'}
+                        text={submitSchool ? submitSchool : '학교를 선택하세요'}
+                        textColor={submitSchool ? COLORS.text.primary :'rgba(54,54,54,0.25)'}
                         hasBorder={true}
                         borderColor={'rgba(54,54,54,0.1)'}
                         justifyText={'flex-start'}
@@ -64,8 +66,8 @@ export default function School() {
                 >
                     <CustomText fontSize={FONTS.size.small}>학년</CustomText>
                     <CustomButton
-                        text={'학년을 선택하세요'}
-                        textColor={'rgba(54,54,54,0.25)'}
+                        text={submitGrade ? submitGrade : '학년을 선택하세요'}
+                        textColor={submitGrade ? COLORS.text.primary : 'rgba(54,54,54,0.25)'}
                         hasBorder={true}
                         borderColor={'rgba(54,54,54,0.1)'}
                         justifyText={'flex-start'}
@@ -78,10 +80,10 @@ export default function School() {
                 <NextButton/>
             </CustomView>
             <ModalContainer isVisible={isSchoolModalVisible} onClose={closeSchoolModal}>
-                <SchoolSelector schoolName={'선린인터넷고'}/>
+                <SchoolSelector schoolName={'선린인터넷고'} onFinish={closeSchoolModal}/>
             </ModalContainer>
             <ModalContainer isVisible={isGradeModalVisible} onClose={closeGradeModal}>
-                <GradeSelector/>
+                <GradeSelector onFinish={closeGradeModal}/>
             </ModalContainer>
         </>
 )}
