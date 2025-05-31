@@ -1,11 +1,12 @@
-import CustomView from "@/components/general/CustomView";
-import {SPACING} from "@/styles/spacing";
 import CustomText from "@/components/general/CustomText";
-import HourTimeCard from "@/components/TimePage/FocusByHourDetail/HourSection/hourTimeCard";
-import {COLORS} from "@/styles/colors";
-import {FONTS} from "@/styles/fonts";
-import {StyleSheet} from "react-native";
+import CustomView from "@/components/general/CustomView";
 import TimeCircle from "@/components/TimePage/FocusByHourDetail/HourSection/timeCircle";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import React from "react";
+import { StyleSheet } from "react-native";
+import { CartesianChart, Line } from "victory-native";
 
 interface IProps {
     time: number,
@@ -13,6 +14,14 @@ interface IProps {
 
 export default function HourSection(props : IProps) {
     const {time} = props;
+    const data = [
+        { time : 10, focusTime : 8},
+        { time : 20, focusTime : 23},
+        { time : 30, focusTime : 15},
+        { time : 40, focusTime : 18},
+        { time : 50, focusTime : 22},
+        { time : 60, focusTime : 25},
+    ]
 
     return (
         <CustomView
@@ -30,14 +39,24 @@ export default function HourSection(props : IProps) {
                 alignItems={'center'}
                 justifyContent={'center'}
                 width={'100%'}
+                height={200}
                 flexDirection={'row'}
             >
-                <HourTimeCard whenTime={10}/>
-                <HourTimeCard whenTime={20}/>
-                <HourTimeCard whenTime={30}/>
-                <HourTimeCard whenTime={40}/>
-                <HourTimeCard whenTime={50}/>
-                <HourTimeCard whenTime={60}/>
+                <CartesianChart
+                    data={data}
+                    xKey="time"
+                    yKeys={["focusTime"]}
+                >
+                    {({ points }) => (
+                        <>
+                        <Line
+                            points={points.focusTime}
+                            color={COLORS.brand.primary}
+                            strokeWidth={2}
+                        />
+                        </>
+                    )}
+                </CartesianChart>
             </CustomView>
             <CustomView
                 justifyContent={'space-between'}

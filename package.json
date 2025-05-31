@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
+    "@nivo/line": "^0.99.0",
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/elements": "^2.3.8",
     "@react-navigation/native": "^7.1.6",
@@ -39,6 +40,11 @@
     "react-native-screens": "~4.10.0",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
+    "victory-axis": "^37.3.6",
+    "victory-chart": "^37.3.6",
+    "victory-line": "^37.3.6",
+    "victory-native": "^41.17.3",
+    "victory-scatter": "^37.3.6",
     "zustand": "^5.0.5"
   },
   "devDependencies": {

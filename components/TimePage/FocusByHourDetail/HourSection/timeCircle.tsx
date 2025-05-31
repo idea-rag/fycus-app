@@ -1,7 +1,7 @@
-import CustomView from "@/components/general/CustomView";
 import CustomText from "@/components/general/CustomText";
-import {COLORS} from "@/styles/colors";
-import {FONTS} from "@/styles/fonts";
+import CustomView from "@/components/general/CustomView";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
 
 interface IProps {
     purpose : string,
