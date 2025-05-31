@@ -5,6 +5,7 @@ import Second from "@/components/Onboard/Section/second";
 import Forth from "@/components/Onboard/Section/forth";
 import Name from "@/components/Onboard/Section/SignIn/name";
 import School from "@/components/Onboard/Section/SignIn/school";
+import Subject from "@/components/Onboard/Section/SignIn/subject";
 
 export default function Onboard() {
     return (
@@ -19,7 +20,8 @@ export default function Onboard() {
             {/*<Second/>*/}
             {/*<Forth/>*/}
             {/*<Name/>*/}
-            <School/>
+            {/*<School/>*/}
+            <Subject/>
         </CustomView>
     )
 }

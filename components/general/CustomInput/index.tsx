@@ -9,10 +9,11 @@ interface IProps {
     height?: number;
     placeholder: string;
     onValueChange?: (value: string) => void; // 값을 반환하는 콜백 함수
+    onValueReturn?: any;
 }
 
 export default function CustomInput(props: IProps) {
-    const { width, height, placeholder, onValueChange } = props;
+    const { width, height, placeholder, onValueChange, onValueReturn } = props;
 
     const handleChange = (text: string) => {
         if (onValueChange) {

@@ -5,6 +5,7 @@ interface FormState {
     submitSchool: string;
     submitGrade: string;
     submitSubject: string[];
+    submitPublishers: string[];
     submitBookList: string[];
     submitFocusGrade: string[];
     submitStartTime: string;
@@ -14,6 +15,7 @@ interface FormState {
     submitSchoolSetter: (submitSchool: string) => void;
     submitGradeSetter: (submitGrade: string) => void;
     submitSubjectSetter: (submitSubject: string[]) => void;
+    submitPublishersSetter: (submitPublishers: string[]) => void;
     submitBookListSetter: (submitBookList: string[]) => void;
     submitFocusGradeSetter: (submitFocusGrade: string[]) => void;
     submitStartTimeSetter: (submitStartTime: string) => void;

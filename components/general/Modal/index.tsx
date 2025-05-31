@@ -9,9 +9,12 @@ type ModalContainerProps = {
     isVisible: boolean; // 모달 표시 여부
     onClose: () => void; // 모달 닫기 동작
     children : any;
+    width?: number;
+    height?: number;
+    style?: any;
 };
 
-export default function ModalContainer({ isVisible, onClose, children }: ModalContainerProps) {
+export default function ModalContainer({ isVisible, onClose, children , height, width, style}: ModalContainerProps) {
     if (!isVisible) return null;
 
     return (
@@ -36,9 +39,9 @@ export default function ModalContainer({ isVisible, onClose, children }: ModalCo
                 textColor={COLORS.bng.primary}
             />
             <CustomView
-                width={300}
-                height={300}
-                style={{backgroundColor : 'white'}}
+                width={width ? width : 300}
+                height={height ? height : 300}
+                style={{backgroundColor : 'white', ...style}}
                 borderRadius={SPACING.tiny}
             >
                 {children}
