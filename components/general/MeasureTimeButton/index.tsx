@@ -1,27 +1,28 @@
-import CustomView from "@/components/general/CustomView";
-import {FontAwesome} from "@expo/vector-icons";
-import {StyleSheet} from "react-native";
-import { LinearGradient } from 'expo-linear-gradient'
-export default function MeasureTimeButton() {
-    return (
-        <LinearGradient
-            colors={['#D6A7FF', '#A238FF']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }} // 45도 방향
-            style={styles.container}
+import { COLORS } from "@/styles/colors";
+import { FontAwesome } from "@expo/vector-icons";
+import CustomView from "../CustomView";
+
+interface IProps {
+    width ?: number,
+    height ?: number,
+}
+
+export default function MeasureTimeButton(props : IProps) {
+    const {width, height} = props;
+    return ( 
+        <CustomView
+            width={width || 75}
+            height={height || 75}
+            borderRadius={(width || 75) / 2}
+            alignItems={'center'}
+            justifyContent={'center'}
+            style={{
+                backgroundColor : COLORS.brand.primary,
+            }}
         >
             <FontAwesome name="play" size={30} color="white" />
-        </LinearGradient>
+        </CustomView>
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        width: 75,
-        height: 75,
-        borderRadius: 37.5,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-    }
-})
+ 

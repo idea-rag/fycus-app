@@ -6,7 +6,7 @@ import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
 import React from "react";
 import { StyleSheet } from "react-native";
-import { CartesianChart, Line } from "victory-native";
+import { CartesianChart, Line, Scatter } from "victory-native";
 
 interface IProps {
     time: number,
@@ -46,13 +46,30 @@ export default function HourSection(props : IProps) {
                     data={data}
                     xKey="time"
                     yKeys={["focusTime"]}
+                    axisOptions={{
+                        labelOffset : 30,
+                        formatXLabel:  (value) => `${value}`,
+                        formatYLabel: (value) => `${value}`,
+                        labelColor: 'black',
+                        tickCount: 5,
+                    }}
+                    domainPadding={{left : SPACING.medium, right : SPACING.medium, top : SPACING.medium, bottom : SPACING.medium}}
+                    frame={{
+                        lineWidth : 0,
+                    }}
                 >
-                    {({ points }) => (
+                    {({ points, chartBounds }) => (
                         <>
                         <Line
                             points={points.focusTime}
                             color={COLORS.brand.primary}
                             strokeWidth={2}
+                        />
+                        <Scatter
+                            points={points.focusTime}
+                            color={COLORS.brand.primary}
+                            radius={5}
+                            style="fill"
                         />
                         </>
                     )}

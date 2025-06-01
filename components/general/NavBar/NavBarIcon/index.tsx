@@ -1,10 +1,10 @@
-import CustomView from "@/components/general/CustomView";
-import {FontAwesome} from "@expo/vector-icons";
 import CustomText from "@/components/general/CustomText";
-import {FONTS} from "@/styles/fonts";
-import {whereAmI} from "@/feature/whereAmI";
-import {SPACING} from "@/styles/spacing";
-import {COLORS} from "@/styles/colors";
+import CustomView from "@/components/general/CustomView";
+import { whereAmI } from "@/feature/whereAmI";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { FontAwesome } from "@expo/vector-icons";
 
 type FontAwesomeIconName = keyof typeof FontAwesome.glyphMap;
 
@@ -16,7 +16,7 @@ interface IProps {
 
 export default function NavBarIcon(props : IProps) {
     const {name, icon, toGo} = props;
-    const isGo = whereAmI(toGo);
+    const isGo = whereAmI(toGo || '');
 
     if(isGo) {
         return (

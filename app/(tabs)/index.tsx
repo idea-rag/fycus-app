@@ -1,17 +1,16 @@
-import {StyleSheet, Text, View} from "react-native";
-import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
-import {SPACING} from "@/styles/spacing";
-import {FONTS} from "@/styles/fonts";
-import {COLORS} from "@/styles/colors";
-import Header from "@/components/MainPage/Header";
-import FocusSection from "@/components/MainPage/FocusSection";
-import TaskSection from "@/components/MainPage/TaskSection";
-import CustomView from "@/components/general/CustomView";
-import CustomText from "@/components/general/CustomText";
 import AISection from "@/components/MainPage/AISection";
+import FocusSection from "@/components/MainPage/FocusSection";
 import HardwareSection from "@/components/MainPage/HardwareSection";
+import Header from "@/components/MainPage/Header";
+import TaskSection from "@/components/MainPage/TaskSection";
 import TimeSection from "@/components/MainPage/TimeSection";
-import CustomButton from "@/components/general/CustomButton";
+import CustomText from "@/components/general/CustomText";
+import CustomView from "@/components/general/CustomView";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomePage() {
   return (
@@ -33,6 +32,7 @@ export default function HomePage() {
             <HardwareSection battery={70} connection={true}/>
           </CustomView>
           <TimeSection/>
+        
         </SafeAreaView>
   );
 }
