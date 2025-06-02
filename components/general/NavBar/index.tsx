@@ -1,10 +1,17 @@
 import CustomView from "@/components/general/CustomView";
 import NavBarIcon from "@/components/general/NavBar/NavBarIcon";
+import { whereAmI } from "@/feature/whereAmI";
 import { COLORS } from "@/styles/colors";
 import { SPACING } from "@/styles/spacing";
+import { useEffect } from "react";
 import MeasureTimeButton from "../MeasureTimeButton";
 
 export default function NavBar(){
+    const where = whereAmI('/timePage');
+    useEffect(() => {
+        console.log(where);
+    }, [])
+
     return(
         <CustomView
             width={'100%'}
@@ -26,8 +33,8 @@ export default function NavBar(){
                 paddingHorizontal={SPACING.medium}
                 paddingVertical={SPACING.superTiny}
             >
-                <NavBarIcon name={'시간'} icon={'clock-o'}/>
-                <NavBarIcon name={'일정'} icon={'calendar'}/>
+                <NavBarIcon name={'시간'} icon={'clock-o'} toGo={'/timePage'}/>
+                <NavBarIcon name={'일정'} icon={'calendar'} toGo={'/calendarPage'}/>
             </CustomView>
             <CustomView
                 flexDirection={'row'}
@@ -35,8 +42,8 @@ export default function NavBar(){
                 paddingHorizontal={SPACING.medium}
                 paddingVertical={SPACING.superTiny}
             >
-                <NavBarIcon name={'AI'} icon={'headphones'}/>
-                <NavBarIcon name={'일정'} icon={'user-circle-o'}/>
+                <NavBarIcon name={'AI'} icon={'headphones'} toGo={'/AIPage'}/>
+                <NavBarIcon name={'프로필'} icon={'user-circle-o'} toGo={'/ProfilePage'}/>
             </CustomView>
             <CustomView
                 width={80}
@@ -49,7 +56,7 @@ export default function NavBar(){
                     position : 'absolute',
                     top : -40,
                     left: '50%',
-                    transform: [{ translateX: -20}],
+                    transform: [{ translateX: -24}],
                     borderWidth : 1,
                     borderColor : COLORS.text.forth,
                 }}

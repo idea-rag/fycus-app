@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
+import { StatusBar } from "expo-status-bar";
 import React from 'react';
 import { Platform } from 'react-native';
-import {StatusBar} from "expo-status-bar";
 
 export default function TabLayout() {
 
@@ -36,6 +36,27 @@ export default function TabLayout() {
                     name="onboard"
                     options={{
                         title: 'onboard',
+                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                    }}
+                />
+                <Tabs.Screen
+                    name="AIPage"
+                    options={{
+                        title: 'AI',
+                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                    }}
+                />
+                <Tabs.Screen
+                    name="ProfilePage"
+                    options={{
+                        title: 'Profile',
+                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                    }}
+                />
+                <Tabs.Screen
+                    name="calendarPage"
+                    options={{
+                        title: 'calendarPage',
                         tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
                     }}
                 />
