@@ -1,33 +1,43 @@
-import CustomView from "@/components/general/CustomView";
-import {FontAwesome} from "@expo/vector-icons";
 import CustomText from "@/components/general/CustomText";
-import {FONTS} from "@/styles/fonts";
-import {COLORS} from "@/styles/colors";
-import {SPACING} from "@/styles/spacing";
-
+import CustomView from "@/components/general/CustomView";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { FontAwesome } from "@expo/vector-icons";
+    
 interface IProps {
-    name : string,
-    isConnected : boolean,
+    id: string,
+    name: string,
+    isConnected: boolean,
+    onPress?: (id: string) => void;
 }
 
-export default function BluetoothCard(props : IProps) {
-    const {name, isConnected} = props;
+export default function BluetoothCard(props: IProps) {
+    const { id, name, isConnected, onPress } = props;
+    let nameSlice = name;
+    if (name.length > 10) {
+        nameSlice = name.slice(0, 10) + '...';
+    }
     return (
-        <CustomView
-            width={'100%'}
-            paddingHorizontal={SPACING.tiny}
-            paddingVertical={SPACING.tiny}
-            alignItems={'center'}
-            justifyContent={'flex-start'}
-            flexDirection={'row'}
-            gap={SPACING.tiny}
-            style={{boxShadow : '0px 4px 4px rgba(0,0,0,0.05)'}}
-        >
-            <FontAwesome name={'headphones'}/>
-            <>
-                <CustomText fontSize={FONTS.size.small}>{name}</CustomText>
-                <CustomText fontSize={8} style={isConnected ? { color : COLORS.state.correct} : {color: COLORS.text.third}}>{isConnected ? '연결됨' : '연결 안됨'}</CustomText>
-            </>
-        </CustomView>
-    )
+            <CustomView
+                width={'100%'}
+                paddingHorizontal={SPACING.tiny}
+                paddingVertical={SPACING.tiny}
+                alignItems={'center'}
+                justifyContent={'flex-start'}
+                flexDirection={'row'}
+                gap={SPACING.tiny}
+                style={{ boxShadow: '0px 2px 2px rgba(0,0,0,0.05)' }}
+                onPress={() => {
+                    onPress && onPress(id);
+                }}
+            >
+                <FontAwesome name={'headphones'} size={24} />
+                <>
+                    <CustomText>{nameSlice}</CustomText>
+                    {isConnected && <CustomText style={{ color: COLORS.state.correct }} fontSize={FONTS.size.small}>연결됨</CustomText>}
+                    {!isConnected && <CustomText style={{ color: COLORS.state.uncorrect }} fontSize={FONTS.size.small}>연결 안됨</CustomText>}
+                </>
+            </CustomView>
+    );
 }

@@ -1,5 +1,4 @@
-import {TouchableOpacity} from "react-native";
-import {StyleSheet} from "react-native";
+import { TouchableOpacity } from "react-native";
 
 interface IProps {
     children?: any;
