@@ -13,7 +13,7 @@ type FontAwesomeIconName = keyof typeof FontAwesome.glyphMap;
 interface IProps {
     name : string,
     icon : FontAwesomeIconName,
-    toGo : string,
+    toGo: string
 }
 
 export default function NavBarIcon(props : IProps) {
@@ -29,7 +29,7 @@ export default function NavBarIcon(props : IProps) {
                 >
                     <TouchableOpacity
                         // @ts-ignore
-                        onPress={() => navigate.push(toGo)}
+                        onPress={() => navigate.navigate(toGo)}
                         style={{
                             alignItems : 'center',
                             gap : SPACING.superTiny,
@@ -50,8 +50,7 @@ export default function NavBarIcon(props : IProps) {
                     justifyContent={'center'}
                 >
             <TouchableOpacity
-                // @ts-ignore
-                onPress={() => navigate.push(toGo)}
+                onPress={() => navigate.navigate(toGo as any)}
                 style={{
                     alignItems : 'center',
                     gap : SPACING.superTiny,

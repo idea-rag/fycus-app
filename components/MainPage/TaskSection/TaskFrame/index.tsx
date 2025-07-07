@@ -1,13 +1,13 @@
-import { View, Text } from "react-native";
-import { sortTasksByImportance } from "@/feature/sortTaskByImportance";
-import {StyleSheet} from "react-native";
-import TaskComponent from "@/components/general/TaskComponent";
 import CustomButton from "@/components/general/CustomButton";
-import {SPACING} from "@/styles/spacing";
-import {FONTS} from "@/styles/fonts";
-import {COLORS} from "@/styles/colors";
-import CustomView from "@/components/general/CustomView";
 import CustomText from "@/components/general/CustomText";
+import CustomView from "@/components/general/CustomView";
+import TaskComponent from "@/components/general/TaskComponent";
+import { sortTasksByImportance } from "@/feature/sortTaskByImportance";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { useRouter } from "expo-router";
+import { StyleSheet } from "react-native";
 
 interface TaskType {
     name: string;
@@ -22,6 +22,7 @@ interface IProps {
 export default function TaskFrame({ tasks }: IProps) {
     const sortedTaskList = sortTasksByImportance(tasks).slice(0, 3);
     const remainingTasks = Object.keys(tasks).length - sortedTaskList.length;
+    const router = useRouter();
 
     return (
         <CustomView
@@ -47,7 +48,8 @@ export default function TaskFrame({ tasks }: IProps) {
                 justifyContent={'flex-start'}
                 gap={SPACING.tiny}>
                 <CustomText textColor={'#8f8f8f'} fontSize={FONTS.size.small}>외 {remainingTasks}건...</CustomText>
-                <CustomButton text={'-> 보러가기'} backgroundColor={'rgba(255,255,255,0)'} fontSize={FONTS.size.small} textColor={COLORS.brand.high}></CustomButton>
+                {/* @ts-ignore */}
+                <CustomButton text={'-> 보러가기'} backgroundColor={'rgba(255,255,255,0)'} fontSize={FONTS.size.small} textColor={COLORS.brand.high} onPress={() => {router.navigate('/taskPage')}}></CustomButton>
             </CustomView>
         </CustomView>
     );

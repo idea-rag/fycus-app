@@ -34,7 +34,7 @@ export default function NavBar(){
                 paddingVertical={SPACING.superTiny}
             >
                 <NavBarIcon name={'시간'} icon={'clock-o'} toGo={'/timePage'}/>
-                <NavBarIcon name={'일정'} icon={'calendar'} toGo={'/calendarPage'}/>
+                <NavBarIcon name={'일정'} icon={'calendar'} toGo={'/taskPage'}/>
             </CustomView>
             <CustomView
                 flexDirection={'row'}
@@ -42,7 +42,7 @@ export default function NavBar(){
                 paddingHorizontal={SPACING.medium}
                 paddingVertical={SPACING.superTiny}
             >
-                <NavBarIcon name={'AI'} icon={'headphones'} toGo={'/AIPage'}/>
+                <NavBarIcon name={'AI'} icon={'headphones'} toGo={'/(tabs)/AIPage'}/>
                 <NavBarIcon name={'프로필'} icon={'user-circle-o'} toGo={'/ProfilePage'}/>
             </CustomView>
             <CustomView

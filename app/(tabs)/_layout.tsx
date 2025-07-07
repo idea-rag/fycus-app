@@ -1,5 +1,4 @@
 import { Tabs } from 'expo-router';
-import { StatusBar } from "expo-status-bar";
 import React from 'react';
 import { Platform } from 'react-native';
 
@@ -7,7 +6,7 @@ export default function TabLayout() {
 
     return (
         <>
-            <StatusBar style="light" translucent backgroundColor="transparent" />
+
             <Tabs
                 screenOptions={{
                     headerShown: false,
@@ -54,9 +53,9 @@ export default function TabLayout() {
                     }}
                 />
                 <Tabs.Screen
-                    name="calendarPage"
+                    name="taskPage"
                     options={{
-                        title: 'calendarPage',
+                        title: 'Task',
                         tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
                     }}
                 />
