@@ -20,8 +20,10 @@
     "eas-cli": "^16.8.0",
     "expo": "~53.0.9",
     "expo-blur": "~14.1.4",
+    "expo-calendar": "~14.1.4",
     "expo-constants": "~17.1.6",
     "expo-dev-client": "~5.1.8",
+    "expo-device": "~7.1.4",
     "expo-font": "~13.3.1",
     "expo-haptics": "~14.1.4",
     "expo-image": "~2.1.7",
@@ -37,6 +39,7 @@
     "react-dom": "19.0.0",
     "react-native": "0.79.2",
     "react-native-ble-plx": "^3.5.0",
+    "react-native-calendars": "^1.1313.0",
     "react-native-gesture-handler": "~2.24.0",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-reanimated": "~3.17.4",
@@ -49,8 +52,7 @@
     "victory-line": "^37.3.6",
     "victory-native": "^41.17.3",
     "victory-scatter": "^37.3.6",
-    "zustand": "^5.0.5",
-    "expo-device": "~7.1.4"
+    "zustand": "^5.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

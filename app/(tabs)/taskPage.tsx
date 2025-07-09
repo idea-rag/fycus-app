@@ -1,6 +1,7 @@
 import NavBar from "@/components/general/NavBar";
 import PageDefault from "@/components/general/PageDefault";
 import SectionDefault from "@/components/general/SectionDefault";
+import TaskCalendar from "@/components/TaskPage/TaskCalendar";
 import TaskList from "@/components/TaskPage/TaskList";
 
 export default function CalendarPage() {
@@ -48,6 +49,7 @@ export default function CalendarPage() {
         <PageDefault title={'일정'}>
             <SectionDefault title={'오늘의 할일'}>
                 <TaskList tasks={tasks}/>
+                <TaskCalendar/>
             </SectionDefault>
         </PageDefault>
         <NavBar/>

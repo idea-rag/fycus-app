@@ -1,7 +1,7 @@
-import { View, Text, TouchableOpacity, StyleSheet, Linking } from "react-native";
-import { SPACING } from "@/styles/spacing";
-import { FONTS } from "@/styles/fonts";
 import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 interface IProps {
     title: string;
@@ -22,7 +22,7 @@ export default function SectionDefault(props: IProps) {
                     alignItems: "center",
                     justifyContent: "flex-start",
                     gap: SPACING.superTiny,
-                    flexDirection: 'row'
+                    flexDirection: 'row',
                 }}
             >
                 <Text style={styles.title}>{title}</Text>

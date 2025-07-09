@@ -42,12 +42,16 @@ export default function TaskList(props : IProps) {
     
     const styles = StyleSheet.create({
         container: {
-            shadowColor: "rgba(0,0,0,0.05)",
+            backgroundColor: 'white',
+            borderRadius: SPACING.tiny,
+            shadowColor: "#000",
             shadowOffset: {
-                width: 2,
+                width: 0,
                 height: 2,
             },
-            shadowOpacity: 0.5,
+            shadowOpacity: 0.1,
+            shadowRadius: 4,
+            elevation: 5,
         }
     })
     
