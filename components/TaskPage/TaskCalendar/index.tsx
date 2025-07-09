@@ -5,6 +5,7 @@ import { FONTS } from "@/styles/fonts";
 import { useState } from "react";
 import { StyleSheet, Text } from "react-native";
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars";
+import DayTaskBox from "../DayTaskBox";
 
 const CustomHeader = (props: any) => {
     const { date } = props;
@@ -15,8 +16,18 @@ const CustomHeader = (props: any) => {
     );
   };
 
-export default function TaskCalendar() {
+type TaskType = {
+    name: string;
+    importance: number;
+    isChecked: boolean;
+}
+interface IProps {
+    MonthTasks : {[date: string]: TaskType[]}
+}
 
+export default function TaskCalendar(props : IProps) {
+
+    const {MonthTasks} = props;
     const [selected, setSelected] = useState<string>('');
 
     LocaleConfig.locales.kr = {
@@ -51,12 +62,30 @@ export default function TaskCalendar() {
   const modalClose = () => {
     setTaskModalVisible(false);
   }
+  const markedDatesFromTasks = Object.keys(MonthTasks).reduce((acc, dateString) => {
+    acc[dateString] = { marked: true, dotColor: COLORS.brand.primary };
+    return acc;
+  }, {} as { [key: string]: { marked: boolean; dotColor: string } });
+
   const markedDates = {
-    [today]: { marked: true, dotColor: COLORS.brand.primary, dot : false },
+    ...markedDatesFromTasks,
+    [today]: {
+        ...markedDatesFromTasks[today],
+        marked: true, 
+        dotColor: COLORS.brand.primary, 
+        dot: false 
+    },
     ...(selected && {
-      [selected]: { selected: true, disableTouchEvent: true, selectedColor: COLORS.brand.primary }
+      [selected]: { 
+        ...markedDatesFromTasks[selected],
+        selected: true, 
+        disableTouchEvent: true, 
+        selectedColor: COLORS.brand.primary 
+      }
     })
   };
+
+  const selectedDateTasks = MonthTasks[selected] || [];
 
   return (
     <>
@@ -104,12 +133,7 @@ export default function TaskCalendar() {
           );
         }}
       />
-      <CustomView
-       width={'100%'}
-       height={200}
-      >
-
-      </CustomView>
+      <DayTaskBox tasks={selectedDateTasks}/>
     </>
     )
 }

@@ -1,5 +1,5 @@
 import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
-import {StyleSheet, TouchableOpacity} from "react-native";
+import {ScrollView, StyleSheet, TouchableOpacity} from "react-native";
 import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
 import {FontAwesome, FontAwesome5, MaterialIcons} from "@expo/vector-icons";
@@ -25,7 +25,7 @@ export default function PageDefault(props: IProps) {
                 </TouchableOpacity>
                 <CustomText textColor={COLORS.text.primary} fontSize={FONTS.size.head} fontWeight={"500"}>{title}</CustomText>
             </CustomView>
-            {children}
+            <ScrollView>{children}</ScrollView>
         </SafeAreaView>
     );
 }

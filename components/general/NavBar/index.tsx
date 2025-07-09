@@ -25,6 +25,8 @@ export default function NavBar(){
                 borderTopWidth: 1,
                 borderTopColor: COLORS.text.forth,
                 borderStyle: 'solid',
+                zIndex: 1000,
+                backgroundColor : 'white',
             }}
         >
             <CustomView

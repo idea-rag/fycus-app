@@ -6,6 +6,25 @@ import TaskList from "@/components/TaskPage/TaskList";
 
 export default function CalendarPage() {
 
+    const MonthTasks = {
+        '2025-07-01': [
+            { name: '국어하기', importance: 3, isChecked: false },
+            { name: '영어하기', importance: 2, isChecked: true },
+            { name: '수학문제 풀기', importance: 2, isChecked: false },
+            { name: '운동하기', importance: 2, isChecked: true },
+            { name: '일기 쓰기', importance: 1, isChecked: false },
+            { name: '책 읽기', importance: 3, isChecked: true },
+            { name: '코딩 연습하기', importance: 3, isChecked: false },
+        ],
+        '2025-07-03': [
+            { name: '프로젝트 회의', importance: 3, isChecked: false },
+        ],
+        '2025-07-08': [
+            { name: '디자인 검토', importance: 2, isChecked: true },
+            { name: '고객사 미팅', importance: 3, isChecked: false },
+        ]
+    };
+
     const tasks = {
         1 : {
             name : '국어하기',
@@ -49,7 +68,7 @@ export default function CalendarPage() {
         <PageDefault title={'일정'}>
             <SectionDefault title={'오늘의 할일'}>
                 <TaskList tasks={tasks}/>
-                <TaskCalendar/>
+                <TaskCalendar MonthTasks={MonthTasks}/>
             </SectionDefault>
         </PageDefault>
         <NavBar/>
