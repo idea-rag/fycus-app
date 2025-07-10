@@ -14,9 +14,11 @@ export default function SectionDefault(props : IProps) {
     return (
         <CustomView
         paddingVertical={SPACING.tiny}
+        paddingHorizontal={SPACING.medium}
         gap={SPACING.small}
         alignItems={'flex-start'}
         justifyContent={'flex-start'}
+        width={'100%'}
         >
             <CustomText fontSize={FONTS.size.title} textColor={COLORS.text.primary} fontWeight={'700'}>
                 {title}
