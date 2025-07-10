@@ -1,12 +1,12 @@
-import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
-import {ScrollView, StyleSheet, TouchableOpacity} from "react-native";
 import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
-import {FontAwesome, FontAwesome5, MaterialIcons} from "@expo/vector-icons";
-import {COLORS} from "@/styles/colors";
-import {FONTS} from "@/styles/fonts";
-import {SPACING} from "@/styles/spacing";
-import {navigate} from "expo-router/build/global-state/routing";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { MaterialIcons } from "@expo/vector-icons";
+import { navigate } from "expo-router/build/global-state/routing";
+import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 interface IProps {
     title: string;
