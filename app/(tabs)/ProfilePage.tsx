@@ -46,6 +46,7 @@ export default function ProfilePage() {
             <SectionDefault title="하드웨어 부분">
                 <CustomView
                     width={'100%'}
+                    height={400}
                     alignItems={'center'}
                     justifyContent={'flex-end'}
                     gap={SPACING.small}

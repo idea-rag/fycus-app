@@ -274,6 +274,10 @@ PODS:
     - ExpoModulesCore
   - ExpoBlur (14.1.4):
     - ExpoModulesCore
+  - ExpoCalendar (14.1.4):
+    - ExpoModulesCore
+  - ExpoDevice (7.1.4):
+    - ExpoModulesCore
   - ExpoFileSystem (18.1.10):
     - ExpoModulesCore
   - ExpoFont (13.3.1):
@@ -2378,6 +2382,8 @@ DEPENDENCIES:
   - expo-dev-menu-interface (from `../node_modules/expo-dev-menu-interface/ios`)
   - ExpoAsset (from `../node_modules/expo-asset/ios`)
   - ExpoBlur (from `../node_modules/expo-blur/ios`)
+  - ExpoCalendar (from `../node_modules/expo-calendar/ios`)
+  - ExpoDevice (from `../node_modules/expo-device/ios`)
   - ExpoFileSystem (from `../node_modules/expo-file-system/ios`)
   - ExpoFont (from `../node_modules/expo-font/ios`)
   - ExpoHaptics (from `../node_modules/expo-haptics/ios`)
@@ -2509,6 +2515,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-asset/ios"
   ExpoBlur:
     :path: "../node_modules/expo-blur/ios"
+  ExpoCalendar:
+    :path: "../node_modules/expo-calendar/ios"
+  ExpoDevice:
+    :path: "../node_modules/expo-device/ios"
   ExpoFileSystem:
     :path: "../node_modules/expo-file-system/ios"
   ExpoFont:
@@ -2703,6 +2713,8 @@ SPEC CHECKSUMS:
   expo-dev-menu-interface: 609c35ae8b97479cdd4c9e23c8cf6adc44beea0e
   ExpoAsset: 3bc9adb7dbbf27ae82c18ca97eb988a3ae7e73b1
   ExpoBlur: 7f9379db213e4a56aeceda82e94a7fea1b1d8c48
+  ExpoCalendar: f5f94ea8dcd957b1434beb4e1c0da1af063322e6
+  ExpoDevice: 7082f03af1c588333ef1417d5aa8287081d94b24
   ExpoFileSystem: c36eb8155eb2381c83dda7dc210e3eec332368b6
   ExpoFont: abbb91a911eb961652c2b0a22eef801860425ed6
   ExpoHaptics: 0ff6e0d83cd891178a306e548da1450249d54500
@@ -2802,6 +2814,6 @@ SPEC CHECKSUMS:
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: c758bfb934100bb4bf9cbaccb52557cee35e8bdf
 
-PODFILE CHECKSUM: 7470920add14a496b3addd848f4673c8af9c41bb
+PODFILE CHECKSUM: d5af332a0cae265f4295bdcbe5c4299ed17865b2
 
 COCOAPODS: 1.16.2

@@ -1,4 +1,4 @@
-package com.yujunshin2146.idearag
+package com.yujunshin2146.fycus
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

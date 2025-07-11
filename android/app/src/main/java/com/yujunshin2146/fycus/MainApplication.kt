@@ -1,4 +1,4 @@
-package com.yujunshin2146.idearag
+package com.yujunshin2146.fycus
 
 import android.app.Application
 import android.content.res.Configuration

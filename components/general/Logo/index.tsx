@@ -8,7 +8,7 @@ interface LogoProps {
 export default function Logo({ width, height }: LogoProps) {
     return (
         <Image
-            source={require('@/assets/images/logo.svg')}
+            source={require('@/assets/images/fycus-logo.svg')}
             style={{ width, height }}
         />
     );

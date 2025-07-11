@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0F8F4BA0FEFD7277A7C88449 /* libPods-idearag.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B78BAD30E8BEB8632FF83C5 /* libPods-idearag.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		23EEC928430BA5C4BB6FAB05 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0AD1B487098ECD15EC4B55 /* ExpoModulesProvider.swift */; };
+		2565679AE4FCF3065AC753C0 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62459B7BA4812526BE28A7D5 /* ExpoModulesProvider.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		4900F6B42E22C22D93FA9DC0 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = E343FF982296524BC706B639 /* PrivacyInfo.xcprivacy */; };
+		52B3F7F7EE5ED8F922AF1F34 /* libPods-Fycus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2ACED2ED4294385E1A4A46 /* libPods-Fycus.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
+		F0ED666F2B5FC83895905454 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4F71CD7DC0FA8EFD7A810DAB /* PrivacyInfo.xcprivacy */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		13B07F961A680F5B00A75B9A /* idearag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = idearag.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = idearag/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = idearag/Info.plist; sourceTree = "<group>"; };
-		41CC3D105F34B3948A97F2BB /* Pods-idearag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-idearag.debug.xcconfig"; path = "Target Support Files/Pods-idearag/Pods-idearag.debug.xcconfig"; sourceTree = "<group>"; };
-		8B78BAD30E8BEB8632FF83C5 /* libPods-idearag.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-idearag.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = idearag/SplashScreen.storyboard; sourceTree = "<group>"; };
+		0746B34BB2CCB50FCE185A05 /* Pods-Fycus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fycus.debug.xcconfig"; path = "Target Support Files/Pods-Fycus/Pods-Fycus.debug.xcconfig"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Fycus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fycus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Fycus/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Fycus/Info.plist; sourceTree = "<group>"; };
+		2E2ACED2ED4294385E1A4A46 /* libPods-Fycus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Fycus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F71CD7DC0FA8EFD7A810DAB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Fycus/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		62459B7BA4812526BE28A7D5 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Fycus/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = Fycus/SplashScreen.storyboard; sourceTree = "<group>"; };
+		AC1E53108E7809711AB2BDD9 /* Pods-Fycus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fycus.release.xcconfig"; path = "Target Support Files/Pods-Fycus/Pods-Fycus.release.xcconfig"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		BD0AD1B487098ECD15EC4B55 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-idearag/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		C02299645716C56DB293688A /* Pods-idearag.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-idearag.release.xcconfig"; path = "Target Support Files/Pods-idearag/Pods-idearag.release.xcconfig"; sourceTree = "<group>"; };
-		E343FF982296524BC706B639 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = idearag/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = idearag/AppDelegate.swift; sourceTree = "<group>"; };
-		F11748442D0722820044C1D9 /* idearag-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "idearag-Bridging-Header.h"; path = "idearag/idearag-Bridging-Header.h"; sourceTree = "<group>"; };
+		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Fycus/AppDelegate.swift; sourceTree = "<group>"; };
+		F11748442D0722820044C1D9 /* Fycus-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Fycus-Bridging-Header.h"; path = "Fycus/Fycus-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,44 +37,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F8F4BA0FEFD7277A7C88449 /* libPods-idearag.a in Frameworks */,
+				52B3F7F7EE5ED8F922AF1F34 /* libPods-Fycus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13B07FAE1A68108700A75B9A /* idearag */ = {
+		13B07FAE1A68108700A75B9A /* Fycus */ = {
 			isa = PBXGroup;
 			children = (
 				F11748412D0307B40044C1D9 /* AppDelegate.swift */,
-				F11748442D0722820044C1D9 /* idearag-Bridging-Header.h */,
+				F11748442D0722820044C1D9 /* Fycus-Bridging-Header.h */,
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				E343FF982296524BC706B639 /* PrivacyInfo.xcprivacy */,
+				4F71CD7DC0FA8EFD7A810DAB /* PrivacyInfo.xcprivacy */,
 			);
-			name = idearag;
+			name = Fycus;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				8B78BAD30E8BEB8632FF83C5 /* libPods-idearag.a */,
+				2E2ACED2ED4294385E1A4A46 /* libPods-Fycus.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4D63D1CAC054B6182768EDAF /* Pods */ = {
+		46726DFC46FBD72FFCD15A1A /* Fycus */ = {
 			isa = PBXGroup;
 			children = (
-				41CC3D105F34B3948A97F2BB /* Pods-idearag.debug.xcconfig */,
-				C02299645716C56DB293688A /* Pods-idearag.release.xcconfig */,
+				62459B7BA4812526BE28A7D5 /* ExpoModulesProvider.swift */,
 			);
-			name = Pods;
-			path = Pods;
+			name = Fycus;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -87,12 +85,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				13B07FAE1A68108700A75B9A /* idearag */,
+				13B07FAE1A68108700A75B9A /* Fycus */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				4D63D1CAC054B6182768EDAF /* Pods */,
-				C6FDB744408C3D98549449DF /* ExpoModulesProviders */,
+				8A61EFA3FCE0A380CD0D2683 /* Pods */,
+				D0897973C0EA85717434191A /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -102,17 +100,19 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* idearag.app */,
+				13B07F961A680F5B00A75B9A /* Fycus.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A5535039523B7EED266B0453 /* idearag */ = {
+		8A61EFA3FCE0A380CD0D2683 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BD0AD1B487098ECD15EC4B55 /* ExpoModulesProvider.swift */,
+				0746B34BB2CCB50FCE185A05 /* Pods-Fycus.debug.xcconfig */,
+				AC1E53108E7809711AB2BDD9 /* Pods-Fycus.release.xcconfig */,
 			);
-			name = idearag;
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
@@ -121,13 +121,13 @@
 				BB2F792C24A3F905000567C9 /* Expo.plist */,
 			);
 			name = Supporting;
-			path = idearag/Supporting;
+			path = Fycus/Supporting;
 			sourceTree = "<group>";
 		};
-		C6FDB744408C3D98549449DF /* ExpoModulesProviders */ = {
+		D0897973C0EA85717434191A /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				A5535039523B7EED266B0453 /* idearag */,
+				46726DFC46FBD72FFCD15A1A /* Fycus */,
 			);
 			name = ExpoModulesProviders;
 			sourceTree = "<group>";
@@ -135,26 +135,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* idearag */ = {
+		13B07F861A680F5B00A75B9A /* Fycus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "idearag" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Fycus" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				C0E7A87A73FA92EE7F85B2FC /* [Expo] Configure project */,
+				FDB724A5705DD6A767F6EB35 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				B4FCFA4FC1E502F52BB264EA /* [CP] Embed Pods Frameworks */,
+				994AFA9A34C4F1556A940D82 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = idearag;
-			productName = idearag;
-			productReference = 13B07F961A680F5B00A75B9A /* idearag.app */;
+			name = Fycus;
+			productName = Fycus;
+			productReference = 13B07F961A680F5B00A75B9A /* Fycus.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -170,7 +170,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "idearag" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Fycus" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -183,7 +183,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* idearag */,
+				13B07F861A680F5B00A75B9A /* Fycus */,
 			);
 		};
 /* End PBXProject section */
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				4900F6B42E22C22D93FA9DC0 /* PrivacyInfo.xcprivacy in Resources */,
+				F0ED666F2B5FC83895905454 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +233,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-idearag-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Fycus-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -246,9 +246,10 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-idearag/Pods-idearag-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Fycus/Pods-Fycus-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoDevice/ExpoDevice_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoSystemUI/ExpoSystemUI_privacy.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RCT-Folly/RCT-Folly_privacy.bundle",
@@ -264,6 +265,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoDevice_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoSystemUI_privacy.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCT-Folly_privacy.bundle",
@@ -277,16 +279,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-idearag/Pods-idearag-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fycus/Pods-Fycus-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B4FCFA4FC1E502F52BB264EA /* [CP] Embed Pods Frameworks */ = {
+		994AFA9A34C4F1556A940D82 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-idearag/Pods-idearag-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Fycus/Pods-Fycus-frameworks.sh",
 				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -295,10 +297,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-idearag/Pods-idearag-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Fycus/Pods-Fycus-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C0E7A87A73FA92EE7F85B2FC /* [Expo] Configure project */ = {
+		FDB724A5705DD6A767F6EB35 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -315,7 +317,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-idearag/expo-configure-project.sh\"\n";
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-Fycus/expo-configure-project.sh\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -325,7 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				23EEC928430BA5C4BB6FAB05 /* ExpoModulesProvider.swift in Sources */,
+				2565679AE4FCF3065AC753C0 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,18 +336,18 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41CC3D105F34B3948A97F2BB /* Pods-idearag.debug.xcconfig */;
+			baseConfigurationReference = 0746B34BB2CCB50FCE185A05 /* Pods-Fycus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = idearag/idearag.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Fycus/Fycus.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = idearag/Info.plist;
+				INFOPLIST_FILE = Fycus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -358,9 +360,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yujunshin2146.idearag;
-				PRODUCT_NAME = idearag;
-				SWIFT_OBJC_BRIDGING_HEADER = "idearag/idearag-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yujunshin2146.fycus;
+				PRODUCT_NAME = Fycus;
+				SWIFT_OBJC_BRIDGING_HEADER = "Fycus/Fycus-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -370,13 +372,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C02299645716C56DB293688A /* Pods-idearag.release.xcconfig */;
+			baseConfigurationReference = AC1E53108E7809711AB2BDD9 /* Pods-Fycus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = idearag/idearag.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Fycus/Fycus.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = idearag/Info.plist;
+				INFOPLIST_FILE = Fycus/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -389,9 +391,9 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yujunshin2146.idearag;
-				PRODUCT_NAME = idearag;
-				SWIFT_OBJC_BRIDGING_HEADER = "idearag/idearag-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yujunshin2146.fycus;
+				PRODUCT_NAME = Fycus;
+				SWIFT_OBJC_BRIDGING_HEADER = "Fycus/Fycus-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -525,7 +527,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "idearag" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Fycus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -534,7 +536,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "idearag" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Fycus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

@@ -7,7 +7,7 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
     <key>CFBundleDisplayName</key>
-    <string>idea-rag</string>
+    <string>Fycus</string>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
@@ -28,7 +28,13 @@
         <key>CFBundleURLSchemes</key>
         <array>
           <string>idearag</string>
-          <string>com.yujunshin2146.idearag</string>
+          <string>com.yujunshin2146.fycus</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>exp+fycus</string>
         </array>
       </dict>
     </array>
@@ -47,6 +53,14 @@
     </dict>
     <key>NSBluetoothAlwaysUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to connect to bluetooth devices</string>
+    <key>NSCalendarsFullAccessUsageDescription</key>
+    <string>The app needs to access your calendar.</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>The app needs to access your calendar.</string>
+    <key>NSRemindersFullAccessUsageDescription</key>
+    <string>Allow $(PRODUCT_NAME) to access your reminders</string>
+    <key>NSRemindersUsageDescription</key>
+    <string>Allow $(PRODUCT_NAME) to access your reminders</string>
     <key>NSUserActivityTypes</key>
     <array>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>

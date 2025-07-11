@@ -1,18 +1,69 @@
+import SectionDefault from "@/components/AIPage/sectionDefault";
 import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
+import Logo from "@/components/general/Logo";
 import NavBar from "@/components/general/NavBar";
 import PageDefault from "@/components/general/PageDefault";
-import SectionDefault from "@/components/general/SectionDefault";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
 
 export default function AIPage() {
     return (
         <>
         <PageDefault title={'AI'}>
-            <SectionDefault title={'AI'}>
-                <CustomView>
-                    <CustomText>AIPage</CustomText>
+            <SectionDefault title={'AI의 조언'}>
+                <CustomView
+                    width={'100%'}
+                    height={315}
+                    alignItems={'center'}
+                    justifyContent={'flex-end'}
+                    gap={SPACING.huge}
+                >
+                    <CustomView
+                        width={150}
+                        height={150}
+                        style={{
+                            BoxShadow:'4px 20px #808080'
+                        }}
+                        justifyContent={'center'}
+                        alignItems={'center'}
+                    >
+                        <Logo
+                            width={70}
+                            height={70}
+                        />
+                    </CustomView>
+                    <CustomText
+                        fontSize={FONTS.size.body}
+                        fontWeight={300}
+                    >
+                        Fics의 한마디
+                    </CustomText>
+                    <CustomText
+                        fontSize={FONTS.size.title}
+                        fontWeight={600}
+                    >
+                    전체적으로 완성도 있는 공부입니다. 
+                    하지만 국어에 더욱 집중하면 좋겠네요.
+                    </CustomText>
                 </CustomView>
             </SectionDefault>
+            <SectionDefault title="AI의 피드백">
+                    <CustomText
+                        fontSize={14}
+                        fontWeight={400}
+                    >
+                    afdsasdfasdfasdfasdfsdafasdfasdfadsfasdfadsfddddddafdskldfklsdfjldsfkjlfdslkjdsflkjdfsljkdsfljkfdsljkfdslkjdfslkjfdslkjdfsjklfdsljkfdsljkdfsljkfdslkjfdjkldfskljdfskljdfslkjdfskljfdskljdfskljfdslkjfdskjlfdskjlfdkljfdjklfdkjfdklsjfdjlksfdslkjfdslkjfdkljdfsljkfdsjklfdsjkfdsjklfdjklsfkldjsljkdfslkjfdslkjfdsljkadsfafdsasdfasdfasdfasdfsdafasdfasdfadsfasdfadsfddddddafdskldfklsdfjldsfkjlfdslkjdsflkjdfsljkdsfljkfdsljkfdslkjdfslkjfdslkjdfsjklfdsljkf
+                    </CustomText>
+                </SectionDefault>
+                <SectionDefault title="뉴로피드백">
+                    <CustomText
+                        fontSize={14}
+                        fontWeight={400}
+                    >
+                    afdsasdfasdfasdfasdfsdafasdfasdfadsfasdfadsfddddddafdskldfklsdfjldsfkjlfdslkjdsflkjdfsljkdsfljkfdsljkfdslkjdfslkjfdslkjdfsjklfdsljkfdsljkdfsljkfdslkjfdjkldfskljdfskljdfslkjdfskljfdskljdfskljfdslkjfdskjlfdskjlfdkljfdjklfdkjfdklsjfdjlksfdslkjfdslkjfdkljdfsljkfdsjklfdsjkfdsjklfdjklsfkldjsljkdfslkjfdslkjfdsljkadsfafdsasdfasdfasdfasdfsdafasdfasdfadsfasdfadsfddddddafdskldfklsdfjldsfkjlfdslkjdsflkjdfsljkdsfljkfdsljkfdslkjdfslkjfdslkjdfsjklfdsljkf
+                    </CustomText>
+                </SectionDefault>
         </PageDefault>
         <NavBar/>
         </>

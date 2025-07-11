@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "idea-rag",
-    "slug": "idea-rag",
+    "name": "Fycus",
+    "slug": "Fycus",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.yujunshin2146.idearag"
+      "bundleIdentifier": "com.yujunshin2146.fycus"
     },
     "android": {
       "adaptiveIcon": {
@@ -21,9 +21,11 @@
       "permissions": [
         "android.permission.BLUETOOTH",
         "android.permission.BLUETOOTH_ADMIN",
-        "android.permission.BLUETOOTH_CONNECT"
+        "android.permission.BLUETOOTH_CONNECT",
+        "android.permission.READ_CALENDAR",
+        "android.permission.WRITE_CALENDAR"
       ],
-      "package": "com.yujunshin2146.idearag"
+      "package": "com.yujunshin2146.fycus"
     },
     "web": {
       "bundler": "metro",
@@ -65,7 +67,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "2dc54c83-5db4-431a-99a1-1f278472db96"
+        "projectId": "d486b4c4-ca8d-4fa8-be0c-cc4f73109e06"
       }
     }
   }

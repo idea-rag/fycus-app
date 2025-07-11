@@ -87,9 +87,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.yujunshin2146.idearag'
+    namespace 'com.yujunshin2146.fycus'
     defaultConfig {
-        applicationId 'com.yujunshin2146.idearag'
+        applicationId 'com.yujunshin2146.fycus'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

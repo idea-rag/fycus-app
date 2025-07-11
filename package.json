@@ -47,11 +47,7 @@
     "react-native-screens": "~4.10.0",
     "react-native-web": "~0.20.0",
     "react-native-webview": "13.13.5",
-    "victory-axis": "^37.3.6",
-    "victory-chart": "^37.3.6",
-    "victory-line": "^37.3.6",
     "victory-native": "^41.17.3",
-    "victory-scatter": "^37.3.6",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
