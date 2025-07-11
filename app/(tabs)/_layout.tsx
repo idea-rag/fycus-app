@@ -59,6 +59,13 @@ export default function TabLayout() {
                         tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
                     }}
                 />
+                <Tabs.Screen
+                    name="FocusPage"
+                    options={{
+                        title: 'Focus',
+                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                    }}
+                />
             </Tabs>
         </>
 

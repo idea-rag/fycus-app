@@ -26,12 +26,11 @@ export default function PageDefault(props: IProps) {
                 <CustomText textColor={COLORS.text.primary} fontSize={FONTS.size.head} fontWeight={"500"}>{title}</CustomText>
             </CustomView>
             <ScrollView>{children}
-            <CustomView
-                            width={'100%'}
-                            height={70}
-                            />
+                <CustomView
+                    width={'100%'}
+                    height={70}
+                />
             </ScrollView>
-            
         </SafeAreaView>
     );
 }
