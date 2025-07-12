@@ -32,7 +32,6 @@ export default function HomePage() {
             <HardwareSection battery={70} connection={true}/>
           </CustomView>
           <TimeSection/>
-        
         </SafeAreaView>
   );
 }

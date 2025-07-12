@@ -1,7 +1,11 @@
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
+import { useRouter } from "expo-router";
 import { ScrollView, StyleSheet } from "react-native";
+import CustomButton from "../general/CustomButton";
 import TaskComponent from "../general/TaskComponent";
-
+    
 interface TaskType {
     name: string;
     importance: number;
@@ -14,13 +18,13 @@ interface IProps {
 
 export default function TaskList(props : IProps) {
     const {tasks} = props
-    
+    const router = useRouter();    
     return (
             <ScrollView
                 style={[styles.container, { maxHeight: 150 }]}
                 contentContainerStyle={{
                     width: '100%',
-                    maxHeight : 150,
+                    minHeight : 150,
                     paddingHorizontal: SPACING.tiny,
                     paddingVertical: SPACING.tiny,
                     justifyContent: 'flex-start',
@@ -36,6 +40,16 @@ export default function TaskList(props : IProps) {
                         isChecked={task.isChecked}
                     />
                 ))}
+                <CustomButton
+                    text="오늘의 집중훈련 하러가기"
+                    width={'100%'}
+                    backgroundColor={COLORS.brand.primary}
+                    textColor={COLORS.bng.primary}
+                    textWeight={'700'}
+                    fontSize={FONTS.size.small}
+                    height={30}
+                    onPress={() => {router.push('/NeurofeedbackPage')}}
+                />
             </ScrollView>
         );
     }

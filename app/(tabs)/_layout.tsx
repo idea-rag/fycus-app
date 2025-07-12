@@ -66,6 +66,13 @@ export default function TabLayout() {
                         tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
                     }}
                 />
+                <Tabs.Screen
+                    name="NeurofeedbackPage"
+                    options={{
+                        title: 'Neurofeedback',
+                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                    }}
+                />
             </Tabs>
         </>
 
