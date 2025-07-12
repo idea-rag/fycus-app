@@ -1,4 +1,5 @@
 import ChartSection from "@/components/FocusPage/ChartSection";
+import TimeSection from "@/components/FocusPage/TimeSection";
 import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
 import { COLORS } from "@/styles/colors";
@@ -38,6 +39,7 @@ export default function FocusPage() {
                 </CustomText>
             </CustomView>
             <ChartSection/>
+            <TimeSection focusTime={120} measureTime={130}/>
         </SafeAreaView>
     );
 }
@@ -45,7 +47,7 @@ export default function FocusPage() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        gap: SPACING.medium,
+        gap: SPACING.huge,
         backgroundColor: "#fff",
         paddingHorizontal: SPACING.medium,
     },

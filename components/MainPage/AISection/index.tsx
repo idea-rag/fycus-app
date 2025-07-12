@@ -20,7 +20,14 @@ export default function AISection() {
         >
             <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.primary} >AI의 한마디</CustomText>
             <CustomView width={'100%'} alignItems={'center'} justifyContent={'center'}>
-                <CustomView width={75} height={75} borderRadius={100} alignItems={'center'} justifyContent={'center'} style={styles.circle}>
+                <CustomView width={75} height={75} borderRadius={37.5} alignItems={'center'} justifyContent={'center'} style={[styles.circle, {
+                            backgroundColor: 'white',
+                            shadowColor: '#808080',
+                            shadowOffset: { width: 4, height: 32 },
+                            shadowOpacity: 0.20,
+                            shadowRadius: 37.5,
+                            elevation: 12,
+                        }]}>
                     <Logo width={40} height={40}/>
                 </CustomView>
             </CustomView>

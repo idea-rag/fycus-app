@@ -1,5 +1,6 @@
 import { COLORS } from "@/styles/colors";
 import { FontAwesome } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 import CustomView from "../CustomView";
 
 interface IProps {
@@ -8,6 +9,7 @@ interface IProps {
 }
 
 export default function MeasureTimeButton(props : IProps) {
+    const router = useRouter();
     const {width, height} = props;
     return ( 
         <CustomView
@@ -19,6 +21,7 @@ export default function MeasureTimeButton(props : IProps) {
             style={{
                 backgroundColor : COLORS.brand.primary,
             }}
+            onPress={() => {router.push('/FocusPage')}}
         >
             <FontAwesome name="play" size={30} color="white" />
         </CustomView>
