@@ -1,3 +1,4 @@
+import FeedbackCard from "@/components/AIPage/feedbackCard";
 import SectionDefault from "@/components/AIPage/sectionDefault";
 import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
@@ -23,7 +24,13 @@ export default function AIPage() {
                         width={150}
                         height={150}
                         style={{
-                            BoxShadow:'4px 20px #808080'
+                            backgroundColor: 'white',
+                            shadowColor: '#808080',
+                            shadowOffset: { width: 4, height: 32 },
+                            shadowOpacity: 0.20,
+                            shadowRadius: 75,
+                            elevation: 12,
+                            borderRadius: 75,
                         }}
                         justifyContent={'center'}
                         alignItems={'center'}
@@ -57,12 +64,27 @@ export default function AIPage() {
                     </CustomText>
                 </SectionDefault>
                 <SectionDefault title="뉴로피드백">
-                    <CustomText
-                        fontSize={14}
-                        fontWeight={400}
-                    >
-                    afdsasdfasdfasdfasdfsdafasdfasdfadsfasdfadsfddddddafdskldfklsdfjldsfkjlfdslkjdsflkjdfsljkdsfljkfdsljkfdslkjdfslkjfdslkjdfsjklfdsljkfdsljkdfsljkfdslkjfdjkldfskljdfskljdfslkjdfskljfdskljdfskljfdslkjfdskjlfdskjlfdkljfdjklfdkjfdklsjfdjlksfdslkjfdslkjfdkljdfsljkfdsjklfdsjkfdsjklfdjklsfkldjsljkdfslkjfdslkjfdsljkadsfafdsasdfasdfasdfasdfsdafasdfasdfadsfasdfadsfddddddafdskldfklsdfjldsfkjlfdslkjdsflkjdfsljkdsfljkfdsljkfdslkjdfslkjfdslkjdfsjklfdsljkf
-                    </CustomText>
+                    <FeedbackCard
+                        title="order-action"
+                        beforeError="1"
+                        afterError="0"
+                        beforeTime="10"
+                        afterTime="5"
+                    />
+                    <FeedbackCard
+                        title="select-square"
+                        beforeError="1"
+                        afterError="0"
+                        beforeTime="10"
+                        afterTime="5"
+                    />
+                    <FeedbackCard
+                        title="find-dog"
+                        beforeError="1"
+                        afterError="0"
+                        beforeTime="10"
+                        afterTime="5"
+                    />
                 </SectionDefault>
         </PageDefault>
         <NavBar/>
