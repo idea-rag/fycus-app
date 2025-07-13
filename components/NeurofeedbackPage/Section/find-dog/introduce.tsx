@@ -5,7 +5,11 @@ import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
 
-export default function FindDogIntroduce() {
+interface FindDogIntroduceProps {
+    onStart?: () => void;
+}
+
+export default function FindDogIntroduce({ onStart }: FindDogIntroduceProps) {
     return (
         <CustomView
             width={'100%'}
@@ -13,19 +17,17 @@ export default function FindDogIntroduce() {
             justifyContent={'flex-start'}
             paddingHorizontal={SPACING.medium}
             style={{flex : 1}}
+            gap={SPACING.medium}
         >
             <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.primary} fontWeight={600}>1. find-dog</CustomText>
             <CustomView>
             </CustomView>
             <CustomView
-                flexDirection={'row'}
-                alignItems={'center'}  
-                justifyContent={'center'}
+                alignItems={'flex-start'}  
+                justifyContent={'flex-start'}
                 width={'100%'}
             >
                 <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.primary} fontWeight={600}>1. 화면에 나타나는 지시에 맞춰 그에 맞는 강아지를 찾으십시오.</CustomText>
-            </CustomView>
-            <CustomView>
                 <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.primary} fontWeight={600}>2. 지시에 맞는 강아지를 클릭하여 선택하시오.</CustomText>
             </CustomView>
             <CustomView
@@ -41,7 +43,7 @@ export default function FindDogIntroduce() {
                     textWeight={'700'}
                     fontSize={FONTS.size.small}
                     height={40}
-                    onPress={() => {}}
+                    onPress={onStart}
                 />
             </CustomView>            
         </CustomView>
