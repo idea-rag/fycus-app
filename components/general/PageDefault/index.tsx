@@ -11,10 +11,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 interface IProps {
     title: string;
     children: any;
+    isScrollView?: boolean;
 }
 
 export default function PageDefault(props: IProps) {
-    const {title, children} = props;
+    const {title, children, isScrollView = true} = props;
 
 
     return (
@@ -25,12 +26,12 @@ export default function PageDefault(props: IProps) {
                 </TouchableOpacity>
                 <CustomText textColor={COLORS.text.primary} fontSize={FONTS.size.head} fontWeight={"500"}>{title}</CustomText>
             </CustomView>
-            <ScrollView>{children}
+            {isScrollView ? <ScrollView>{children}
                 <CustomView
                     width={'100%'}
                     height={70}
                 />
-            </ScrollView>
+            </ScrollView> : children}
         </SafeAreaView>
     );
 }
