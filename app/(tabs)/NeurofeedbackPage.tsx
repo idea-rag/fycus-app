@@ -1,16 +1,19 @@
 import PageDefault from "@/components/general/PageDefault";
 import FindDog from "@/components/NeurofeedbackPage/Section/find-dog";
+import SelectSquare from "@/components/NeurofeedbackPage/Section/select-square";
 import Start from "@/components/NeurofeedbackPage/Section/start";
 import findDogListSetup from "@/feature/findDogListSetup";
+import { generateRandomNumbers } from "@/feature/selectSquareList";
 import { useEffect, useState } from "react";
 
 export default function NeurofeedbackPage() {   
-    const [thisPage, setThisPage] = useState<'start' | 'find-dog' >('start');
-
+    const [thisPage, setThisPage] = useState<'start' | 'find-dog' | 'select-square' >('start');
 
     useEffect(() => {
         const dogSets = findDogListSetup();
+        const squareList = generateRandomNumbers();
         console.log(dogSets);
+        console.log(squareList);
         
         const timer = setTimeout(() => {
             setThisPage('find-dog');
@@ -19,10 +22,13 @@ export default function NeurofeedbackPage() {
         return () => clearTimeout(timer);
     }, []);
     
-    const handleComplete = (score: number, total: number) => {
-        console.log(`퀴즈 완료! 최종 점수: ${score}/${total}`);
-        // 여기에서 결과 페이지로 이동하거나 다른 작업을 수행할 수 있습니다.
-        // 예: setThisPage('result');
+    const handleFindDogComplete = (score: number, total: number, timeSpent: number) => {
+        console.log(`퀴즈 완료! 최종 점수: ${score}/${total}, 소요 시간: ${timeSpent}초`);
+        setThisPage('select-square');
+    };
+
+    const handleSelectSquareComplete = (score: number, total: number, timeSpent: number, errors: number) => {
+        console.log(`퀴즈 완료! 최종 점수: ${score}/${total}, 오류: ${errors}회, 소요 시간: ${timeSpent}초`);
     };
 
     return (
@@ -31,7 +37,13 @@ export default function NeurofeedbackPage() {
             {thisPage === 'find-dog' && (
                 <FindDog 
                     dogImageSets={findDogListSetup()} 
-                    onComplete={handleComplete} 
+                    onComplete={handleFindDogComplete} 
+                />
+            )}
+            {thisPage === 'select-square' && (
+                <SelectSquare 
+                    selectSquareList={generateRandomNumbers()} 
+                    onComplete={handleSelectSquareComplete} 
                 />
             )}
         </PageDefault>

@@ -1,11 +1,11 @@
 import { DogImageSet } from "@/feature/findDogListSetup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FindDogIntroduce from "./introduce";
 import FindDogWork from "./work";
 
 interface FindDogProps {
     dogImageSets: DogImageSet[];
-    onComplete?: (score: number, total: number) => void;
+    onComplete: (score: number, total: number, timeSpent: number) => void;
 }
 
 export default function FindDog({ dogImageSets, onComplete }: FindDogProps) {
@@ -15,10 +15,13 @@ export default function FindDog({ dogImageSets, onComplete }: FindDogProps) {
     const [score, setScore] = useState(0);
     
     // 퀴즈 시작 핸들러
+    const [startTime, setStartTime] = useState<number | null>(null);
+
     const handleStart = () => {
         console.log('퀴즈를 시작합니다.');
         setCurrentQuestion(0); 
-        setScore(0); 
+        setScore(0);
+        setStartTime(Date.now());
         setDogPage('find-dog-work');
         setDogStep(0);
     };
@@ -34,8 +37,10 @@ export default function FindDog({ dogImageSets, onComplete }: FindDogProps) {
             if (nextQuestion < dogImageSets.length) {
                 setCurrentQuestion(nextQuestion);
             } else {
-                console.log('퀴즈 종료. 점수:', score, '/', dogImageSets.length);
-                onComplete?.(score, dogImageSets.length);
+                const endTime = Date.now();
+                const timeSpent = startTime ? Math.floor((endTime - startTime) / 1000) : 0;
+                console.log('퀴즈 종료. 점수:', score, '/', dogImageSets.length, '소요 시간:', timeSpent, '초');
+                onComplete?.(score, dogImageSets.length, timeSpent);
             }
         }, 100);
     };
