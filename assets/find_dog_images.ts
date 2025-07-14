@@ -1,23 +1,23 @@
 // 강아지 이미지들
 // 이미지 임포트
-const dog1 = require('./images/find_dog_images/circle_circle_circle_big.svg');
-const dog2 = require('./images/find_dog_images/circle_circle_circle_small.svg');
-const dog3 = require('./images/find_dog_images/circle_circle_triangle.svg');
-const dog4 = require('./images/find_dog_images/circle_triangle_circle_big.svg');
-const dog5 = require('./images/find_dog_images/circle_triangle_circle_small.svg');
-const dog6 = require('./images/find_dog_images/circle_triangle_triangle.svg');
-const dog7 = require('./images/find_dog_images/square_circle_circle_big.svg');
-const dog8 = require('./images/find_dog_images/square_circle_circle_small.svg');
-const dog9 = require('./images/find_dog_images/square_circle_triangle.svg');
-const dog10 = require('./images/find_dog_images/square_triangle_circle_big.svg');
-const dog11 = require('./images/find_dog_images/square_triangle_circle_small.svg');
-const dog12 = require('./images/find_dog_images/square_triangle_triangle.svg');
-const dog13 = require('./images/find_dog_images/triangle_circle_circle_big.svg');
-const dog14 = require('./images/find_dog_images/triangle_circle_circle_small.svg');
-const dog15 = require('./images/find_dog_images/triangle_circle_triangle.svg');
-const dog16 = require('./images/find_dog_images/triangle_triangle_circle_big.svg');
-const dog17 = require('./images/find_dog_images/triangle_triangle_circle_small.svg');
-const dog18 = require('./images/find_dog_images/triangle_triangle_triangle.svg');
+const dog1 = require('./images/svgtopng/circle_circle_circle_big.png');
+const dog2 = require('./images/svgtopng/circle_circle_circle_small.png');
+const dog3 = require('./images/svgtopng/circle_circle_triangle.png');
+const dog4 = require('./images/svgtopng/circle_triangle_circle_big.png');
+const dog5 = require('./images/svgtopng/circle_triangle_circle_small.png');
+const dog6 = require('./images/svgtopng/circle_triangle_triangle.png');
+const dog7 = require('./images/svgtopng/square_circle_circle_big.png');
+const dog8 = require('./images/svgtopng/square_circle_circle_small.png');
+const dog9 = require('./images/svgtopng/square_circle_triangle.png');
+const dog10 = require('./images/svgtopng/square_triangle_circle_big.png');
+const dog11 = require('./images/svgtopng/square_triangle_circle_small.png');
+const dog12 = require('./images/svgtopng/square_triangle_triangle.png');
+const dog13 = require('./images/svgtopng/triangle_circle_circle_big.png');
+const dog14 = require('./images/svgtopng/triangle_circle_circle_small.png');
+const dog15 = require('./images/svgtopng/triangle_circle_triangle.png');
+const dog16 = require('./images/svgtopng/triangle_triangle_circle_big.png');
+const dog17 = require('./images/svgtopng/triangle_triangle_circle_small.png');
+const dog18 = require('./images/svgtopng/triangle_triangle_triangle.png');
 
 const dogImages = {
     dog1,

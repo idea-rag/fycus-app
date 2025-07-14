@@ -3,7 +3,7 @@ import CustomView from "@/components/general/CustomView";
 import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
 
 interface IProps {
@@ -27,38 +27,46 @@ export default function FindDogWork(props: IProps) {
         onPress(isCorrect);
     };
 
+    useEffect(() => {
+        console.log(element)
+        console.log(answer)
+    }, [element])
+
     return (
         <CustomView
             width={'100%'}
-            alignItems={'center'}
-            justifyContent={'center'}
+            height={'100%'}
+            alignItems={'flex-start'}
+            justifyContent={'flex-start'}
             paddingHorizontal={SPACING.medium}
             style={{flex : 1}}
         >
-            <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.primary} fontWeight={600}>1. find-dog</CustomText>
+            <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.primary} fontWeight={600} style={{width : '100%'}}>1. find-dog</CustomText>
             <CustomView 
                 style={{
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     justifyContent: 'space-between',
                     width: '100%',
-                    gap: SPACING.medium
+                    gap: SPACING.medium,
+                    alignItems : 'center',
                 }}
             >
                 {element.map((item, index) => (
-                    <View key={index}>
+                    <View key={index}
+                        style={{width:100, height : 100, borderColor : 'red', borderWidth : 1, borderStyle : 'solid'}}
+                    >
                         <TouchableOpacity
                             onPress={() => handlePress(index)}
                             disabled={isAnswered}
                             activeOpacity={0.7}
                         >
                             <Image 
-                                source={item}
+                                source={item.source}
                                 style={{
                                     width: '100%',
                                     height: '100%',
                                     resizeMode: 'cover',
-                                    opacity: isAnswered && index !== selectedIndex && index !== answer ? 0.5 : 1
                                 }}
                             />
                         </TouchableOpacity>
