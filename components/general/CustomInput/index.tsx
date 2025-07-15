@@ -10,6 +10,7 @@ interface IProps {
     placeholder: string;
     onValueChange?: (value: string) => void; // 값을 반환하는 콜백 함수
     onValueReturn?: any;
+    secureTextEntry?: boolean;
 }
 
 export default function CustomInput(props: IProps) {
@@ -29,6 +30,7 @@ export default function CustomInput(props: IProps) {
             ]}
             placeholder={placeholder}
             onChangeText={handleChange} // 값 변경 시 호출
+            secureTextEntry={props.secureTextEntry} // 비밀번호 입력 시 * 표시
         />
     );
 }

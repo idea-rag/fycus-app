@@ -1,31 +1,32 @@
-import CustomView from "@/components/general/CustomView";
-import {SPACING} from "@/styles/spacing";
-import CustomText from "@/components/general/CustomText";
-import {FONTS} from "@/styles/fonts";
-import CustomInput from "@/components/general/CustomInput";
 import CustomButton from "@/components/general/CustomButton";
-import {COLORS} from "@/styles/colors";
-import NextButton from "@/components/Onboard/NextButton";
-import {useState} from "react";
+import CustomInput from "@/components/general/CustomInput";
+import CustomText from "@/components/general/CustomText";
+import CustomView from "@/components/general/CustomView";
 import ModalContainer from "@/components/general/Modal";
-import SchoolSelector from "@/components/Onboard/SchoolSelector";
-import SelectCard from "@/components/general/SelectCard";
 import GradeSelector from "@/components/Onboard/GradeSelector";
+import NextButton from "@/components/Onboard/NextButton";
 import useForm from "@/store/useForm";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { useState } from "react";
 
-export default function School() {
+interface IProps {
+    onNext: () => void;
+}
+
+export default function School({ onNext }: IProps) {
     //@ts-ignore
-    const { submitSchool, submitGrade } = useForm();
-
-    const [isSchoolModalVisible, setIsSchoolModalVisible] = useState(false);
-
-    const openSchoolModal = () => setIsSchoolModalVisible(true);
-    const closeSchoolModal = () => setIsSchoolModalVisible(false);
+    const { submitGrade, submitSchoolSetter } = useForm();
 
     const [isGradeModalVisible, setIsGradeModalVisible] = useState(false);
 
     const openGradeModal = () => setIsGradeModalVisible(true);
     const closeGradeModal = () => setIsGradeModalVisible(false);
+
+    const handleSchoolChange = (text : string) => {
+        submitSchoolSetter(text);
+    }
 
     return (
         <>
@@ -45,17 +46,7 @@ export default function School() {
                     gap={SPACING.superTiny}
                 >
                     <CustomText fontSize={FONTS.size.small}>학교</CustomText>
-                    <CustomButton
-                        text={submitSchool ? submitSchool : '학교를 선택하세요'}
-                        textColor={submitSchool ? COLORS.text.primary :'rgba(54,54,54,0.25)'}
-                        hasBorder={true}
-                        borderColor={'rgba(54,54,54,0.1)'}
-                        justifyText={'flex-start'}
-                        width={'100%'}
-                        fontSize={FONTS.size.small}
-                        style={{ borderRadius: SPACING.tiny, paddingVertical: SPACING.tiny, paddingHorizontal: SPACING.tiny }}
-                        onPress={openSchoolModal}
-                    />
+                    <CustomInput placeholder={'학교를 입력하세요...'} width={'100%'} onValueChange={handleSchoolChange}/>
                 </CustomView>
                 <CustomView
                     alignItems={'flex-start'}
@@ -77,13 +68,11 @@ export default function School() {
                         onPress={openGradeModal}
                     />
                 </CustomView>
-                <NextButton/>
+                <NextButton onPress={onNext}/>
             </CustomView>
-            <ModalContainer isVisible={isSchoolModalVisible} onClose={closeSchoolModal}>
-                <SchoolSelector schoolName={'선린인터넷고'} onFinish={closeSchoolModal}/>
-            </ModalContainer>
             <ModalContainer isVisible={isGradeModalVisible} onClose={closeGradeModal}>
                 <GradeSelector onFinish={closeGradeModal}/>
             </ModalContainer>
         </>
-)}
+    )
+}

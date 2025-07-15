@@ -1,17 +1,21 @@
-import CustomView from "@/components/general/CustomView";
-import { SPACING } from "@/styles/spacing";
-import CustomText from "@/components/general/CustomText";
-import { FONTS } from "@/styles/fonts";
-import SubjectNPublishBox from "@/components/Onboard/SubjectNPublishBox";
-import { TouchableOpacity } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
-import { COLORS } from "@/styles/colors";
-import ModalContainer from "@/components/general/Modal";
-import { useState } from "react";
 import CustomButton from "@/components/general/CustomButton";
 import CustomInput from "@/components/general/CustomInput";
+import CustomText from "@/components/general/CustomText";
+import CustomView from "@/components/general/CustomView";
+import ModalContainer from "@/components/general/Modal";
+import SubjectNPublishBox from "@/components/Onboard/SubjectNPublishBox";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { MaterialIcons } from "@expo/vector-icons";
+import { useState } from "react";
+import { TouchableOpacity } from "react-native";
 
-export default function Subject() {
+interface IProps {
+    onNext: () => void;
+}
+
+export default function Subject({ onNext }: IProps) {
     const [isSubjectModalVisible, setIsSubjectModalVisible] = useState(false);
     const [subjectList, setSubjectList] = useState(['국어']);
     const [publishList, setPublishList] = useState([])
@@ -89,7 +93,7 @@ export default function Subject() {
                     textColor={'white'}
                     fontSize={FONTS.size.small}
                     textWeight={700}
-                    onPress={() => console.log(subjectList)} // 버튼 클릭 시 실행
+                    onPress={() => onNext()} // 버튼 클릭 시 실행
                 />
             </CustomView>
             <ModalContainer

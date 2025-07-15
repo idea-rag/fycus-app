@@ -2,13 +2,15 @@ import CustomView from "@/components/general/CustomView";
 import Bluetooth from "@/components/Onboard/Section/bluetooth";
 import First from "@/components/Onboard/Section/first";
 import Second from "@/components/Onboard/Section/second";
+import Gmail from "@/components/Onboard/Section/SignIn/gmail";
 import Name from "@/components/Onboard/Section/SignIn/name";
+import Password from "@/components/Onboard/Section/SignIn/password";
 import School from "@/components/Onboard/Section/SignIn/school";
 import Subject from "@/components/Onboard/Section/SignIn/subject";
 import { useEffect, useState } from "react";
 
 export default function Onboard() {
-    const [thisPage, setThisPage] = useState<'first' | 'second' | 'bluetooth' | 'name' | 'school' | 'subject'>('first');
+    const [thisPage, setThisPage] = useState<'first' | 'second' | 'bluetooth' | 'name' | 'gmail' | 'password' | 'school' | 'subject'>('first');
     const [isBluetoothConnected, setIsBluetoothConnected] = useState(false);
     
     useEffect(() => {
@@ -48,12 +50,30 @@ export default function Onboard() {
             {thisPage === 'name' && (
                 <Name
                     onNext={() => {
-                        setThisPage('school');
+                        setThisPage('gmail');
                     }}
                 />
             )}
-            {thisPage === 'school' && <School/>}
-            {thisPage === 'subject' && <Subject/>}
+            {thisPage === 'gmail' && <Gmail
+                onNext={() => {
+                    setThisPage('password');
+                }}
+            />}
+            {thisPage === 'password' && <Password
+                onNext={() => {
+                    setThisPage('school');
+                }}
+            />}
+            {thisPage === 'school' && <School
+                onNext={() => {
+                    setThisPage('subject');
+                }}
+            />}
+            {thisPage === 'subject' && <Subject
+                onNext={() => {
+                    setThisPage('subject');
+                }}
+            />}
         </CustomView>
     )
 }

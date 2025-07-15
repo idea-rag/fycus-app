@@ -3,6 +3,7 @@ import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
 import NextButton from "@/components/Onboard/NextButton";
 import useFormStore from "@/store/useForm";
+import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
 import { useState } from "react";
@@ -13,6 +14,7 @@ interface IProps {
 
 export default function Name({ onNext }: IProps) {
     const [name, setName] = useState('');
+    const [errorText, setErrorText] = useState('');
     //@ts-ignore
     const { submitNameSetter } = useFormStore();
 
@@ -21,9 +23,15 @@ export default function Name({ onNext }: IProps) {
     }
 
     const handleSubmit = () => {
+        if (!name) {
+            setErrorText('이름을 입력해주세요.');
+            return;
+        }
         submitNameSetter(name);
         onNext();
     }
+
+
 
     return (
 
@@ -36,6 +44,7 @@ export default function Name({ onNext }: IProps) {
             >
                 <CustomText fontSize={FONTS.size.body}>먼저, 이름을 입력해주세요</CustomText>
                 <CustomInput placeholder={'이름을 입력하세요...'} width={'100%'} onValueChange={handleNameChange}/>
+                <CustomText fontSize={FONTS.size.small} textColor={COLORS.state.uncorrect} fontWeight={600}>{errorText}</CustomText>
                <NextButton onPress={handleSubmit}/>
 
             </CustomView>
