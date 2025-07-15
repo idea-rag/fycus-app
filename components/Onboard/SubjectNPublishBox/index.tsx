@@ -1,20 +1,22 @@
-import CustomView from "@/components/general/CustomView";
-import CustomText from "@/components/general/CustomText";
-import { MaterialIcons } from "@expo/vector-icons";
-import { SPACING } from "@/styles/spacing";
-import { COLORS } from "@/styles/colors";
+import CustomButton from "@/components/general/CustomButton";
 import CustomInput from "@/components/general/CustomInput";
+import CustomText from "@/components/general/CustomText";
+import CustomView from "@/components/general/CustomView";
+import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 
 interface IProps {
     subject: string;
     onDelete: (subject: string) => void; // 삭제 핸들러
     onEdit: (oldSubject: string, newSubject: string) => void; // 수정 핸들러
+    onModalOpen: () => void;
 }
 
 export default function SubjectNPublishBox(props: IProps) {
-    const { subject, onDelete, onEdit } = props;
+    const { subject, onDelete, onEdit, onModalOpen } = props;
     const [isEditing, setIsEditing] = useState(false); // 수정 상태를 관리
     const [editedSubject, setEditedSubject] = useState(subject); // 수정 중인 과목 이름
 
@@ -75,7 +77,7 @@ export default function SubjectNPublishBox(props: IProps) {
                     )}
                 </CustomView>
             </CustomView>
-            <CustomInput placeholder={"출판사를 입력해주세요..."} width={"100%"} height={40}/>
+            <CustomButton text={"출판사를 선택해주세요..."} width={"100%"} height={40} onPress={onModalOpen}/>
         </CustomView>
     );
 }

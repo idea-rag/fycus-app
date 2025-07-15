@@ -4,25 +4,39 @@ import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
 import ModalContainer from "@/components/general/Modal";
 import SubjectNPublishBox from "@/components/Onboard/SubjectNPublishBox";
+import useFormStore from "@/store/useForm";
 import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TouchableOpacity } from "react-native";
+import SubjectCard from "./subjectCard";
 
 interface IProps {
     onNext: () => void;
 }
 
-export default function Subject({ onNext }: IProps) {
+
+export default function Subject(props: IProps) {
+    const { onNext } = props;
     const [isSubjectModalVisible, setIsSubjectModalVisible] = useState(false);
     const [subjectList, setSubjectList] = useState(['국어']);
     const [publishList, setPublishList] = useState([])
     const [newSubject, setNewSubject] = useState(''); // 입력값을 담을 상태
+    const [isSubjectSelectorVisible, setIsSubjectSelectorVisible] = useState(false);
+
+    //@ts-ignore
+    const { submitSubject, submitSubjectSetter } = useFormStore();
+    
+    useEffect(() => {
+        // You can use submitSubject here if needed
+    }, [submitSubject])
 
     const openSubjectModal = () => setIsSubjectModalVisible(true);
     const closeSubjectModal = () => setIsSubjectModalVisible(false);
+    const openSubjectSelectorModal = () => setIsSubjectSelectorVisible(true);
+    const closeSubjectSelectorModal = () => setIsSubjectSelectorVisible(false);
 
     const handleAddSubject = () => {
         if (newSubject.trim() !== '') { // 빈 값은 추가하지 않음
@@ -68,22 +82,21 @@ export default function Subject({ onNext }: IProps) {
                             key={index}
                             onDelete={handleDeleteSubject} // 삭제 핸들러 전달
                             onEdit={handleEditSubject} // 수정 핸들러 전달
+                            onModalOpen={openSubjectSelectorModal}
                         />
                     ))}
                 </CustomView>
-                <TouchableOpacity activeOpacity={0.8} onPress={openSubjectModal}>
-                    <CustomView
-                        width={'100%'}
-                        alignItems={'center'}
-                        justifyContent={'center'}
-                        gap={SPACING.medium}
-                    >
+                <TouchableOpacity activeOpacity={0.8} onPress={openSubjectModal} style={{
+                    width: '100%',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: SPACING.medium
+                }}>
                         <MaterialIcons
                             name="add-circle-outline"
                             size={24}
                             color={COLORS.text.third}
                         />
-                    </CustomView>
                 </TouchableOpacity>
                 <CustomButton
                     text={'다음으로'}
@@ -136,6 +149,24 @@ export default function Subject({ onNext }: IProps) {
                     textWeight={700}
                     onPress={handleAddSubject} // 버튼 클릭 시 실행
                 />
+            </ModalContainer>
+            <ModalContainer
+                isVisible={isSubjectSelectorVisible}
+                onClose={closeSubjectSelectorModal}
+                width={300}
+                height={150}
+                style={{
+                    paddingHorizontal: SPACING.small,
+                    paddingVertical: SPACING.small,
+                    backGroundColor: COLORS.bng.primary,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'column',
+                    gap: SPACING.small,
+                }}
+            >
+                <SubjectCard name={'국어'}/>
             </ModalContainer>
         </>
     );

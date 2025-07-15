@@ -25,7 +25,7 @@ export default function Gmail({ onNext }: IProps){
     const handleSubmit = () => {
         if (!gmail) {
             setErrorText('이메일을 입력해주세요.');
-            return;
+            return; 
         }
         submitGmailSetter(gmail);
         onNext();
