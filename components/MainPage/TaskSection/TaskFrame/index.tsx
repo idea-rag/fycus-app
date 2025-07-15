@@ -49,7 +49,7 @@ export default function TaskFrame({ tasks }: IProps) {
                 gap={SPACING.tiny}>
                 <CustomText textColor={'#8f8f8f'} fontSize={FONTS.size.small}>외 {remainingTasks}건...</CustomText>
                 {/* @ts-ignore */}
-                <CustomButton text={'-> 보러가기'} backgroundColor={'rgba(255,255,255,0)'} fontSize={FONTS.size.small} textColor={COLORS.brand.high} onPress={() => {router.navigate('/taskPage')}}></CustomButton>
+                <CustomButton text={'-> 보러가기'} backgroundColor={'rgba(255,255,255,0)'} fontSize={FONTS.size.small} textColor={COLORS.brand.high} onPress={() => {router.navigate('/onboard')}}></CustomButton>
             </CustomView>
         </CustomView>
     );

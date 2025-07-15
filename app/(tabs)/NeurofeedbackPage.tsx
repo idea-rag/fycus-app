@@ -28,7 +28,7 @@ export default function NeurofeedbackPage() {
     };
 
     const handleSelectSquareComplete = (score: number, total: number, timeSpent: number, errors: number) => {
-        console.log(`퀴즈 완료! 최종 점수: ${score}/${total}, 오류: ${errors}회, 소요 시간: ${timeSpent}초`);
+        console.log(`퀴즈 완료! 최종 점수: ${score}/${total}, 오류: ${errors}회, 소 요 시간: ${timeSpent}초`);
     };
 
     return (

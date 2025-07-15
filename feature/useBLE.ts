@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import * as ExpoDevice from 'expo-device';
 import { useMemo, useState } from "react";
 import { PermissionsAndroid, Platform } from "react-native";
@@ -12,12 +13,16 @@ interface BluetoothLowEnergyApi {
     connectToDevice(deviceId: string): Promise<Device>;
     disconnectFromDevice(): Promise<void>;
     connectedDevice: Device | null;
+    startListeningToCharacteristic(serviceUUID: string, characteristicUUID: string): Promise<void>;
+    stopListeningToCharacteristic(serviceUUID: string, characteristicUUID: string): Promise<void>;
+    receivedData: string;
 }
 
 function useBLE(): BluetoothLowEnergyApi {
   const ble = useMemo(() => new BleManager(), []);
   const [allDevices, setAllDevices] = useState<Device[]>([]);
   const [connectedDevice, setConnectedDevice] = useState<Device | null>(null);
+  const [receivedData, setReceivedData] = useState<string>('');
 
   const requestAndroid31Permissions = async () => {
     console.log("requestAndroid31Permissions called");
@@ -123,6 +128,51 @@ function useBLE(): BluetoothLowEnergyApi {
     });
   };
 
+  const startListeningToCharacteristic = async (serviceUUID: string, characteristicUUID: string) => {
+    if (!connectedDevice) {
+      throw new Error('No device connected');
+    }
+    
+    try {
+      await connectedDevice.monitorCharacteristicForService(
+        serviceUUID,
+        characteristicUUID,
+        (error, characteristic) => {
+          if (error) {
+            console.log('Error monitoring characteristic:', error);
+            return;
+          }
+          if (characteristic) {
+            const data = characteristic.value;
+            if (data) {
+              const decodedData = Buffer.from(data, 'base64').toString();
+              setReceivedData(decodedData);
+              console.log('Received data:', decodedData);
+            }
+          }
+        }
+      );
+    } catch (error) {
+      console.log('Error setting up monitoring:', error);
+      throw error;
+    }
+  };
+
+  const stopListeningToCharacteristic = async (serviceUUID: string, characteristicUUID: string) => {
+    if (connectedDevice) {
+      try {
+        //@ts-ignore
+        await connectedDevice.stopMonitoringCharacteristic(
+          serviceUUID,
+          characteristicUUID
+        );
+      } catch (error) {
+        console.log('Error stopping monitoring:', error);
+        throw error;
+      }
+    }
+  };
+
   return {
     requestPermissions,
     scanForPeripherals,
@@ -130,8 +180,25 @@ function useBLE(): BluetoothLowEnergyApi {
     connectToDevice,
     disconnectFromDevice,
     connectedDevice,
+    startListeningToCharacteristic,
+    stopListeningToCharacteristic,
+    receivedData,
   } as const;
 }
 
 
+/**
+ * The default export of this module is the `useBLE` hook.
+ * It returns an object with the following properties:
+ *
+ * - `requestPermissions`: a function that requests permissions to access the device's Bluetooth Low Energy (BLE) capabilities.
+ * - `scanForPeripherals`: a function that starts scanning for nearby BLE devices.
+ * - `allDevices`: an array of all BLE devices discovered during the scan.
+ * - `connectToDevice`: a function that connects to a specific BLE device.
+ * - `disconnectFromDevice`: a function that disconnects from the connected BLE device.
+ * - `connectedDevice`: the currently connected BLE device, or `null` if no device is connected.
+ * - `startListeningToCharacteristic`: a function that starts listening to a specific characteristic of the connected BLE device.
+ * - `stopListeningToCharacteristic`: a function that stops listening to a specific characteristic of the connected BLE device.
+ * - `receivedData`: the data received from the BLE device, or `null` if no data has been received.
+ */
 export default useBLE;

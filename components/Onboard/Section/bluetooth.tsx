@@ -11,7 +11,12 @@ import {
 } from "react-native";
 import BluetoothCard from "../BluetoothCard";
 
-export default function BluetoothSection() {
+interface IProps {
+    isConnected : boolean;  
+    onConnect: (isConnected: boolean) => void;
+}
+
+export default function BluetoothSection({ isConnected, onConnect }: IProps) {
   const {
     requestPermissions,
     scanForPeripherals,
@@ -39,6 +44,7 @@ export default function BluetoothSection() {
       setDisconnecting(true);
       try {
         await disconnectFromDevice();
+        onConnect(false);
       } catch (e) {
         setErrorMsg('해제 실패: ' + (e instanceof Error ? e.message : String(e)));
       }
@@ -47,11 +53,20 @@ export default function BluetoothSection() {
       setConnectingId(deviceId);
       try {
         await connectToDevice(deviceId);
+        onConnect(true);
       } catch (e) {
         setErrorMsg('연결 실패: ' + (e instanceof Error ? e.message : String(e)));
       }
       setConnectingId(null);
     }
+  };
+
+  const handleTestOnPress = () => {
+    onConnect(true);
+  };
+
+  const handleTestOffPress = () => {
+    onConnect(false);
   };
 
   return (
@@ -113,9 +128,25 @@ export default function BluetoothSection() {
       textColor={COLORS.text.primary}
       style={{textAlign : 'center'}}
       >
-      다음 중, IDEA-RAG-hardware
-      라는 기기를 찾아 연결해주세요.
+      다음 중, Fycus-hardware라는
       </CustomText>
+      <CustomText
+      fontSize={FONTS.size.body}
+      textColor={COLORS.text.primary}
+      style={{textAlign : 'center'}}
+      >
+      기기를 찾아 연결해주세요.
+      </CustomText>
+      <CustomButton
+      text="테스트 ON"
+      textColor={COLORS.bng.primary}
+      width={290}
+      textWeight={700}
+      fontSize={FONTS.size.small}
+      backgroundColor={COLORS.brand.primary}
+      style={{ borderRadius: SPACING.tiny, paddingVertical: SPACING.small }}
+      onPress={handleTestOnPress}
+      />
     </CustomView>
   );
 };

@@ -1,17 +1,17 @@
-import CustomView from "@/components/general/CustomView";
-import CustomText from "@/components/general/CustomText";
 import CustomInput from "@/components/general/CustomInput";
-import CustomButton from "@/components/general/CustomButton";
-import {COLORS} from "@/styles/colors";
-import {SPACING} from "@/styles/spacing";
-import {FONTS} from "@/styles/fonts";
+import CustomText from "@/components/general/CustomText";
+import CustomView from "@/components/general/CustomView";
 import NextButton from "@/components/Onboard/NextButton";
-import {useState} from "react";
-import useForm from "@/store/useForm";
 import useFormStore from "@/store/useForm";
-import ModalContainer from "@/components/general/Modal";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { useState } from "react";
 
-export default function Name(){
+interface IProps {
+    onNext: () => void;
+}
+
+export default function Name({ onNext }: IProps) {
     const [name, setName] = useState('');
     //@ts-ignore
     const { submitNameSetter } = useFormStore();
@@ -22,6 +22,7 @@ export default function Name(){
 
     const handleSubmit = () => {
         submitNameSetter(name);
+        onNext();
     }
 
     return (
