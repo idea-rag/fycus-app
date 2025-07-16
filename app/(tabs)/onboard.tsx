@@ -7,11 +7,16 @@ import Name from "@/components/Onboard/Section/SignIn/name";
 import Password from "@/components/Onboard/Section/SignIn/password";
 import School from "@/components/Onboard/Section/SignIn/school";
 import Subject from "@/components/Onboard/Section/SignIn/subject";
+import Work from "@/components/Onboard/Section/SignIn/work";
+import useFormStore from "@/store/useForm";
+import { COLORS } from "@/styles/colors";
 import { useEffect, useState } from "react";
 
 export default function Onboard() {
-    const [thisPage, setThisPage] = useState<'first' | 'second' | 'bluetooth' | 'name' | 'gmail' | 'password' | 'school' | 'subject'>('first');
+    const [thisPage, setThisPage] = useState<'first' | 'second' | 'bluetooth' | 'name' | 'gmail' | 'password' | 'school' | 'subject' | 'work'>('first');
     const [isBluetoothConnected, setIsBluetoothConnected] = useState(false);
+    //@ts-ignore
+    const {submitSubjectModule} = useFormStore();
     
     useEffect(() => {
         const timer1 = setTimeout(() => {
@@ -30,7 +35,7 @@ export default function Onboard() {
         <CustomView
             alignItems={'center'}
             justifyContent={'center'}
-            style={{flex : 1}}
+            style={{flex : 1, backgroundColor : COLORS.bng.primary}}
             width={'100%'}
             height={'100%'}
         >
@@ -71,9 +76,15 @@ export default function Onboard() {
             />}
             {thisPage === 'subject' && <Subject
                 onNext={() => {
-                    setThisPage('subject');
+                    setThisPage('work');
+                    console.log(submitSubjectModule);
                 }}
             />}
+            {thisPage === 'work' && <Work
+                onNext={() => {
+                    setThisPage('work');
+                }}
+            />}     
         </CustomView>
     )
 }

@@ -1,8 +1,6 @@
-import CustomView from "@/components/general/CustomView";
-import { TextInput } from "react-native";
-import { StyleSheet } from "react-native";
-import { SPACING } from "@/styles/spacing";
 import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { StyleSheet, TextInput } from "react-native";
 
 interface IProps {
     width?: any;

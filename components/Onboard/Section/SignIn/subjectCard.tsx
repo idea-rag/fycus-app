@@ -5,6 +5,7 @@ import CustomView from "@/components/general/CustomView";
 import useFormStore from "@/store/useForm";
 import { SPACING } from "@/styles/spacing";
 import { useEffect, useState } from "react";
+import { TouchableOpacity } from "react-native";
 
 type PublisherData = {
     publisher: string;
@@ -18,14 +19,10 @@ type SubjectData = {
 
 interface IProps {
     name: string;
+    onPublisherSelect?: (publisher: string) => void;
 }
 
-interface IProps {
-    name : string;
-}
-    
-
-export default function SubjectCard (props : IProps) {
+export default function SubjectCard(props: IProps) {
     const {name} = props;
     //@ts-ignore
     const {submitGrade, submitSchool} = useFormStore();
@@ -71,10 +68,9 @@ export default function SubjectCard (props : IProps) {
                     <CustomText>{name}</CustomText>
                     {subjectData.publishers.map((publisher, publisherIndex) => (
                         <CustomView key={publisherIndex} gap={SPACING.small}>
-                            <CustomText>{publisher.publisher}</CustomText>
-                            {/* {publisher.work.map((work, workIndex) => (
-                                <CustomText key={workIndex}>{work}</CustomText>
-                            ))} */}
+                            <TouchableOpacity onPress={() => props.onPublisherSelect?.(publisher.publisher)}>   
+                                <CustomText>{publisher.publisher}</CustomText>
+                            </TouchableOpacity>
                         </CustomView>
                     ))}
                 </CustomView>

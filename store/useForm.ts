@@ -10,6 +10,11 @@ interface FormState {
     submitPublishers: string[];
     submitBookList: string[];
     submitFocusGrade: string[];
+    submitSubjectModule: {
+        subject: string;
+        publisher: string;
+        work: string[];
+    }[];
     submitStartTime: string;
     submitEndTime: string;
 
@@ -22,6 +27,7 @@ interface FormState {
     submitPublishersSetter: (submitPublishers: string[]) => void;
     submitBookListSetter: (submitBookList: string[]) => void;
     submitFocusGradeSetter: (submitFocusGrade: string[]) => void;
+    submitSubjectModuleSetter: (submitSubjectModule: { subject: string; publisher: string; work: string[] }[]) => void;
     submitStartTimeSetter: (submitStartTime: string) => void;
     submitEndTimeSetter: (submitEndTime: string) => void;
 }
@@ -37,6 +43,7 @@ const useFormStore = create((set) => ({
     submitPublishers: [],
     submitBookList: [],
     submitFocusGrade: [],
+    submitSubjectModule: [],
     submitStartTime: '',
     submitEndTime: '',
 
@@ -50,6 +57,7 @@ const useFormStore = create((set) => ({
     submitPublishersSetter: (submitPublishers: string[]) => set({ submitPublishers }),
     submitBookListSetter: (submitBookList: string[]) => set({ submitBookList }),
     submitFocusGradeSetter: (submitFocusGrade: string[]) => set({ submitFocusGrade }),
+    submitSubjectModuleSetter: (submitSubjectModule: { subject: string; publisher: string; work: string[] }[]) => set({ submitSubjectModule }),
     submitStartTimeSetter: (submitStartTime: string) => set({ submitStartTime }),
     submitEndTimeSetter: (submitEndTime: string) => set({ submitEndTime }),
 }));

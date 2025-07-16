@@ -9,7 +9,7 @@ import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TouchableOpacity } from "react-native";
 import SubjectCard from "./subjectCard";
 
@@ -21,39 +21,51 @@ interface IProps {
 export default function Subject(props: IProps) {
     const { onNext } = props;
     const [isSubjectModalVisible, setIsSubjectModalVisible] = useState(false);
-    const [subjectList, setSubjectList] = useState(['국어']);
-    const [publishList, setPublishList] = useState([])
+    const [subjectModuleList, setSubjectModuleList] = useState([{subject: '', publisher: '', work: []}]);
+    const [selectSubject, setSelectSubject] = useState('');
     const [newSubject, setNewSubject] = useState(''); // 입력값을 담을 상태
     const [isSubjectSelectorVisible, setIsSubjectSelectorVisible] = useState(false);
 
     //@ts-ignore
-    const { submitSubject, submitSubjectSetter } = useFormStore();
+    const { submitSubjectModule, submitSubjectModuleSetter } = useFormStore();
     
-    useEffect(() => {
-        // You can use submitSubject here if needed
-    }, [submitSubject])
 
     const openSubjectModal = () => setIsSubjectModalVisible(true);
     const closeSubjectModal = () => setIsSubjectModalVisible(false);
-    const openSubjectSelectorModal = () => setIsSubjectSelectorVisible(true);
+    const openSubjectSelectorModal = (subject : string) => {
+        setIsSubjectSelectorVisible(true);
+        setSelectSubject(subject)
+    };
     const closeSubjectSelectorModal = () => setIsSubjectSelectorVisible(false);
 
     const handleAddSubject = () => {
         if (newSubject.trim() !== '') { // 빈 값은 추가하지 않음
-            setSubjectList([...subjectList, newSubject]); // 기존의 리스트에 새 과목 추가
+            setSubjectModuleList([...subjectModuleList, {subject: newSubject, publisher: '', work: []}]); // 기존의 리스트에 새 과목 추가
             setNewSubject(''); // 입력창 초기화
             closeSubjectModal(); // 모달 닫기
         }
     };
 
     const handleDeleteSubject = (subject: string) => {
-        setSubjectList(subjectList.filter(item => item !== subject)); // 해당 과목 제거
+        setSubjectModuleList(subjectModuleList.filter(item => item.subject !== subject)); // 해당 과목 제거
     };
 
     const handleEditSubject = (oldSubject: string, newSubject: string) => {
-        setSubjectList(
-            subjectList.map((item) => (item === oldSubject ? newSubject : item)) // 과목 이름 수정
+        setSubjectModuleList(
+            subjectModuleList.map((item) => (item.subject === oldSubject ? {subject: newSubject, publisher: '', work: []} : item)) // 과목 이름 수정
         );
+    };
+
+    const finalSubjectSubmit =() => {
+        submitSubjectModuleSetter(subjectModuleList)
+        onNext()
+    }
+
+    const handlePublisherSelect = (publisher: string) => {
+        setSubjectModuleList(
+            subjectModuleList.map((item) => (item.subject === selectSubject ? {subject: selectSubject, publisher: publisher, work: []} : item)) // 출판사 이름 수정
+        );
+        closeSubjectSelectorModal();
     };
 
 
@@ -76,13 +88,15 @@ export default function Subject(props: IProps) {
                     flexDirection={'column'}
                     gap={SPACING.medium}
                 >
-                    {subjectList.map((item, index) => (
+                    {subjectModuleList.map((item, index) => (
                         <SubjectNPublishBox
-                            subject={item}
+                            subject={item.subject}
+                            publisher={item.publisher}
                             key={index}
-                            onDelete={handleDeleteSubject} // 삭제 핸들러 전달
-                            onEdit={handleEditSubject} // 수정 핸들러 전달
-                            onModalOpen={openSubjectSelectorModal}
+                            onDelete={handleDeleteSubject}
+                            onEdit={handleEditSubject}
+                            
+                            onModalOpen={() => openSubjectSelectorModal(item.subject)}
                         />
                     ))}
                 </CustomView>
@@ -106,7 +120,7 @@ export default function Subject(props: IProps) {
                     textColor={'white'}
                     fontSize={FONTS.size.small}
                     textWeight={700}
-                    onPress={() => onNext()} // 버튼 클릭 시 실행
+                    onPress={finalSubjectSubmit} // 버튼 클릭 시 실행
                 />
             </CustomView>
             <ModalContainer
@@ -166,7 +180,7 @@ export default function Subject(props: IProps) {
                     gap: SPACING.small,
                 }}
             >
-                <SubjectCard name={'국어'}/>
+                <SubjectCard name={selectSubject} onPublisherSelect={handlePublisherSelect}/>    
             </ModalContainer>
         </>
     );

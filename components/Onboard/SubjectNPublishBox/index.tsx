@@ -13,10 +13,11 @@ interface IProps {
     onDelete: (subject: string) => void; // 삭제 핸들러
     onEdit: (oldSubject: string, newSubject: string) => void; // 수정 핸들러
     onModalOpen: () => void;
+    publisher: string;
 }
 
 export default function SubjectNPublishBox(props: IProps) {
-    const { subject, onDelete, onEdit, onModalOpen } = props;
+    const { subject, onDelete, onEdit, onModalOpen , publisher} = props;
     const [isEditing, setIsEditing] = useState(false); // 수정 상태를 관리
     const [editedSubject, setEditedSubject] = useState(subject); // 수정 중인 과목 이름
 
@@ -77,7 +78,7 @@ export default function SubjectNPublishBox(props: IProps) {
                     )}
                 </CustomView>
             </CustomView>
-            <CustomButton text={"출판사를 선택해주세요..."} width={"100%"} height={40} onPress={onModalOpen}/>
+            <CustomButton text={publisher ? publisher : "출판사를 선택해주세요..."} width={"100%"} height={40} onPress={onModalOpen}/>
         </CustomView>
     );
 }
