@@ -7,6 +7,7 @@ import TimeSection from "@/components/MainPage/TimeSection";
 import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
 import useFormStore from "@/store/useForm";
+import useStudyTimeStore from "@/store/useStudyTime";
 import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
@@ -18,6 +19,8 @@ export default function HomePage() {
   const yesterdayStudyTime = 0;
   //@ts-ignore
   const {submitName} = useFormStore();
+  //@ts-ignore
+  const {studyTime, focusTime} = useStudyTimeStore();
 
   const focusTimeList = [{
     isFocus : false,
@@ -57,7 +60,7 @@ export default function HomePage() {
   },
   {
     isFocus : false,
-    time : 0,
+    time : studyTime,
     day : 9,
     isNotPassed : true
   }
@@ -85,7 +88,7 @@ const tasks = {
             <AISection simpleFeedback={'아직 피드백이 없어요!'}/>
             <HardwareSection battery={70} connection={true}/>
           </CustomView>
-          <TimeSection focusTime={0} studyTime={0}/>
+          <TimeSection focusTime={focusTime} studyTime={studyTime}/>
         </SafeAreaView>
   );
 }

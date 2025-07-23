@@ -4,12 +4,13 @@ import CustomView from "@/components/general/CustomView";
 import { attToText } from "@/feature/attToText";
 import { ParseData, parseRawData } from "@/feature/parseRawData";
 import useBLE from "@/feature/useBLE";
+import useStudyTimeStore from "@/store/useStudyTime";
 import { COLORS } from "@/styles/colors";
 import { SPACING } from "@/styles/spacing";
 import { ChartDataPoint } from "@/types/chart";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useNavigation } from "expo-router";
-import { useEffect, useState } from "react";
+import { useFocusEffect, useNavigation } from "expo-router";
+import { useCallback, useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -95,6 +96,10 @@ export default function FocusPage() {
   const [chartData, setChartData] = useState<ChartDataPoint[]>([]);
   const [timeCounter, setTimeCounter] = useState(0.5);
   const navigation = useNavigation();
+  //@ts-ignore
+  const {focusTime, focusTimeSetter, studyTime, studyTimeSetter} = useStudyTimeStore();
+  const [lastIncrementTime, setLastIncrementTime] = useState<number | null>(null);
+  const [isFocused, setIsFocused] = useState(false);
 
   // Check for connected device on mount
   useEffect(() => {
@@ -157,8 +162,62 @@ useEffect(() => {
     }
   }, [rawData]);
 
+  // Update focus state based on attention level
   useEffect(() => {
+    if (parsedData?.Att !== undefined) {
+      setIsFocused(parsedData.Att >= 3);
+    }
+  }, [parsedData]);
 
+  // Timer for study time and focus time
+  useEffect(() => {
+    let studyInterval: ReturnType<typeof setInterval> | null = null;
+    let focusInterval: ReturnType<typeof setInterval> | null = null;
+
+    if (connectedDevice) {
+      // Update study time every second
+      studyInterval = setInterval(() => {
+        studyTimeSetter((prev: number) => prev + 1);
+      }, 1000); // 1 second in milliseconds
+
+      // Update focus time every second when focused
+      if (isFocused) {
+        focusInterval = setInterval(() => {
+          focusTimeSetter((prev: number) => prev + 1);
+        }, 1000);
+      }
+    }
+
+    // Cleanup intervals on unmount or when dependencies change
+    return () => {
+      if (studyInterval) clearInterval(studyInterval);
+      if (focusInterval) clearInterval(focusInterval);
+    };
+  }, [connectedDevice, isFocused, studyTimeSetter, focusTimeSetter]);
+
+  // Clean up on unmount or when page loses focus
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        // Disconnect device when leaving the page
+        if (connectedDevice) {
+          disconnectFromDevice();
+        }
+        // Clear any existing intervals
+        clearIntervals();
+      };
+    }, [connectedDevice])
+  );
+
+  const clearIntervals = () => {
+    // This function can be called to manually clear intervals if needed
+    const maxIntervalId = setInterval(() => {}, 0);
+    for (let i = 0; i < maxIntervalId; i++) {
+      clearInterval(i);
+    }
+  };
+
+  useEffect(() => {
     if (!receivedData) {
       if (connectedDevice) {
         setRawData('데이터 수신 대기 중...');
@@ -288,7 +347,7 @@ useEffect(() => {
           setRawData('모니터링 시작됨. 데이터 수신 대기 중...');
         } catch (err) {
           const error = err instanceof Error ? err : new Error(String(err));
-          console.error('특성 모니터링 시작 중 오류:', error);
+        //   console.error('특성 모니터링 시작 중 오류:', error);
           setRawData(`모니터링 오류: ${error.message}`);
           
           // 연결 해제 시도
@@ -337,6 +396,19 @@ useEffect(() => {
             </CustomText>
                 </>
             )}
+        </CustomView>
+        <CustomView
+            width={'100%'}
+            flexDirection={'column'}
+            alignItems={'center'}
+            justifyContent={'center'}
+        >
+            <CustomText fontSize={24} fontWeight={600}>
+                집중 시간: {String(Math.floor(focusTime / 3600)).padStart(2, '0')}:{String(Math.floor((focusTime % 3600) / 60)).padStart(2, '0')}:{String(focusTime % 60).padStart(2, '0')}
+            </CustomText>
+            <CustomText fontSize={24} fontWeight={600}>
+                총 공부 시간: {String(Math.floor(studyTime / 3600)).padStart(2, '0')}:{String(Math.floor((studyTime % 3600) / 60)).padStart(2, '0')}:{String(studyTime % 60).padStart(2, '0')}
+            </CustomText>
         </CustomView>
         <TouchableOpacity 
           style={[

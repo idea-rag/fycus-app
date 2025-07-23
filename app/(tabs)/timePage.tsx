@@ -9,7 +9,7 @@ export default function TimePage() {
     <>
     <PageDefault title={'시간'}>
       <SectionDefault title={'시간대별 집중내역'}>
-          <FocusByHourSection/>
+        <FocusByHourSection/>
       </SectionDefault>
         <FocusByHourDetail/>
     </PageDefault>

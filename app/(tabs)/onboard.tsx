@@ -9,6 +9,7 @@ import Password from "@/components/Onboard/Section/SignIn/password";
 import School from "@/components/Onboard/Section/SignIn/school";
 import Subject from "@/components/Onboard/Section/SignIn/subject";
 import WhatFocus from "@/components/Onboard/Section/SignIn/whatFocus";
+import WhatWeek from "@/components/Onboard/Section/SignIn/whatWeek";
 import Work from "@/components/Onboard/Section/SignIn/work";
 import useFormStore from "@/store/useForm";
 import { COLORS } from "@/styles/colors";
@@ -17,7 +18,7 @@ import { useEffect, useState } from "react";
 
 export default function Onboard() {
     const router = useRouter();
-    const [thisPage, setThisPage] = useState<'first' | 'second' | 'bluetooth' | 'name' | 'gmail' | 'password' | 'school' | 'subject' | 'work' | 'whatFocus' | 'loading'>('first');
+    const [thisPage, setThisPage] = useState<'first' | 'second' | 'bluetooth' | 'name' | 'gmail' | 'password' | 'school' | 'subject' | 'work' | 'whatFocus' | 'whatWeek' | 'loading'>('first');
     const [isBluetoothConnected, setIsBluetoothConnected] = useState(false);
     //@ts-ignore
     const {submitSubjectModule} = useFormStore();
@@ -91,9 +92,14 @@ export default function Onboard() {
             />}     
             {thisPage === 'whatFocus' && <WhatFocus
                 onNext={() => {
-                    setThisPage('loading');
+                    setThisPage('whatWeek');
                 }}
             />}     
+            {thisPage === 'whatWeek' && <WhatWeek
+                onNext={() => {
+                    setThisPage('loading');
+                }}
+            />}
             {thisPage === 'loading' && <Loading
                 onNext={() => {
                     router.push('/');

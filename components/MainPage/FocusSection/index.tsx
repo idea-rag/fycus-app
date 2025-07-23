@@ -11,6 +11,8 @@ interface IProps {
 export default function FocusSection(props : IProps) {
     const {focusTimeList} = props;
 
+    
+
     return (
         <SectionDefault
             title={"일주일간 집중내역"}
