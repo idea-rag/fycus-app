@@ -3,17 +3,21 @@ import Bluetooth from "@/components/Onboard/Section/bluetooth";
 import First from "@/components/Onboard/Section/first";
 import Second from "@/components/Onboard/Section/second";
 import Gmail from "@/components/Onboard/Section/SignIn/gmail";
+import Loading from "@/components/Onboard/Section/SignIn/loading";
 import Name from "@/components/Onboard/Section/SignIn/name";
 import Password from "@/components/Onboard/Section/SignIn/password";
 import School from "@/components/Onboard/Section/SignIn/school";
 import Subject from "@/components/Onboard/Section/SignIn/subject";
+import WhatFocus from "@/components/Onboard/Section/SignIn/whatFocus";
 import Work from "@/components/Onboard/Section/SignIn/work";
 import useFormStore from "@/store/useForm";
 import { COLORS } from "@/styles/colors";
+import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 
 export default function Onboard() {
-    const [thisPage, setThisPage] = useState<'first' | 'second' | 'bluetooth' | 'name' | 'gmail' | 'password' | 'school' | 'subject' | 'work'>('first');
+    const router = useRouter();
+    const [thisPage, setThisPage] = useState<'first' | 'second' | 'bluetooth' | 'name' | 'gmail' | 'password' | 'school' | 'subject' | 'work' | 'whatFocus' | 'loading'>('first');
     const [isBluetoothConnected, setIsBluetoothConnected] = useState(false);
     //@ts-ignore
     const {submitSubjectModule} = useFormStore();
@@ -82,9 +86,19 @@ export default function Onboard() {
             />}
             {thisPage === 'work' && <Work
                 onNext={() => {
-                    setThisPage('work');
+                    setThisPage('whatFocus');
                 }}
             />}     
+            {thisPage === 'whatFocus' && <WhatFocus
+                onNext={() => {
+                    setThisPage('loading');
+                }}
+            />}     
+            {thisPage === 'loading' && <Loading
+                onNext={() => {
+                    router.push('/');
+                }}
+            />}
         </CustomView>
     )
 }

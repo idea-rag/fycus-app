@@ -1,10 +1,15 @@
-import { ScrollView, View, Text, StyleSheet } from "react-native";
-import { SPACING } from "@/styles/spacing";
 import FocusTimeCard from "@/components/MainPage/FocusSection/FocusTimeCard";
+import { SPACING } from "@/styles/spacing";
+import { navigate } from "expo-router/build/global-state/routing";
+import { ScrollView, StyleSheet } from "react-native";
 import SectionDefault from "../../general/SectionDefault";
-import {navigate} from "expo-router/build/global-state/routing";
 
-export default function FocusSection() {
+interface IProps {
+    focusTimeList : {isFocus : boolean, time : number, day : number, isNotPassed : boolean}[];   
+}
+
+export default function FocusSection(props : IProps) {
+    const {focusTimeList} = props;
 
     return (
         <SectionDefault
@@ -16,17 +21,20 @@ export default function FocusSection() {
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={styles.focusTimeContainer}
             >
-                <FocusTimeCard isFocus={false} time={12} day={8} />
-                <FocusTimeCard isFocus={false} time={12} day={8} />
-                <FocusTimeCard isFocus={false} time={12} day={8} />
-                <FocusTimeCard isFocus={true} time={12} day={8} />
-                <FocusTimeCard isFocus={false} time={12} day={8} isNotPassed={true} />
-                <FocusTimeCard isFocus={false} time={12} day={8} isNotPassed={true} />
-                <FocusTimeCard isFocus={false} time={12} day={8} isNotPassed={true} />
+                {focusTimeList.map((item, index) => (
+                    <FocusTimeCard
+                        key={index}
+                        isFocus={item.isFocus}
+                        time={item.time}
+                        day={item.day}
+                        isNotPassed={item.isNotPassed}
+                    />
+                ))} 
             </ScrollView>
         </SectionDefault>
     );
 }
+
 
 const styles = StyleSheet.create({
     focusTimeContainer: {

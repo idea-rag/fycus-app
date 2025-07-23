@@ -1,15 +1,20 @@
 import CustomView from "@/components/general/CustomView";
-import {StyleSheet} from "react-native";
-import TimeCard from "@/components/MainPage/TimeSection/TimeCard";
-import {SPACING} from "@/styles/spacing";
 import MeasureTimeButton from "@/components/general/MeasureTimeButton";
+import TimeCard from "@/components/MainPage/TimeSection/TimeCard";
+import { SPACING } from "@/styles/spacing";
 
-export default function TimeSection() {
+interface IProps {
+    focusTime : number;
+    studyTime : number;
+}
+
+export default function TimeSection(props : IProps) {
+    const {focusTime, studyTime} = props;
     return (
         <CustomView width='100%' alignItems={'center'} justifyContent={'space-between'} flexDirection={'row'} paddingVertical={SPACING.small} paddingHorizontal={SPACING.superHuge}>
-            <TimeCard time={120} timeType={'순수 집중시간'}/>
+            <TimeCard time={focusTime} timeType={'순수 집중시간'}/>
             <MeasureTimeButton/>
-            <TimeCard time={130} timeType={'공부시간'}/>
+            <TimeCard time={studyTime} timeType={'공부시간'}/>
         </CustomView>
     );
 }

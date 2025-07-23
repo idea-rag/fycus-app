@@ -10,8 +10,8 @@ import useFormStore from "@/store/useForm";
 import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
-import { Alert, TouchableOpacity } from "react-native";
 import { useEffect, useState } from "react";
+import { Alert, TouchableOpacity } from "react-native";
 
 interface IProps {
     onNext: () => void;
@@ -137,6 +137,10 @@ export default function Work(props: IProps) {
             );
         }
     };
+
+    const finishedWork = () => {
+        onNext();
+    };
     
     const handleCompleteSelection = () => {
         const updatedModules = submitSubjectModule.map((item : {subject : string, publisher : string, work : string[]}) => 
@@ -202,7 +206,7 @@ export default function Work(props: IProps) {
                     textColor={'white'}
                     fontSize={FONTS.size.small}
                     textWeight={700}
-                    onPress={submitFinish}
+                    onPress={finishedWork}
                 />
             </CustomView>
 

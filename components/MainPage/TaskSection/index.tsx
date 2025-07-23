@@ -1,46 +1,18 @@
-import SectionDefault from "../../general/SectionDefault";
-import {View} from "react-native";
 import TaskFrame from "@/components/MainPage/TaskSection/TaskFrame";
+import SectionDefault from "../../general/SectionDefault";
 
-export default function TaskSection() {
-
-    const tasks = {
-        1 : {
-            name : '국어하기',
-            importance : 3,
-            isChecked : false,
-        },
-        2: {
-            name: '영어하기',
-            importance: 2,
-            isChecked: true,
-        },
-        3: {
-            name: '수학문제 풀기',
-            importance: 2,
-            isChecked: false,
-        },
-        4: {
-            name: '운동하기',
-            importance: 2,
-            isChecked: true,
-        },
-        5: {
-            name: '일기 쓰기',
-            importance: 1,
-            isChecked: false,
-        },
-        6: {
-            name: '책 읽기',
-            importance: 3,
-            isChecked: true,
-        },
-        7: {
-            name: '코딩 연습하기',
-            importance: 3,
-            isChecked: false,
-        },
+interface IProps {
+    tasks : {
+        [key : number] : {
+            name : string;
+            importance : number;
+            isChecked : boolean;
+        }
     }
+}
+
+export default function TaskSection(props : IProps) {
+    const {tasks} = props;
 
     return (
        <SectionDefault title={'오늘의 할일'}>
