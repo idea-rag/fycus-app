@@ -64,14 +64,14 @@ export default function SubjectNPublishBox(props: IProps) {
                 <CustomView flexDirection={"row"} gap={SPACING.superTiny} alignItems={"center"}>
                     <MaterialIcons
                         name={isEditing ? "check" : "edit"} // 수정 중이면 "check", 아니면 "edit"
-                        size={12}
+                        size={24}
                         color={isEditing ? COLORS.state.correct : "black"} // 체크 표시 색상
                         onPress={handleEditToggle} // 수정 상태 토글
                     />
                     {!isEditing && (
                         <MaterialIcons
                             name="delete"
-                            size={12}
+                            size={24}
                             color={COLORS.state.uncorrect} // 삭제 아이콘 색상
                             onPress={() => onDelete(subject)} // 삭제 핸들러 호출
                         />

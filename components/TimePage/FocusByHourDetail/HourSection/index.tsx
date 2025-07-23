@@ -1,6 +1,7 @@
 import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
 import TimeCircle from "@/components/TimePage/FocusByHourDetail/HourSection/timeCircle";
+import useStudyTimeStore from "@/store/useStudyTime";
 import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
@@ -14,6 +15,7 @@ interface IProps {
 
 export default function HourSection(props : IProps) {
     const {time} = props;
+    const {focusTime, studyTime} = useStudyTimeStore();
     const data = [
         { time : 10, focusTime : 8},
         { time : 20, focusTime : 23},
@@ -82,8 +84,8 @@ export default function HourSection(props : IProps) {
                 paddingHorizontal={40}
                 width={'100%'}
             >
-                <TimeCircle purpose={'측정'} time={60}/>
-                <TimeCircle purpose={'집중'} time={45}/>
+                <TimeCircle purpose={'측정'} time={studyTime/60}/>
+                <TimeCircle purpose={'집중'} time={focusTime/60}/>
             </CustomView>
         </CustomView>
     )

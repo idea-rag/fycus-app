@@ -6,6 +6,8 @@ import TaskSection from "@/components/MainPage/TaskSection";
 import TimeSection from "@/components/MainPage/TimeSection";
 import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
+import { MonthTasks } from "@/data/scehdule";
+import useBLE from "@/feature/useBLE";
 import useFormStore from "@/store/useForm";
 import useStudyTimeStore from "@/store/useStudyTime";
 import { COLORS } from "@/styles/colors";
@@ -21,6 +23,7 @@ export default function HomePage() {
   const {submitName} = useFormStore();
   //@ts-ignore
   const {studyTime, focusTime} = useStudyTimeStore();
+  const { connectedDevice } = useBLE();
 
   const focusTimeList = [{
     isFocus : false,
@@ -66,9 +69,7 @@ export default function HomePage() {
   }
 ]
 
-const tasks = {
-  
-}
+const tasks = MonthTasks['2025-07-24'];
 
   return (
         <SafeAreaView style={styles.container}>
@@ -86,7 +87,7 @@ const tasks = {
           <CustomView paddingVertical={SPACING.superTiny} paddingHorizontal={SPACING.medium} flexDirection={'row'} gap={SPACING.medium} alignItems={'flex-start' +
               ''} justifyContent={'space-between'}>
             <AISection simpleFeedback={'아직 피드백이 없어요!'}/>
-            <HardwareSection battery={70} connection={true}/>
+            <HardwareSection battery={70} connection={!!connectedDevice}/>
           </CustomView>
           <TimeSection focusTime={focusTime} studyTime={studyTime}/>
         </SafeAreaView>

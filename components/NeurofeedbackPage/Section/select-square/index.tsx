@@ -1,3 +1,4 @@
+import { useNeurofeedbackStore } from "@/store/useNeurofeedback";
 import { useState } from "react";
 import SelectSquareIntroduce from "./introduce";
 import SelectSquareWork from "./work";
@@ -11,6 +12,9 @@ export default function SelectSquare({ selectSquareList, onComplete }: SelectSqu
     const [squarePage, setSquarePage] = useState<'select-square-introduce' | 'select-square-work'>('select-square-introduce');  
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
+
+    //@ts-ignore
+    const {setSelectSquareScore, setSelectSquareTotal, setSelectSquareTimeSpent} = useNeurofeedbackStore();
 
     const [startTime, setStartTime] = useState<number | null>(null);
 
@@ -32,6 +36,9 @@ export default function SelectSquare({ selectSquareList, onComplete }: SelectSqu
                         const endTime = Date.now();
                         const timeSpent = startTime ? Math.floor((endTime - startTime) / 1000) : 0;
                         onComplete?.(score, total, timeSpent, errors);
+                        setSelectSquareScore(score);
+                        setSelectSquareTotal(total);
+                        setSelectSquareTimeSpent(timeSpent);
                     }} 
                 />
             )}

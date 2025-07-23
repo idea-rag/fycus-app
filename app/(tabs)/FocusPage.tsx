@@ -113,30 +113,37 @@ export default function FocusPage() {
   }, [connectedDevice]);
 
   // Update chart data when new attention data is received
-  const MAX_POINTS = 10;
+  const MAX_POINTS = 15; // 30개의 데이터 포인트 유지
+  const [lastUpdateTime, setLastUpdateTime] = useState<number>(Date.now());
+  const [dataPoints, setDataPoints] = useState<number>(0);
 
-useEffect(() => {
-  if (parsedData && parsedData.Att >= 0) {
-    setChartData(prevData => {
-      const updated = [
-        ...prevData,
-        {
-          time: 0, // 임시값, 아래에서 재정렬됨
+  useEffect(() => {
+    if (parsedData && parsedData.Att >= 0) {
+      const now = Date.now();
+      
+      // 마지막 업데이트로부터 최소 100ms가 지났을 때만 업데이트 (과도한 업데이트 방지)
+      if (now - lastUpdateTime < 100) return;
+      
+      setChartData(prevData => {
+        const newDataPoint = {
+          time: dataPoints % MAX_POINTS,
           focusTime: parsedData.Att,
           ...parsedData,
-        },
-      ];
+          timestamp: now
+        };
 
-      const sliced = updated.slice(-MAX_POINTS);
-
-      // X축 0~9로 재정렬
-      return sliced.map((item, index) => ({
-        ...item,
-        time: index,
-      }));
-    });
-  }
-}, [parsedData]);
+        const updated = [...prevData, newDataPoint].slice(-MAX_POINTS);
+        
+        return updated.map((item, index) => ({
+          ...item,
+          time: index
+        }));
+      });
+      
+      setDataPoints(prev => (prev + 1) % MAX_POINTS);
+      setLastUpdateTime(now);
+    }
+  }, [parsedData?.Att]); // parsedData.Att만 의존성 배열에 추가
 
 
   // Parse raw data from BLE

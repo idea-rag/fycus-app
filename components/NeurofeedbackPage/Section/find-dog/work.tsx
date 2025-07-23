@@ -10,10 +10,11 @@ interface IProps {
     element: any[]; 
     answer: number; 
     onPress: (isCorrect: boolean) => void; 
+    introductionText: string;
 }
 
 export default function FindDogWork(props: IProps) {
-    const { element, answer, onPress } = props;
+    const { element, answer, onPress, introductionText } = props;
     const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
     const [isAnswered, setIsAnswered] = useState(false);
 
@@ -36,25 +37,42 @@ export default function FindDogWork(props: IProps) {
         <CustomView
             width={'100%'}
             height={'100%'}
-            alignItems={'flex-start'}
+            alignItems={'center'}
             justifyContent={'flex-start'}
             paddingHorizontal={SPACING.medium}
-            style={{flex : 1}}
+            style={{ flex: 1 }}
         >
-            <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.primary} fontWeight={600} style={{width : '100%'}}>1. find-dog</CustomText>
-            <CustomView 
-                style={{
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    justifyContent: 'space-between',
+            <CustomText 
+                fontSize={FONTS.size.body} 
+                textColor={COLORS.text.primary} 
+                fontWeight={600} 
+                style={{ 
                     width: '100%',
-                    gap: SPACING.medium,
-                    alignItems : 'center',
+                    marginBottom: SPACING.medium
                 }}
             >
+                1. find-dog
+            </CustomText>
+            <CustomView 
+                style={{
+                    flex: 1,
+                    width: '100%',
+                    justifyContent: 'flex-start',
+                }}
+            >
+                <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.primary} fontWeight={600} style={{width : '100%'}}>{introductionText}</CustomText>
+                <CustomView 
+                    style={{
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        justifyContent: 'space-between',
+                        width: '100%',
+                        gap: SPACING.medium,
+                    }}
+                >
                 {element.map((item, index) => (
                     <View key={index}
-                        style={{width:100, height : 100, borderColor : 'red', borderWidth : 1, borderStyle : 'solid'}}
+                        style={{width:150, height : 150}}
                     >
                         <TouchableOpacity
                             onPress={() => handlePress(index)}
@@ -72,6 +90,7 @@ export default function FindDogWork(props: IProps) {
                         </TouchableOpacity>
                     </View>
                 ))}
+            </CustomView>
             </CustomView>
         </CustomView>
     )

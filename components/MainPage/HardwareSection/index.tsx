@@ -1,13 +1,11 @@
-import CustomView from "@/components/general/CustomView";
-import {SPACING} from "@/styles/spacing";
 import CustomText from "@/components/general/CustomText";
-import {FONTS} from "@/styles/fonts";
-import {COLORS} from "@/styles/colors";
-import Logo from "@/components/general/Logo";
-import CustomButton from "@/components/general/CustomButton";
-import {StyleSheet} from "react-native";
-import {FontAwesome} from "@expo/vector-icons";
-import {batteryStep} from "@/feature/batteryStep";
+import CustomView from "@/components/general/CustomView";
+import { batteryStep } from "@/feature/batteryStep";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { FontAwesome } from "@expo/vector-icons";
+import { StyleSheet } from "react-native";
 
 interface IProps {
     connection?: boolean;
@@ -33,6 +31,7 @@ export default function HardwareSection(props: IProps) {
             </CustomView>
             <CustomView width={'100%'} alignItems={'center'} justifyContent={'center'} flexDirection={'row'} gap={SPACING.small}>
                 <CustomView flexDirection={'row'} alignItems={'center'} justifyContent={'center'} gap={SPACING.superTiny}>
+                    {/* @ts-ignore */}
                     <FontAwesome name={`battery-${batteryStepValue}`} color={COLORS.text.third} size={12}/>
                     <CustomText fontSize={FONTS.size.small} textColor={COLORS.text.primary}>{battery}%</CustomText>
                 </CustomView>

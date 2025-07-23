@@ -50,6 +50,7 @@ export default function SelectSquareWork({ selectSquareList, onComplete }: Selec
             if (currentNumber === selectSquareList.length) {
                 setIsCompleted(true);
                 onComplete?.(selectSquareList.length, selectSquareList.length, errors);
+             
             } else {
                 setCurrentNumber((prev) => prev + 1);
             }

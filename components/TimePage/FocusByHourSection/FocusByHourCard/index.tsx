@@ -1,11 +1,11 @@
-import CustomView from "@/components/general/CustomView";
-import {TimeBarTypes} from "@/interface/TimeBarTypes";
-import {SPACING} from "@/styles/spacing";
-import {TimeBar} from "@/components/TimePage/TimeBar";
-import {COLORS} from "@/styles/colors";
 import CustomText from "@/components/general/CustomText";
-import {FONTS} from "@/styles/fonts";
-import {StyleSheet} from "react-native";
+import CustomView from "@/components/general/CustomView";
+import { TimeBar } from "@/components/TimePage/TimeBar";
+import { TimeBarTypes } from "@/interface/TimeBarTypes";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { StyleSheet } from "react-native";
 
 type TimeBarLimited = Pick<TimeBarTypes, "measureTime"  | "focusTime">;
 
@@ -22,7 +22,7 @@ export default function FocusByHourCard(props: IProps) {
         return (
             <CustomView
                 alignItems={'center'}
-                justifyContent={'center'}
+                justifyContent={'flex-end'}
                 paddingVertical={SPACING.superTiny}
                 paddingHorizontal={SPACING.tiny}
                 gap={SPACING.superTiny}
@@ -49,7 +49,7 @@ export default function FocusByHourCard(props: IProps) {
         return (
             <CustomView
                 alignItems={'center'}
-                justifyContent={'center'}
+                justifyContent={'flex-end'}
                 paddingVertical={SPACING.superTiny}
                 paddingHorizontal={SPACING.tiny}
                 gap={SPACING.superTiny}

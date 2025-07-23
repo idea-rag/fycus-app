@@ -1,7 +1,10 @@
+import { dogExplanations } from "@/assets/find_dog_images";
 import { DogImageSet } from "@/feature/findDogListSetup";
-import { useState, useEffect } from "react";
+import { useNeurofeedbackStore } from "@/store/useNeurofeedback";
+import { useState } from "react";
 import FindDogIntroduce from "./introduce";
 import FindDogWork from "./work";
+
 
 interface FindDogProps {
     dogImageSets: DogImageSet[];
@@ -13,6 +16,9 @@ export default function FindDog({ dogImageSets, onComplete }: FindDogProps) {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [dogStep, setDogStep] = useState<number>(0);
     const [score, setScore] = useState(0);
+    
+    //@ts-ignore
+    const {setFindDogScore, setFindDogTotal, setFindDogTimeSpent} = useNeurofeedbackStore();
     
     // 퀴즈 시작 핸들러
     const [startTime, setStartTime] = useState<number | null>(null);
@@ -41,6 +47,9 @@ export default function FindDog({ dogImageSets, onComplete }: FindDogProps) {
                 const timeSpent = startTime ? Math.floor((endTime - startTime) / 1000) : 0;
                 console.log('퀴즈 종료. 점수:', score, '/', dogImageSets.length, '소요 시간:', timeSpent, '초');
                 onComplete?.(score, dogImageSets.length, timeSpent);
+                setFindDogScore(score);
+                setFindDogTotal(10);
+                setFindDogTimeSpent(timeSpent);
             }
         }, 100);
     };
@@ -55,7 +64,13 @@ export default function FindDog({ dogImageSets, onComplete }: FindDogProps) {
                             element={dogImageSets[currentQuestion]?.images || []}
                             answer={dogImageSets[currentQuestion]?.answer || 0}
                             onPress={handleAnswer}
-                        />
+                            // @ts-ignore
+                            introductionText={
+                                dogExplanations[
+                                  `${dogImageSets[currentQuestion]?.images[dogImageSets[currentQuestion]?.answer]?.id}_explanation`
+                                ]
+                              }                        
+                />
             )}
         </>
     );

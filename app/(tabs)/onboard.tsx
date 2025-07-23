@@ -21,7 +21,7 @@ export default function Onboard() {
     const [thisPage, setThisPage] = useState<'first' | 'second' | 'bluetooth' | 'name' | 'gmail' | 'password' | 'school' | 'subject' | 'work' | 'whatFocus' | 'whatWeek' | 'loading'>('first');
     const [isBluetoothConnected, setIsBluetoothConnected] = useState(false);
     //@ts-ignore
-    const {submitSubjectModule} = useFormStore();
+    const {submitSubjectModule, submitGrade, submitName, submitEmail, submitPassword, submitSchool, submitWork, submitWhatFocus, submitWhatWeek} = useFormStore();
     
     useEffect(() => {
         const timer1 = setTimeout(() => {
@@ -98,6 +98,7 @@ export default function Onboard() {
             {thisPage === 'whatWeek' && <WhatWeek
                 onNext={() => {
                     setThisPage('loading');
+                    console.log(submitSubjectModule, ': submitSubjectModule', submitGrade, ': submitGrade', submitName, ': submitName', submitEmail, ': submitEmail', submitPassword, ': submitPassword', submitSchool, ': submitSchool', submitWork, ': submitWork', submitWhatFocus, ': submitWhatFocus', submitWhatWeek, ': submitWhatWeek');
                 }}
             />}
             {thisPage === 'loading' && <Loading

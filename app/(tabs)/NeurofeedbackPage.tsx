@@ -35,9 +35,9 @@ export default function NeurofeedbackPage() {
         <PageDefault title={'뉴로피드백'} isScrollView={false}>
             {thisPage === 'start' && <Start />}
             {thisPage === 'find-dog' && (
-                <FindDog 
+                <FindDog
                     dogImageSets={findDogListSetup()} 
-                    onComplete={handleFindDogComplete} 
+                    onComplete={handleFindDogComplete}  
                 />
             )}
             {thisPage === 'select-square' && (

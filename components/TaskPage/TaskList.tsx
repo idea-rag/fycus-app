@@ -21,7 +21,7 @@ export default function TaskList(props : IProps) {
     const router = useRouter();    
     return (
             <ScrollView
-                style={[styles.container, { maxHeight: 150 }]}
+                style={[styles.container]}
                 contentContainerStyle={{
                     width: '100%',
                     minHeight : 150,
