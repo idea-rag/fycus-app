@@ -4,13 +4,14 @@ import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
 import ModalContainer from "@/components/general/Modal";
 import SubjectNWorkBox from "@/components/Onboard/SubjectNWorkBox";
+import { register } from "@/feature/register";
 import { getWorkList } from "@/feature/subjectExtract";
 import useFormStore from "@/store/useForm";
 import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
+import { Alert, TouchableOpacity } from "react-native";
 import { useEffect, useState } from "react";
-import { TouchableOpacity } from "react-native";
 
 interface IProps {
     onNext: () => void;
@@ -59,9 +60,82 @@ export default function Work(props: IProps) {
         });
     };
 
-    const submitFinish = () => {
-        submitSubjectModuleSetter(submitSubjectModule);
-        onNext();
+    const submitFinish = async () => {
+        try {
+            console.log('[DEBUG] Starting form submission...');
+            console.log('[DEBUG] Current submitSubjectModule:', JSON.stringify(submitSubjectModule, null, 2));
+            
+            // Validate subject modules before submission
+            if (!submitSubjectModule || submitSubjectModule.length === 0) {
+                const message = '과목을 최소 한 개 이상 선택해주세요.';
+                console.warn('[WARNING] Validation failed:', message);
+                Alert.alert('입력 오류', message);
+                return;
+            }
+
+            // Update the form store with current subject modules
+            submitSubjectModuleSetter(submitSubjectModule);
+            
+            console.log('[DEBUG] Starting registration process...');
+            const result = await register();
+            
+            if (result.success) {
+                console.log('[SUCCESS] Registration successful:', JSON.stringify(result, null, 2));
+                Alert.alert('성공', '회원가입이 완료되었습니다.');
+                onNext();
+            } else {
+                console.error('[ERROR] Registration failed:', result.message);
+                Alert.alert(
+                    '회원가입 실패',
+                    result.message || '회원가입 중 오류가 발생했습니다.\n나중에 다시 시도해주세요.'
+                );
+            }
+        } catch (error) {
+            let errorMessage = '알 수 없는 오류가 발생했습니다.';
+            let errorDetails = '';
+            
+            if (error instanceof Error) {
+                errorMessage = error.message;
+                errorDetails = error.stack || '';
+                console.error('[ERROR] Error during registration:', {
+                    message: error.message,
+                    name: error.name,
+                    stack: error.stack,
+                    ...(error as any).response?.data && { response: (error as any).response.data }
+                });
+            } else {
+                console.error('[ERROR] Unknown error during registration:', error);
+            }
+            
+            Alert.alert(
+                '오류 발생',
+                `회원가입 처리 중 오류가 발생했습니다:\n${errorMessage}`,
+                [
+                    { 
+                        text: '자세히 보기', 
+                        onPress: () => {
+                            Alert.alert(
+                                '오류 상세 정보',
+                                `${errorMessage}\n\n${errorDetails}`,
+                                [
+                                    { text: '확인', style: 'cancel' },
+                                    {
+                                        text: '오류 복사',
+                                        onPress: () => {
+                                            const errorText = `Error: ${errorMessage}\n\n${errorDetails}`;
+                                            // You might want to use a clipboard library here
+                                            console.log('Error details copied to console');
+                                            Alert.alert('알림', '오류 정보가 콘솔에 복사되었습니다.');
+                                        }
+                                    }
+                                ]
+                            );
+                        } 
+                    },
+                    { text: '확인', style: 'cancel' }
+                ]
+            );
+        }
     };
     
     const handleCompleteSelection = () => {
@@ -78,6 +152,7 @@ export default function Work(props: IProps) {
         submitSubjectModuleSetter(filteredModules);
         closeWorkModal();
     };
+
 
     const openWorkModal = (subject: string) => {
         setSelectSubject(subject);
