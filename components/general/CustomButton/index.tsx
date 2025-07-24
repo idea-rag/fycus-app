@@ -12,27 +12,20 @@ type ButtonProps = {
     textWeight?: any,
     fontSize?: number; 
     onPress?: () => void; 
-    style?: any;
+    style? : any;
     justifyText?: any;
-    disabled?: boolean;
-    loading?: boolean;
 };
 
 export default function CustomButton({
-    width, 
-    height,
-    backgroundColor,
-    borderColor,
-    hasBorder = false, 
-    text = "", 
-    textColor = "#111", 
-    fontSize = 16, 
-    onPress = () => {}, 
-    style, 
-    textWeight, 
-    justifyText,
-    disabled = false,
-    loading = false
+                                        width, height,
+                                         backgroundColor,
+                                         borderColor,
+                                         hasBorder = false, 
+                                         text = "", 
+                                         textColor = "#111", 
+                                         fontSize = 16, 
+                                         onPress = () => {}, 
+    style, textWeight, justifyText
                                      }: ButtonProps) {
     
     const buttonStyle: StyleProp<ViewStyle> = {
@@ -45,27 +38,9 @@ export default function CustomButton({
         flexDirection: "row",
     };
 
-    const handlePress = () => {
-        if (!disabled && !loading) {
-            onPress();
-        }
-    };
-
     return (
-        <TouchableOpacity 
-            onPress={handlePress} 
-            activeOpacity={0.8} 
-            style={[
-                styles.buttonContainer, 
-                buttonStyle, 
-                { width, height, opacity: disabled || loading ? 0.7 : 1 },
-                style
-            ]}
-            disabled={disabled || loading}
-        >
-            <Text style={{ color: textColor, fontSize, fontWeight: textWeight }}>
-                {loading ? '로딩 중...' : text}
-            </Text>
+        <TouchableOpacity onPress={onPress} activeOpacity={0.8} style={[styles.buttonContainer, buttonStyle, {width, height},style ]}>
+            <Text style={[ { color: textColor, fontSize, fontWeight: textWeight,  }]}>{text}</Text>
         </TouchableOpacity>
     );
 }

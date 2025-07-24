@@ -114,8 +114,6 @@ export default function AIPage() {
                         textColor={COLORS.bng.primary}
                         backgroundColor={COLORS.brand.primary}
                         onPress={handleGetFeedback}
-                        loading={isLoading}
-                        disabled={isLoading}
                     />
                     )}
                 </SectionDefault>
