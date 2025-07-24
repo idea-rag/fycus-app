@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
 
 
-const API_BASE_URL = process.env.BASE_URL || 'http:
+const API_BASE_URL = process.env.BASE_URL || 'http://172.30.1.67:8080';
 
 
 interface ApiResponse<T = any> {

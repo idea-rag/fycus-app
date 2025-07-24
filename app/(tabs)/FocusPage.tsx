@@ -399,8 +399,9 @@ export default function FocusPage() {
                     </CustomText>
                     <CustomText fontSize={30} fontWeight={600}>
                         { 
-                attToText(parsedData?.Att)} 상태입니다. 
-            </CustomText>
+                        parsedData?.Att !== undefined ? 
+                        attToText(parsedData?.Att) : '연결 중...'} 상태입니다. 
+                    </CustomText>
                 </>
             )}
         </CustomView>

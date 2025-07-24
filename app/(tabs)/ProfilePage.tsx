@@ -19,11 +19,9 @@ export default function ProfilePage() {
         <PageDefault title={'프로필'}>
             <SectionDefault title={'개인정보 부분'}>
                 <InformationBar title={'이름'} text={'류한석'}/>
-                <InformationBar title={'이메일'} text={'officeshinyujun@gmail.com'}/>
-                <InformationBar title={'생년월일'} text={'1998년 10월 1일'}/>
-                <InformationBar title={'성별'} text={'남성'}/>
-                <InformationBar title={'비밀번호'} text={'********'}/>
-                <InformationBar title={'학년/학교'} text={'1학년/서울대학교'}/>
+                <InformationBar title={'이메일'} text={'submitEmail@gmail.com'}/>
+                <InformationBar title={'비밀번호'} text={'**********'}/>
+                <InformationBar title={'학년/학교'} text={'1학년/선린고등학교'}/>
                 <SubjectSection/>
                 <CustomView
                     width={'100%'}
@@ -58,7 +56,7 @@ export default function ProfilePage() {
                     />
                     <CustomText fontSize={FONTS.size.head} textColor={COLORS.text.primary} fontWeight={600}>Fycus-hardware</CustomText>
                 </CustomView>
-                <InformationBar title="연결 상태" text="연결 중"/>
+                <InformationBar title="연결 상태" text="연결 안됨"/>
                 <InformationBar title="배터리" text="70%"/>
             </SectionDefault>
         </PageDefault>

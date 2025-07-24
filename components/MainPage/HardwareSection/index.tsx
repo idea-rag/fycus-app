@@ -31,8 +31,7 @@ export default function HardwareSection(props: IProps) {
             </CustomView>
             <CustomView width={'100%'} alignItems={'center'} justifyContent={'center'} flexDirection={'row'} gap={SPACING.small}>
                 <CustomView flexDirection={'row'} alignItems={'center'} justifyContent={'center'} gap={SPACING.superTiny}>
-                    {}
-                    <FontAwesome name={`battery-${batteryStepValue}`} color={COLORS.text.third} size={12}/>
+                    <FontAwesome name={`battery-${batteryStepValue}` as any} color={COLORS.text.third} size={12}/>
                     <CustomText fontSize={FONTS.size.small} textColor={COLORS.text.primary}>{battery}%</CustomText>
                 </CustomView>
                 <CustomView flexDirection={'row'} alignItems={'center'} justifyContent={'center'} gap={SPACING.superTiny}>

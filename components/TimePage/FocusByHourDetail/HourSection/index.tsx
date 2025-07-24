@@ -18,11 +18,11 @@ export default function HourSection(props : IProps) {
     const {focusTime, studyTime} = useStudyTimeStore();
     const data = [
         { time : 10, focusTime : 8},
-        { time : 20, focusTime : 23},
-        { time : 30, focusTime : 15},
-        { time : 40, focusTime : 18},
-        { time : 50, focusTime : 22},
-        { time : 60, focusTime : 25},
+        // { time : 20, focusTime : 23},
+        // { time : 30, focusTime : 15},
+        // { time : 40, focusTime : 18},
+        // { time : 50, focusTime : 22},
+        // { time : 60, focusTime : 25},
     ]
 
     return (
@@ -84,8 +84,8 @@ export default function HourSection(props : IProps) {
                 paddingHorizontal={40}
                 width={'100%'}
             >
-                <TimeCircle purpose={'측정'} time={studyTime/60}/>
-                <TimeCircle purpose={'집중'} time={focusTime/60}/>
+                <TimeCircle purpose={'측정'} time={Number((studyTime/60).toFixed(0))}/>
+                <TimeCircle purpose={'집중'} time={Number((focusTime/60).toFixed(0))}/>
             </CustomView>
         </CustomView>
     )

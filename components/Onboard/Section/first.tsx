@@ -1,10 +1,10 @@
+import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
 import Logo from "@/components/general/Logo";
-import {SPACING} from "@/styles/spacing";
-import {StyleSheet, Text} from "react-native";
-import CustomText from "@/components/general/CustomText";
-import {COLORS} from "@/styles/colors";
-import {FONTS} from "@/styles/fonts";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
+import { StyleSheet, Text } from "react-native";
 
 export default function First() {
     return (
@@ -26,7 +26,7 @@ export default function First() {
             </CustomView>
             <CustomText>
                 <CustomText fontSize={FONTS.size.body} style={{fontWeight : 500}}>
-                    <Text style={styles.highlight}>IDEA-RAG</Text> 에 오신걸 환영합니다.
+                    <Text style={styles.highlight}>Fycus</Text> 에 오신걸 환영합니다.
                 </CustomText>
             </CustomText>
         </CustomView>

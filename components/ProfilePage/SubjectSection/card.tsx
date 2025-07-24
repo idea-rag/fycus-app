@@ -6,16 +6,14 @@ import { StyleSheet, View } from "react-native";
 interface SubjectSectionCardProps {
     subject: string;
     bookTitle: string;
-    pageRange: string;
 }
 
-export default function SubjectSectionCard({ subject, bookTitle, pageRange }: SubjectSectionCardProps) {
+export default function SubjectSectionCard({ subject, bookTitle }: SubjectSectionCardProps) {
     return (
         <CustomView style={styles.cardContainer}>
             <CustomText style={styles.subject}>{subject}</CustomText>
             <View style={styles.imagePlaceholder} />
             <CustomText style={styles.bookTitle} textColor={COLORS.text.primary}>{bookTitle}</CustomText>
-            <CustomText style={styles.pageRange} textColor={COLORS.text.second}>{pageRange}</CustomText>
         </CustomView>
     )
 }

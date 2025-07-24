@@ -1,28 +1,34 @@
 import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
+import useSFormStore from "@/store/useForm";
 import { StyleSheet } from "react-native";
 import SubjectSectionCard from "./card";
 
+
 const mockData = [
-    { subject: "국어", bookTitle: "금성 - 문학2", pageRange: "100P~150P" },
-    { subject: "국어", bookTitle: "금성 - 문학2", pageRange: "100P~150P" },
-    { subject: "국어", bookTitle: "금성 - 문학2", pageRange: "100P~150P" },
-    { subject: "국어", bookTitle: "금성 - 문학2", pageRange: "100P~150P" },
-    { subject: "국어", bookTitle: "금성 - 문학2", pageRange: "100P~150P" },
-    { subject: "국어", bookTitle: "금성 - 문학2", pageRange: "100P~150P" },
+    { subject: "국어", bookTitle: "금성 - 문학2" },
+    { subject: "국어", bookTitle: "금성 - 문학2", },
+    { subject: "국어", bookTitle: "금성 - 문학2", },
+    { subject: "국어", bookTitle: "금성 - 문학2", },
+    { subject: "국어", bookTitle: "금성 - 문학2", },
+    { subject: "국어", bookTitle: "금성 - 문학2", },
 ];
 
+
 export default function SubjectSection() {
+    
+    //@ts-ignore
+    const {submitSubjectModule} = useSFormStore();
+
     return (
         <CustomView style={styles.container}>
-            <CustomText style={styles.title}>시험범위</CustomText>
+            <CustomText style={styles.title}>공부 범위</CustomText>
             <CustomView style={styles.gridContainer}>
-                {mockData.map((item, index) => (
+                {submitSubjectModule.map((item :{subject : string, publisher : string, work : string[]}, index : number) => (
                     <SubjectSectionCard
                         key={index}
                         subject={item.subject}
-                        bookTitle={item.bookTitle}
-                        pageRange={item.pageRange}
+                        bookTitle={item.publisher}
                     />
                 ))}
             </CustomView>
