@@ -65,7 +65,7 @@ export default function Work(props: IProps) {
             console.log('[DEBUG] Starting form submission...');
             console.log('[DEBUG] Current submitSubjectModule:', JSON.stringify(submitSubjectModule, null, 2));
             
-            // Validate subject modules before submission
+            
             if (!submitSubjectModule || submitSubjectModule.length === 0) {
                 const message = '과목을 최소 한 개 이상 선택해주세요.';
                 console.warn('[WARNING] Validation failed:', message);
@@ -73,7 +73,7 @@ export default function Work(props: IProps) {
                 return;
             }
 
-            // Update the form store with current subject modules
+            
             submitSubjectModuleSetter(submitSubjectModule);
             
             console.log('[DEBUG] Starting registration process...');
@@ -123,7 +123,7 @@ export default function Work(props: IProps) {
                                         text: '오류 복사',
                                         onPress: () => {
                                             const errorText = `Error: ${errorMessage}\n\n${errorDetails}`;
-                                            // You might want to use a clipboard library here
+                                            
                                             console.log('Error details copied to console');
                                             Alert.alert('알림', '오류 정보가 콘솔에 복사되었습니다.');
                                         }

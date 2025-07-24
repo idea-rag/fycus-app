@@ -15,7 +15,7 @@ export default function ChartSection({ data = [] }: ChartSectionProps) {
         xKey="time"
         yKeys={["focusTime"]}
         frame={{ lineWidth: 0 }}
-        domain={{ x: [0, 9], y: [-2, 12] }}  // ✅ X, Y축 범위 고정
+        domain={{ x: [0, 9], y: [-2, 12] }}  
       >
         {({ points }) => (
           <>

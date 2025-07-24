@@ -33,7 +33,7 @@ export default function FocusByHourSection() {
 
 const styles = StyleSheet.create({
     scrollContent: {
-        paddingHorizontal: 16, // 상위 padding 값에 맞게 조정
-        gap: SPACING.small, // 카드 간격
+        paddingHorizontal: 16, 
+        gap: SPACING.small, 
     },
 });

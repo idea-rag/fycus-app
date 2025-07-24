@@ -4,7 +4,7 @@ import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
 
-// 분을 HH:MM 형식으로 변환하는 함수
+
 const formatMinutesToHHMM = (minutes: number): string => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;

@@ -14,7 +14,7 @@ import { useCallback, useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-// Raw data display component
+
 
 type DeviceListProps = {
   visible: boolean;
@@ -91,7 +91,7 @@ export default function FocusPage() {
   
   const [rawData, setRawData] = useState<string>('');
   const [showDeviceList, setShowDeviceList] = useState(false);
-  const [isConnecting, setIsConnecting] = useState(true); // Start with true to show loading state
+  const [isConnecting, setIsConnecting] = useState(true); 
   const [parsedData, setParsedData] = useState<ParseData | null>(null);
   const [chartData, setChartData] = useState<ChartDataPoint[]>([]);
   const [timeCounter, setTimeCounter] = useState(0.5);
@@ -101,19 +101,19 @@ export default function FocusPage() {
   const [lastIncrementTime, setLastIncrementTime] = useState<number | null>(null);
   const [isFocused, setIsFocused] = useState(false);
 
-  // Check for connected device on mount
+  
   useEffect(() => {
     if (connectedDevice) {
       console.log('Already connected to device:', connectedDevice.name);
       setIsConnecting(false);
     } else {
-      // No connected device, show ready to connect state
+      
       setIsConnecting(false);
     }
   }, [connectedDevice]);
 
-  // Update chart data when new attention data is received
-  const MAX_POINTS = 15; // 30개의 데이터 포인트 유지
+  
+  const MAX_POINTS = 15; 
   const [lastUpdateTime, setLastUpdateTime] = useState<number>(Date.now());
   const [dataPoints, setDataPoints] = useState<number>(0);
 
@@ -121,7 +121,7 @@ export default function FocusPage() {
     if (parsedData && parsedData.Att >= 0) {
       const now = Date.now();
       
-      // 마지막 업데이트로부터 최소 100ms가 지났을 때만 업데이트 (과도한 업데이트 방지)
+      
       if (now - lastUpdateTime < 100) return;
       
       setChartData(prevData => {
@@ -143,12 +143,12 @@ export default function FocusPage() {
       setDataPoints(prev => (prev + 1) % MAX_POINTS);
       setLastUpdateTime(now);
     }
-  }, [parsedData?.Att]); // parsedData.Att만 의존성 배열에 추가
+  }, [parsedData?.Att]); 
 
 
-  // Parse raw data from BLE
+  
   useEffect(() => {
-    if (rawData && rawData.includes('-')) {  // 하이픈이 포함된 경우에만 파싱 시도
+    if (rawData && rawData.includes('-')) {  
       try {
         console.log('Raw data before parsing:', rawData);
         const parsed = parseRawData(rawData);
@@ -169,25 +169,25 @@ export default function FocusPage() {
     }
   }, [rawData]);
 
-  // Update focus state based on attention level
+  
   useEffect(() => {
     if (parsedData?.Att !== undefined) {
       setIsFocused(parsedData.Att >= 3);
     }
   }, [parsedData]);
 
-  // Timer for study time and focus time
+  
   useEffect(() => {
     let studyInterval: ReturnType<typeof setInterval> | null = null;
     let focusInterval: ReturnType<typeof setInterval> | null = null;
 
     if (connectedDevice) {
-      // Update study time every second
+      
       studyInterval = setInterval(() => {
         studyTimeSetter((prev: number) => prev + 1);
-      }, 1000); // 1 second in milliseconds
+      }, 1000); 
 
-      // Update focus time every second when focused
+      
       if (isFocused) {
         focusInterval = setInterval(() => {
           focusTimeSetter((prev: number) => prev + 1);
@@ -195,29 +195,29 @@ export default function FocusPage() {
       }
     }
 
-    // Cleanup intervals on unmount or when dependencies change
+    
     return () => {
       if (studyInterval) clearInterval(studyInterval);
       if (focusInterval) clearInterval(focusInterval);
     };
   }, [connectedDevice, isFocused, studyTimeSetter, focusTimeSetter]);
 
-  // Clean up on unmount or when page loses focus
+  
   useFocusEffect(
     useCallback(() => {
       return () => {
-        // Disconnect device when leaving the page
+        
         if (connectedDevice) {
           disconnectFromDevice();
         }
-        // Clear any existing intervals
+        
         clearIntervals();
       };
     }, [connectedDevice])
   );
 
   const clearIntervals = () => {
-    // This function can be called to manually clear intervals if needed
+    
     const maxIntervalId = setInterval(() => {}, 0);
     for (let i = 0; i < maxIntervalId; i++) {
       clearInterval(i);
@@ -235,11 +235,11 @@ export default function FocusPage() {
       return;
     }
 
-    // 수신된 원시 데이터를 그대로 표시
+    
     setRawData(receivedData);
     
     try {
-      // 데이터 파싱
+      
       const parsed = parseRawData(receivedData);
       setParsedData(parsed);
       console.log('파싱된 데이터:', parsed);
@@ -269,24 +269,24 @@ export default function FocusPage() {
   const toggleDeviceList = async () => {
     if (isScanning) return;
     if (connectedDevice) {
-      // If already connected, disconnect
+      
       try {
         await disconnectFromDevice();
         setRawData('기기 연결이 해제되었습니다.');
-        setChartData([]); // Clear chart data on disconnect
-        setTimeCounter(0.5); // Reset time counter
+        setChartData([]); 
+        setTimeCounter(0.5); 
       } catch (err) {
         const error = err as Error;
         console.error('연결 해제 중 오류 발생:', error);
         setRawData(`연결 해제 중 오류가 발생했습니다: ${error.message}`);
       }
     } else {
-      // If not connected, show device list
+      
       setShowDeviceList(prev => !prev);
     }
   };
 
-  // BLE 서비스 및 특성 UUID 설정 (발견된 값으로 업데이트)
+  
   const BLE_SERVICE_UUID = '0000ffe0-0000-1000-8000-00805f9b34fb';
   const BLE_CHARACTERISTIC_UUID = '0000ffe1-0000-1000-8000-00805f9b34fb';
 
@@ -305,7 +305,7 @@ export default function FocusPage() {
       console.log(`기기 연결 시도: ${device.name} (${device.id})`);
       setRawData(`기기 연결 중: ${device.name || '알 수 없는 기기'}...`);
       
-      // 1. 기기 연결
+      
       console.log('연결 함수 호출 전');
       const connectionResult = await connectToDevice(device.id);
       
@@ -316,7 +316,7 @@ export default function FocusPage() {
       console.log('기기 연결 성공:', connectionResult);
       setRawData('기기 연결됨. 서비스 검색 중...');
       
-      // 2. 연결된 장치의 서비스 검색
+      
       try {
         console.log('사용 가능한 서비스 조회 중...');
         const services = await connectionResult.services();
@@ -335,8 +335,8 @@ export default function FocusPage() {
         throw err;
       }
       
-      // 3. 연결 성공 후 특성 모니터링 시작
-      // 약간의 지연을 두고 모니터링 시작 (연결이 완전히 완료될 시간을 주기 위함)
+      
+      
       setTimeout(async () => {
         try {
           console.log(`모니터링 시작 - Service: ${BLE_SERVICE_UUID}, Characteristic: ${BLE_CHARACTERISTIC_UUID}`);
@@ -348,16 +348,16 @@ export default function FocusPage() {
           console.log('연결된 기기 정보:', connectionResult);
           setRawData('특성 모니터링 시작 중...');
           
-          // 연결된 기기 객체를 명시적으로 전달
+          
           await startListeningToCharacteristic(BLE_SERVICE_UUID, BLE_CHARACTERISTIC_UUID, connectionResult);
           console.log('BLE 특성 모니터링 시작됨');
           setRawData('모니터링 시작됨. 데이터 수신 대기 중...');
         } catch (err) {
           const error = err instanceof Error ? err : new Error(String(err));
-        //   console.error('특성 모니터링 시작 중 오류:', error);
+        
           setRawData(`모니터링 오류: ${error.message}`);
           
-          // 연결 해제 시도
+          
           try {
             await disconnectFromDevice();
             console.log('오류 후 기기 연결 해제됨');
@@ -398,7 +398,7 @@ export default function FocusPage() {
                         현재 한석님의 상태는 
                     </CustomText>
                     <CustomText fontSize={30} fontWeight={600}>
-                        { // @ts-ignore 
+                        { 
                 attToText(parsedData?.Att)} 상태입니다. 
             </CustomText>
                 </>
@@ -570,13 +570,13 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   attValue: {
-    color: '#1976d2', // 파란색
+    color: '#1976d2', 
   },
   medValue: {
-    color: '#4caf50', // 초록색
+    color: '#4caf50', 
   },
   varValue: {
-    color: '#f44336', // 빨간색
+    color: '#f44336', 
   },
   errorBox: {
     width: '100%',
@@ -630,7 +630,7 @@ const styles = StyleSheet.create({
     color: '#888',
     fontStyle: 'italic',
   },
-  // Device List Modal Styles
+  
   modalOverlay: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',

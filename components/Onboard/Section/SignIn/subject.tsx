@@ -23,7 +23,7 @@ export default function Subject(props: IProps) {
     const [isSubjectModalVisible, setIsSubjectModalVisible] = useState(false);
     const [subjectModuleList, setSubjectModuleList] = useState([{subject: '', publisher: '', work: []}]);
     const [selectSubject, setSelectSubject] = useState('');
-    const [newSubject, setNewSubject] = useState(''); // 입력값을 담을 상태
+    const [newSubject, setNewSubject] = useState(''); 
     const [isSubjectSelectorVisible, setIsSubjectSelectorVisible] = useState(false);
 
     //@ts-ignore
@@ -39,20 +39,20 @@ export default function Subject(props: IProps) {
     const closeSubjectSelectorModal = () => setIsSubjectSelectorVisible(false);
 
     const handleAddSubject = () => {
-        if (newSubject.trim() !== '') { // 빈 값은 추가하지 않음
-            setSubjectModuleList([...subjectModuleList, {subject: newSubject, publisher: '', work: []}]); // 기존의 리스트에 새 과목 추가
-            setNewSubject(''); // 입력창 초기화
-            closeSubjectModal(); // 모달 닫기
+        if (newSubject.trim() !== '') { 
+            setSubjectModuleList([...subjectModuleList, {subject: newSubject, publisher: '', work: []}]); 
+            setNewSubject(''); 
+            closeSubjectModal(); 
         }
     };
 
     const handleDeleteSubject = (subject: string) => {
-        setSubjectModuleList(subjectModuleList.filter(item => item.subject !== subject)); // 해당 과목 제거
+        setSubjectModuleList(subjectModuleList.filter(item => item.subject !== subject)); 
     };
 
     const handleEditSubject = (oldSubject: string, newSubject: string) => {
         setSubjectModuleList(
-            subjectModuleList.map((item) => (item.subject === oldSubject ? {subject: newSubject, publisher: '', work: []} : item)) // 과목 이름 수정
+            subjectModuleList.map((item) => (item.subject === oldSubject ? {subject: newSubject, publisher: '', work: []} : item)) 
         );
     };
 
@@ -63,7 +63,7 @@ export default function Subject(props: IProps) {
 
     const handlePublisherSelect = (publisher: string) => {
         setSubjectModuleList(
-            subjectModuleList.map((item) => (item.subject === selectSubject ? {subject: selectSubject, publisher: publisher, work: []} : item)) // 출판사 이름 수정
+            subjectModuleList.map((item) => (item.subject === selectSubject ? {subject: selectSubject, publisher: publisher, work: []} : item)) 
         );
         closeSubjectSelectorModal();
     };
@@ -120,7 +120,7 @@ export default function Subject(props: IProps) {
                     textColor={'white'}
                     fontSize={FONTS.size.small}
                     textWeight={700}
-                    onPress={finalSubjectSubmit} // 버튼 클릭 시 실행
+                    onPress={finalSubjectSubmit} 
                 />
             </CustomView>
             <ModalContainer
@@ -150,7 +150,7 @@ export default function Subject(props: IProps) {
                     <CustomInput
                         placeholder={'과목을 입력하세요...'}
                         width={'100%'}
-                        onValueChange={setNewSubject} // 입력값 상태 업데이트
+                        onValueChange={setNewSubject} 
                     />
                 </CustomView>
                 <CustomButton
@@ -161,7 +161,7 @@ export default function Subject(props: IProps) {
                     textColor={'white'}
                     fontSize={FONTS.size.small}
                     textWeight={700}
-                    onPress={handleAddSubject} // 버튼 클릭 시 실행
+                    onPress={handleAddSubject} 
                 />
             </ModalContainer>
             <ModalContainer

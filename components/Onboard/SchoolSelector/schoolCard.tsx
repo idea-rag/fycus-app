@@ -3,20 +3,20 @@ import CustomText from "@/components/general/CustomText";
 import { SPACING } from "@/styles/spacing";
 import { FONTS } from "@/styles/fonts";
 import { COLORS } from "@/styles/colors";
-import { Pressable } from "react-native"; // Pressable 추가
+import { Pressable } from "react-native"; 
 
 interface IProps {
     name: string;
     locate: string;
-    isSelected: boolean; // 선택 상태
-    onSelect: () => void; // 선택 이벤트
+    isSelected: boolean; 
+    onSelect: () => void; 
 }
 
 export default function SchoolCard(props: IProps) {
     const { name, locate, isSelected, onSelect } = props;
 
     return (
-        <Pressable onPress={onSelect}> {/* 부모로부터 받은 onSelect 호출 */}
+        <Pressable onPress={onSelect}> {}
             <CustomView
                 width={"100%"}
                 borderRadius={SPACING.superTiny}

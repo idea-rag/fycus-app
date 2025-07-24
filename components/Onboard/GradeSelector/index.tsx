@@ -8,7 +8,7 @@ import { SPACING } from "@/styles/spacing";
 import { useEffect, useState } from "react";
 
 interface IProps {
-    onFinish: () => void; // 모달 닫기 함수
+    onFinish: () => void; 
 }
 
 export default function GradeSelector({ onFinish }: IProps) {
@@ -23,9 +23,9 @@ export default function GradeSelector({ onFinish }: IProps) {
     
     const handleSelect = (grade: number) => {
         if (selectedGrade === grade) {
-            setSelectedGrade(null); // 동일 항목 클릭 시 선택 해제
+            setSelectedGrade(null); 
         } else {
-            setSelectedGrade(grade); // 새로운 항목 선택
+            setSelectedGrade(grade); 
         }
     };
 
@@ -47,7 +47,7 @@ export default function GradeSelector({ onFinish }: IProps) {
                 paddingHorizontal={SPACING.small}
             >
                 <CustomView flexDirection="row" justifyContent="space-between" width="100%">
-                    {/* SelectCard의 isChecked는 상위 컴포넌트 상태에 의해 결정 */}
+                    {}
                     <SelectCard
                         width={90}
                         isChecked={selectedGrade === 1}
@@ -94,7 +94,7 @@ export default function GradeSelector({ onFinish }: IProps) {
                 paddingHorizontal={SPACING.small}
             >
                 <CustomView flexDirection="row" justifyContent="space-between" width="100%">
-                    {/* SelectCard의 isChecked는 상위 컴포넌트 상태에 의해 결정 */}
+                    {}
                     <SelectCard
                         width={90}
                         isChecked={selectedGrade === 1}

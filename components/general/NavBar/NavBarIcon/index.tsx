@@ -28,7 +28,7 @@ export default function NavBarIcon(props : IProps) {
                     justifyContent={'center'}
                 >
                     <TouchableOpacity
-                        // @ts-ignore
+                        
                         onPress={() => navigate.navigate(toGo)}
                         style={{
                             alignItems : 'center',

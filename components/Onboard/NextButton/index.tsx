@@ -4,7 +4,7 @@ import { SPACING } from "@/styles/spacing";
 import CustomButton from "@/components/general/CustomButton";
 
 type NextButtonProps = {
-    onPress?: () => void; // 부모 컴포넌트에서 전달받는 콜백 함수
+    onPress?: () => void; 
 };
 
 export default function NextButton({ onPress }: NextButtonProps) {
@@ -17,7 +17,7 @@ export default function NextButton({ onPress }: NextButtonProps) {
             fontSize={FONTS.size.small}
             backgroundColor={COLORS.brand.primary}
             style={{ borderRadius: SPACING.tiny, paddingVertical: SPACING.small }}
-            onPress={onPress} // 클릭 시 상위 콜백 호출
+            onPress={onPress} 
         />
     );
 }

@@ -1,4 +1,4 @@
-// 중요도 기준 내림차순 정렬 함수
+
 export function sortTasksByImportance(
     tasks: Record<number, { name: string; importance: number; isChecked: boolean }>
 ) {

@@ -20,9 +20,9 @@ export default function SchoolSelector(props: IProps) {
     const {submitSchoolSetter} = useForm();
     const [selectedSchool, setSelectedSchool] = useState<string | null>(null);
 
-    // 선택 처리 함수
+    
     const handleSelect = (name: string) => {
-        setSelectedSchool((prev) => prev === name ? null : name); // 동일 카드 선택 시 해제
+        setSelectedSchool((prev) => prev === name ? null : name); 
     };
 
     const handleConfirm = () => {
@@ -44,7 +44,7 @@ export default function SchoolSelector(props: IProps) {
             flexDirection={"column"}
             gap={SPACING.small}
         >
-            {/* 검색 입력 */}
+            {}
             <CustomView
                 width={"100%"}
                 alignItems={"center"}
@@ -64,17 +64,17 @@ export default function SchoolSelector(props: IProps) {
                 />
             </CustomView>
 
-            {/* SchoolCard 리스트 */}
+            {}
             <CustomView width={"100%"} height={"70%"}>
                 <SchoolCard
                     name={schoolData.name}
                     locate={schoolData.locate}
-                    isSelected={selectedSchool === schoolData.name} // 선택 상태 전달
-                    onSelect={() => handleSelect(schoolData.name)} // 선택 이벤트 전달
+                    isSelected={selectedSchool === schoolData.name} 
+                    onSelect={() => handleSelect(schoolData.name)} 
                 />
             </CustomView>
 
-            {/* 확정 버튼 */}
+            {}
             {selectedSchool && (
                 <CustomButton
                     text={"확정"}
@@ -84,7 +84,7 @@ export default function SchoolSelector(props: IProps) {
                     height={30}
                     fontSize={FONTS.size.small}
                     textWeight={700}
-                    onPress={handleConfirm} // 확정 버튼 클릭 시 모달 닫기
+                    onPress={handleConfirm} 
                 />
             )}
         </CustomView>

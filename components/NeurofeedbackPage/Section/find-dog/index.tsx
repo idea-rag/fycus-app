@@ -20,7 +20,7 @@ export default function FindDog({ dogImageSets, onComplete }: FindDogProps) {
     //@ts-ignore
     const {setFindDogScore, setFindDogTotal, setFindDogTimeSpent} = useNeurofeedbackStore();
     
-    // 퀴즈 시작 핸들러
+    
     const [startTime, setStartTime] = useState<number | null>(null);
 
     const handleStart = () => {
@@ -32,7 +32,7 @@ export default function FindDog({ dogImageSets, onComplete }: FindDogProps) {
         setDogStep(0);
     };
     
-    // 정답 체크 핸들러
+    
     const handleAnswer = (isCorrect: boolean) => {
         if (isCorrect) {
             setScore(prev => prev + 1);
@@ -64,7 +64,7 @@ export default function FindDog({ dogImageSets, onComplete }: FindDogProps) {
                             element={dogImageSets[currentQuestion]?.images || []}
                             answer={dogImageSets[currentQuestion]?.answer || 0}
                             onPress={handleAnswer}
-                            // @ts-ignore
+                            
                             introductionText={
                                 dogExplanations[
                                   `${dogImageSets[currentQuestion]?.images[dogImageSets[currentQuestion]?.answer]?.id}_explanation`

@@ -23,13 +23,13 @@ export default function Password({ onNext }: IProps) {
     }
 
     const handleSubmit = () => {
-        // 비밀번호 입력 여부 확인
+        
         if (!password) {
             setErrorText('비밀번호를 입력해주세요.');
             return;
         }
 
-        // 길이 검증 (8-16자)
+        
         if (password.length < 8) {
             setErrorText('비밀번호는 8자 이상이어야 합니다.');
             return;
@@ -38,14 +38,14 @@ export default function Password({ onNext }: IProps) {
             return;
         }
 
-        // 정규표현식 검증 (영문, 숫자, 특수문자 포함)
-        // const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,16}$/;
-        // if (!passwordRegex.test(password)) {
-        //     setErrorText('비밀번호는 영문, 숫자, 특수문자 조합으로 입력해주세요.');
-        //     return;
-        // }
+        
+        
+        
+        
+        
+        
 
-        // 모든 검증 통과 시 저장 및 다음 페이지로 이동
+        
         submitPasswordSetter(password);
         onNext();
     }

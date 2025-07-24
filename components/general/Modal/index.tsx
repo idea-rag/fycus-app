@@ -4,10 +4,10 @@ import CustomButton from "@/components/general/CustomButton";
 import {SPACING} from "@/styles/spacing";
 import {COLORS} from "@/styles/colors";
 
-// Props 정의
+
 type ModalContainerProps = {
-    isVisible: boolean; // 모달 표시 여부
-    onClose: () => void; // 모달 닫기 동작
+    isVisible: boolean; 
+    onClose: () => void; 
     children : any;
     width?: number;
     height?: number;

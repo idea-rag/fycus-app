@@ -10,10 +10,10 @@ import { useEffect, useState } from "react";
 import { Text } from "react-native";
 import { Service } from "react-native-ble-plx";
 
-// 아두이노 BLE 모듈들이 흔히 사용하는 시리얼 통신 서비스 UUID 목록
+
 const COMMON_UART_SERVICE_UUIDS = [
-    "0000ffe0-0000-1000-8000-00805f9b34fb", // HM-10, HC-08 등
-    "6e400001-b5a3-f393-e0a9-e50e24dcca9e", // Nordic UART Service
+    "0000ffe0-0000-1000-8000-00805f9b34fb", 
+    "6e400001-b5a3-f393-e0a9-e50e24dcca9e", 
   ];
 
 export default function BluetoothConectSection() {
@@ -53,7 +53,7 @@ export default function BluetoothConectSection() {
       }
     };
   
-    // 연결된 기기에서 시리얼 통신용 UUID를 찾아 리스너를 시작하는 함수
+    
     const findAndStartListener = async () => {
       if (!connectedDevice) return;
   
@@ -61,7 +61,7 @@ export default function BluetoothConectSection() {
         const services = await connectedDevice.services();
         let uartService: Service | undefined;
   
-        // 가지고 있는 목록과 기기의 서비스 UUID를 비교하여 일치하는 것을 찾음
+        
         for (const service of services) {
           if (COMMON_UART_SERVICE_UUIDS.includes(service.uuid.toLowerCase())) {
             uartService = service;
@@ -82,7 +82,7 @@ export default function BluetoothConectSection() {
         
         console.log(`Listening to Service: ${uartService.uuid}, Characteristic: ${notifyCharacteristic.uuid}`);
   
-        // 찾은 UUID로 데이터 수신 시작
+        
         await startListeningToCharacteristic(uartService.uuid, notifyCharacteristic.uuid);
   
       } catch (e) {

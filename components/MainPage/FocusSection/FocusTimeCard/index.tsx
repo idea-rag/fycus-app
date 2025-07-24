@@ -7,32 +7,32 @@ import { rgbaColor } from "@/feature/rgbaColor";
 
 interface IProps {
     isFocus: boolean;
-    isNotPassed?: boolean; // 경과 여부
-    time: number; // 시간 값
-    day: number; // 일 값
+    isNotPassed?: boolean; 
+    time: number; 
+    day: number; 
 }
 
 export default function FocusTimeCard(props: IProps) {
     const { isFocus, time, day, isNotPassed } = props;
 
-    // timeCircle 스타일 동적 설정
+    
     const timeCircleStyle = [
         styles.timeCircle,
         {
             backgroundColor: isNotPassed
-                ? COLORS.text.forth // 경과 안 됨
+                ? COLORS.text.forth 
                 : time < 4
-                    ? COLORS.brand_right.secondary // 4 미만
+                    ? COLORS.brand_right.secondary 
                     : time >= 4 && time < 8
-                        ? COLORS.brand_right.primary // 4~8
-                        : COLORS.brand_right.high, // 8 이상
+                        ? COLORS.brand_right.primary 
+                        : COLORS.brand_right.high, 
         },
     ];
 
     return (
         <View style={isFocus ? styles.borderContainer : styles.container}>
             <View style={timeCircleStyle}>
-                {/* isNotPassed가 false일 때만 시간 표시 */}
+                {}
                 {!isNotPassed && <Text style={styles.timeText}>{time}</Text>}
             </View>
             <Text style={styles.dayText}>{day}</Text>

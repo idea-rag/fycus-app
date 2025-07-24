@@ -37,7 +37,7 @@ interface FormState {
 }
 
 const useFormStore = create((set) => ({
-    // State variables with "submit" prefix
+    
     submitName: '',
     submitSchool: '',
     submitGrade: '',
@@ -53,7 +53,7 @@ const useFormStore = create((set) => ({
     submitStartTime: '',
     submitEndTime: '',
 
-    // Setter functions with "submit" prefix
+    
     submitNameSetter: (submitName: string) => set({ submitName }),
     submitSchoolSetter: (submitSchool: string) => set({ submitSchool }),
     submitGradeSetter: (submitGrade: string) => set({ submitGrade }),

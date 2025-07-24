@@ -53,7 +53,7 @@ export default function TaskCalendar(props : IProps) {
   };
 
   const today = new Date().toISOString().split('T')[0];
-  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1); // 1-12
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth() + 1); 
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [taskModalVisible, setTaskModalVisible] = useState(false);
   const modalOpen = () => {

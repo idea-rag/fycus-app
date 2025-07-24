@@ -12,7 +12,7 @@ interface RegisterResponse {
   };
 }
 
-// Define the form state interface
+
 interface FormState {
   submitSubjectModule: Array<{
     subject: string;
@@ -27,10 +27,10 @@ interface FormState {
 }
 
 export const register = async (): Promise<RegisterResponse> => {
-  // Get the current state from the form store
+  
   const state = useFormStore.getState();
   
-  // Extract the values we need
+  
   const {
     submitSubjectModule = [],
     submitSchool = '',
@@ -40,16 +40,16 @@ export const register = async (): Promise<RegisterResponse> => {
     submitPassword = ''
   } = state as unknown as FormState;
 
-  // Validate required fields
+  
   if (!submitGmail || !submitPassword || !submitName) {
     Alert.alert('오류', '이메일, 비밀번호, 이름은 필수 항목입니다.');
     return { success: false, message: 'Required fields are missing' };
   }
 
   try {
-    // Transform the data to match the API expected format
+    
     const registerData = {
-      userID: submitGmail, // Using email as userID
+      userID: submitGmail, 
       name: submitName,
       school: submitSchool,
       gmail: submitGmail,
@@ -58,7 +58,7 @@ export const register = async (): Promise<RegisterResponse> => {
       subject_name: submitSubjectModule.map(item => item.subject),
       subject_publish: submitSubjectModule.map(item => item.publisher),
       subject_workbook: submitSubjectModule.flatMap(item => item.work),
-      subject_scope: ['국어'] // Add if needed
+      subject_scope: ['국어'] 
     };
 
     const response = await authApi.register(registerData);
@@ -83,13 +83,13 @@ export const register = async (): Promise<RegisterResponse> => {
   }
 };
 
-// Function to validate email format
+
 export const validateEmail = (email: string): boolean => {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
 };
 
-// Function to validate password strength
+
 export const validatePassword = (password: string): { isValid: boolean; message: string } => {
   if (password.length < 8) {
     return { isValid: false, message: '비밀번호는 최소 8자 이상이어야 합니다.' };

@@ -1,23 +1,23 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
 
-// 기본 URL 설정 (환경 변수에서 가져오거나 직접 설정)
-const API_BASE_URL = process.env.BASE_URL || 'http://localhost:8000';
 
-// API 응답 타입
+const API_BASE_URL = process.env.BASE_URL || 'http:
+
+
 interface ApiResponse<T = any> {
   message: string;
   data?: T;
   [key: string]: any;
 }
 
-// API 에러 타입
+
 interface ApiError {
   code: string;
   message: string;
   details?: any;
 }
 
-// API 클라이언트 생성
+
 const createApiClient = (): AxiosInstance => {
   const instance = axios.create({
     baseURL: API_BASE_URL,
@@ -26,7 +26,7 @@ const createApiClient = (): AxiosInstance => {
     },
   });
 
-  // 요청 인터셉터 (토큰 추가)
+  
   instance.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem('access_token');
@@ -40,12 +40,12 @@ const createApiClient = (): AxiosInstance => {
     }
   );
 
-  // 응답 인터셉터
+  
   instance.interceptors.response.use(
     (response) => response,
     (error: AxiosError<ApiError>) => {
       if (error.response?.status === 401) {
-        // 토큰 만료 시 로그인 페이지로 리다이렉트
+        
         localStorage.removeItem('access_token');
         window.location.href = '/login';
       }
@@ -58,9 +58,9 @@ const createApiClient = (): AxiosInstance => {
 
 const apiClient = createApiClient();
 
-// 인증 API
+
 export const authApi = {
-  // 회원가입
+  
   register: async (data: {
     userID: string;
     name: string;
@@ -77,7 +77,7 @@ export const authApi = {
     return response.data;
   },
 
-  // 로그인
+  
   login: async (userID: string, password: string): Promise<{ access_token: string }> => {
     const response = await apiClient.post<ApiResponse<{ access_token: string }>>('/login', {
       userID,
@@ -89,24 +89,24 @@ export const authApi = {
     return { access_token: response.data.access_token };
   },
 
-  // 로그아웃
+  
   logout: (): void => {
     localStorage.removeItem('access_token');
   },
 };
 
-// 사용자 API
+
 export const userApi = {
-  // 사용자 정보 조회
+  
   getInfo: async (): Promise<ApiResponse> => {
     const response = await apiClient.get<ApiResponse>('/userInfo');
     return response.data;
   },
 };
 
-// 일정 API
+
 export const scheduleApi = {
-  // 일정 생성/수정
+  
   createSchedule: async (when: number, subjects: any[]): Promise<ApiResponse> => {
     const response = await apiClient.post<ApiResponse>('/schedule-create', {
       when,
@@ -116,9 +116,9 @@ export const scheduleApi = {
   },
 };
 
-// 과목 API
+
 export const subjectApi = {
-  // 과목 범위 수정
+  
   modifyScope: async (
     subjectName: string,
     subjectPublish: string,
@@ -135,9 +135,9 @@ export const subjectApi = {
   },
 };
 
-// 집중도 API
+
 export const focusApi = {
-  // 집중도 측정 시작
+  
   start: async (data: {
     focusTime: string;
     measureTime?: number;
@@ -153,7 +153,7 @@ export const focusApi = {
     return response.data;
   },
 
-  // 집중도 피드백 전송
+  
   sendFeedback: async (whenTime: number, focusData: Record<string, any>): Promise<ApiResponse> => {
     const response = await apiClient.post<ApiResponse>('/focus-feedback', {
       whenTime,
@@ -163,9 +163,9 @@ export const focusApi = {
   },
 };
 
-// 뉴로피드백 API
+
 export const neurofeedbackApi = {
-  // 뉴로피드백 데이터 전송
+  
   send: async (when: number, findDog: any, selectSquare: any): Promise<ApiResponse> => {
     const response = await apiClient.post<ApiResponse>('/neurofeedback_send', {
       when,
@@ -175,7 +175,7 @@ export const neurofeedbackApi = {
     return response.data;
   },
 
-  // 뉴로피드백 데이터 조회
+  
   load: async (): Promise<ApiResponse<{ neurofeedback_data: any[] }>> => {
     const response = await apiClient.get<ApiResponse<{ neurofeedback_data: any[] }>>(
       '/neurofeedback_load'
@@ -184,9 +184,9 @@ export const neurofeedbackApi = {
   },
 };
 
-// 게임 API
+
 export const gameApi = {
-  // 개 찾기 게임 이미지 로드
+  
   loadFindDogImages: async (imageNumbers: number[]): Promise<ApiResponse> => {
     const response = await apiClient.post<ApiResponse>('/find_dog_image_load', {
       number: imageNumbers,
@@ -195,7 +195,7 @@ export const gameApi = {
   },
 };
 
-// AI API (주석 해제 후 사용 가능)
+
 export const aiApi = {
   getResponse: async (
     userID: string,
@@ -215,27 +215,8 @@ export const aiApi = {
   },
 };
 
-// 사용 예시:
-/*
-async function example() {
-  try {
-    // 로그인
-    const { access_token } = await authApi.login('user123', 'password123');
-    
-    // 사용자 정보 조회
-    const userInfo = await userApi.getInfo();
-    console.log(userInfo);
-    
-    // 일정 생성
-    await scheduleApi.createSchedule(Date.now(), [{ subject: '수학', time: '19:00' }]);
-    
-    // 로그아웃
-    authApi.logout();
-  } catch (error) {
-    console.error('API 호출 중 오류 발생:', error);
-  }
-}
-*/
+
+
 
 export default {
   auth: authApi,

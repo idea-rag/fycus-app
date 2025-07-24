@@ -2,7 +2,7 @@ export interface ParseData {
     Att: number;
     Med: number;
     Var: number;
-    rawHex?: string; // 디버깅을 위한 원본 값
+    rawHex?: string; 
 }
 
 export const parseRawData = (rawData: string) => {

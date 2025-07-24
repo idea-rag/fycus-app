@@ -21,56 +21,56 @@ export default function TabLayout() {
                     name="index"
                     options={{
                         title: 'Home',
-                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                        tabBarStyle: { display: 'none' }, 
                     }}
                 />
                 <Tabs.Screen
                     name="timePage"
                     options={{
                         title: 'Time',
-                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                        tabBarStyle: { display: 'none' }, 
                     }}
                 />
                 <Tabs.Screen
                     name="onboard"
                     options={{
                         title: 'onboard',
-                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                        tabBarStyle: { display: 'none' }, 
                     }}
                 />
                 <Tabs.Screen
                     name="AIPage"
                     options={{
                         title: 'AI',
-                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                        tabBarStyle: { display: 'none' }, 
                     }}
                 />
                 <Tabs.Screen
                     name="ProfilePage"
                     options={{
                         title: 'Profile',
-                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                        tabBarStyle: { display: 'none' }, 
                     }}
                 />
                 <Tabs.Screen
                     name="taskPage"
                     options={{
                         title: 'Task',
-                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                        tabBarStyle: { display: 'none' }, 
                     }}
                 />
                 <Tabs.Screen
                     name="FocusPage"
                     options={{
                         title: 'Focus',
-                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                        tabBarStyle: { display: 'none' }, 
                     }}
                 />
                 <Tabs.Screen
                     name="NeurofeedbackPage"
                     options={{
                         title: 'Neurofeedback',
-                        tabBarStyle: { display: 'none' }, // Tab Bar 숨기기
+                        tabBarStyle: { display: 'none' }, 
                     }}
                 />
             </Tabs>

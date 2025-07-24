@@ -14,7 +14,7 @@ interface IProps {
 
 export default function AISection(props : IProps) {
     const {simpleFeedback} = props;
-    const router = useRouter(); // router 객체 가져오기
+    const router = useRouter(); 
 
     return (
         <CustomView
@@ -38,7 +38,7 @@ export default function AISection(props : IProps) {
             </CustomView>
             <CustomView width={'100%'} alignItems={'flex-start'} justifyContent={'flex-start'}>
                 <CustomText fontSize={FONTS.size.small} textColor={COLORS.text.primary}>{simpleFeedback}</CustomText>
-                <CustomButton text={'자세한 조언 들으러가기'} textColor={COLORS.brand.high} fontSize={FONTS.size.small} onPress={() => router.push('/AIPage')} // 'onboard' 페이지로 이동
+                <CustomButton text={'자세한 조언 들으러가기'} textColor={COLORS.brand.high} fontSize={FONTS.size.small} onPress={() => router.push('/AIPage')} 
                 />
             </CustomView>
         </CustomView>

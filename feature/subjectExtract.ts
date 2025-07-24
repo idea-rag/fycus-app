@@ -3,9 +3,9 @@ import modifyData from "@/assets/data/modify.json";
 export function getWorkList(
     selectedSubject: string, 
     submitSubjectModule: { subject: string; publisher: string; work: string[] }[],
-    schoolInfo: { school: string; grade: string } // 새로 추가된 파라미터
+    schoolInfo: { school: string; grade: string } 
 ): string[] {
-    // 1. 선택된 과목 모듈 찾기
+    
     const subjectModule = submitSubjectModule.find(
         module => module.subject === selectedSubject
     );
@@ -15,7 +15,7 @@ export function getWorkList(
         return [];
     }
 
-    // 2. 학교 레벨 결정
+    
     let schoolLevel = '';
     const { school, grade } = schoolInfo;
     
@@ -32,7 +32,7 @@ export function getWorkList(
     console.log('Publisher:', subjectModule.publisher);
 
     try {
-        // 3. modify.json에서 데이터 조회
+        
         const schoolData = (modifyData as any)[schoolLevel];
         if (!schoolData) {
             console.log('No data for school level:', schoolLevel);

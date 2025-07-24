@@ -1,5 +1,5 @@
-// 강아지 이미지들
-// 이미지 임포트
+
+
 const dog1 = require('./images/svgtopng/circle_circle_circle_big.png');
 const dog2 = require('./images/svgtopng/circle_circle_circle_small.png');
 const dog3 = require('./images/svgtopng/circle_circle_triangle.png');
@@ -63,7 +63,7 @@ export const getRandomDogImages = (count: number = 4): DogImage[] => {
     }));
 };
 
-// Image explanations based on filename pattern: [ear shape]_[eye shape]_[nose shape]_[nose size]
+
 const dog1_explanation = '동그란 귀와 동그란 눈, 동그랗고 큰 코';
 const dog2_explanation = '동그란 귀와 동그란 눈, 동그랗고 작은 코';
 const dog3_explanation = '동그란 귀와 동그란 눈, 세모난 코';

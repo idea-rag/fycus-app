@@ -6,7 +6,7 @@ interface IProps {
     width?: any;
     height?: number;
     placeholder: string;
-    onValueChange?: (value: string) => void; // 값을 반환하는 콜백 함수
+    onValueChange?: (value: string) => void; 
     onValueReturn?: any;
     secureTextEntry?: boolean;
 }
@@ -16,7 +16,7 @@ export default function CustomInput(props: IProps) {
 
     const handleChange = (text: string) => {
         if (onValueChange) {
-            onValueChange(text); // 상위 컴포넌트로 값 전달
+            onValueChange(text); 
         }
     };
 
@@ -27,8 +27,8 @@ export default function CustomInput(props: IProps) {
                 styles.container
             ]}
             placeholder={placeholder}
-            onChangeText={handleChange} // 값 변경 시 호출
-            secureTextEntry={props.secureTextEntry} // 비밀번호 입력 시 * 표시
+            onChangeText={handleChange} 
+            secureTextEntry={props.secureTextEntry} 
         />
     );
 }
