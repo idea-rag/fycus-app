@@ -137,7 +137,7 @@ export default function BluetoothSection({ isConnected, onConnect }: IProps) {
       >
       기기를 찾아 연결해주세요.
       </CustomText>
-      {/* <CustomButton
+      <CustomButton
       text="테스트 ON"
       textColor={COLORS.bng.primary}
       width={290}
@@ -146,7 +146,7 @@ export default function BluetoothSection({ isConnected, onConnect }: IProps) {
       backgroundColor={COLORS.brand.primary}
       style={{ borderRadius: SPACING.tiny, paddingVertical: SPACING.small }}
       onPress={handleTestOnPress}
-      /> */}
+      />
     </CustomView>
   );
 };
