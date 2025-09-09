@@ -45,7 +45,6 @@ export default function HardwareSection(props: IProps) {
                             연결 X
                         </CustomText>
                     }
-
                 </CustomView>
             </CustomView>
         </CustomView>
@@ -61,3 +60,4 @@ const styles = StyleSheet.create({
         },
     }
 })
+

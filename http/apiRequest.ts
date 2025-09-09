@@ -228,3 +228,6 @@ export default {
   game: gameApi,
   ai: aiApi,
 };
+
+// 예시 실행
+// handleLogin();
