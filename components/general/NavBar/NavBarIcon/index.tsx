@@ -29,7 +29,7 @@ export default function NavBarIcon(props : IProps) {
                 >
                     <TouchableOpacity
                         
-                        onPress={() => navigate.navigate(toGo)}
+                        onPress={() => navigate.navigate(toGo as any)}
                         style={{
                             alignItems : 'center',
                             gap : SPACING.superTiny,
