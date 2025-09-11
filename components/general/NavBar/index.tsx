@@ -44,7 +44,7 @@ export default function NavBar(){
                 paddingHorizontal={SPACING.medium}
                 paddingVertical={SPACING.superTiny}
             >
-                <NavBarIcon name={'AI'} icon={'headphones'} toGo={'/(tabs)/AIPage'}/>
+                <NavBarIcon name={'AI'} icon={'headphones'} toGo={'/AIPage'}/>
                 <NavBarIcon name={'프로필'} icon={'user-circle-o'} toGo={'/ProfilePage'}/>
             </CustomView>
             <CustomView
