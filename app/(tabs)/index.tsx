@@ -2,7 +2,6 @@ import AISection from "@/components/MainPage/AISection";
 import FocusSection from "@/components/MainPage/FocusSection";
 import HardwareSection from "@/components/MainPage/HardwareSection";
 import Header from "@/components/MainPage/Header";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import TaskSection from "@/components/MainPage/TaskSection";
 import TimeSection from "@/components/MainPage/TimeSection";
 import CustomButton from "@/components/general/CustomButton";
@@ -20,6 +19,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
 import ApiClient from "@/http/https";
 import {Alert} from "react-native";
+import { useTokenStore } from "@/store/useToken";
 
 export default function HomePage() {
 
@@ -201,7 +201,7 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
       
       // Save access token to AsyncStorage
       if (response.access_token) {
-        await AsyncStorage.setItem('accessToken', response.access_token);
+        useTokenStore.setState({ token: response.access_token });
         console.log('Access token saved to AsyncStorage');
       }
       

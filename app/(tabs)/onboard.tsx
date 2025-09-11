@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
 
 export default function Onboard() {
     const router = useRouter();
-    const [thisPage, setThisPage] = useState<'first' | 'second' | 'bluetooth' | 'name' | 'gmail' | 'password' | 'school' | 'subject' | 'work' | 'whatFocus' | 'whatWeek' | 'loading'>('first');
+    const [thisPage, setThisPage] = useState<'first' | 'second'  | 'name' | 'gmail' | 'password' | 'school' | 'subject' | 'work' | 'whatFocus' | 'whatWeek' | 'loading'>('first');
     const [isBluetoothConnected, setIsBluetoothConnected] = useState(false);
     //@ts-ignore
     const {submitSubjectModule, submitGrade, submitName, submitEmail, submitPassword, submitSchool, submitWork, submitWhatFocus, submitWhatWeek} = useFormStore();
@@ -27,7 +27,7 @@ export default function Onboard() {
         const timer1 = setTimeout(() => {
             setThisPage('second');
             const timer2 = setTimeout(() => {
-                setThisPage('bluetooth');   
+                setThisPage('name');   
             }, 2000);
             return () => clearTimeout(timer2);
         }, 2000);
@@ -46,17 +46,6 @@ export default function Onboard() {
         >
             {thisPage === 'first' && <First/>}
             {thisPage === 'second' && <Second/>}
-            {thisPage === 'bluetooth' && (
-                <Bluetooth
-                    isConnected={isBluetoothConnected}
-                    onConnect={(isConnected) => {
-                        setIsBluetoothConnected(isConnected);
-                        if (isConnected) {
-                            setThisPage('name');
-                        }
-                    }}
-                />
-            )}
             {thisPage === 'name' && (
                 <Name
                     onNext={() => {
