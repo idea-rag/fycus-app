@@ -96,7 +96,8 @@ interface RegisterDTO {
     // Get authentication headers
     private getHeaders(): HeadersInit {
       const headers: HeadersInit = {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json',  // 이 헤더 추가
+        'Accept': 'application/json',
       };
       
       if (this.token) {

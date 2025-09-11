@@ -28,34 +28,32 @@ export default function Work(props: IProps) {
     const { submitSubjectModule, submitSchool, submitGrade, submitSubjectModuleSetter } = useFormStore();
 
     useEffect(() => {
-        console.log('Selected Subject:', selectSubject);
         if (selectSubject) {
             const works = getWorkList(selectSubject, submitSubjectModule, { 
                 school: submitSchool, 
                 grade: submitGrade 
             });
-            console.log('Works:', works);
             setWorkList(works);
             
+            // 현재 선택된 과목의 기존 work 불러오기
             const currentSubject = submitSubjectModule.find(
                 (item : {subject : string, publisher : string, work : string[]}) => item.subject === selectSubject
             );
-            if (currentSubject?.work) {
+            
+            // 기존 work가 있으면 불러오고, 없으면 빈 배열로 시작
+            if (currentSubject?.work && currentSubject.work.length > 0) {
                 setSelectedWorks([...currentSubject.work]);
             } else {
                 setSelectedWorks([]);
             }
-        } else {
-            setWorkList([]);
-            setSelectedWorks([]);
         }
-    }, [selectSubject, submitSubjectModule]);
+    }, [selectSubject]);
 
     const toggleWorkSelection = (work: string) => {
         setSelectedWorks(prev => {
             const newSelected = prev.includes(work)
                 ? prev.filter(w => w !== work) 
-                : [...prev, work]; 
+                : [...prev, work];
             return newSelected;
         });
     };
@@ -65,20 +63,54 @@ export default function Work(props: IProps) {
     };
     
     const handleCompleteSelection = () => {
-        const updatedModules = submitSubjectModule.map((item : {subject : string, publisher : string, work : string[]}) => 
-            item.subject === selectSubject
-                ? { ...item, work: selectedWorks }
-                : item
-        );
+        // 배열을 확실히 새로운 배열로 생성하고 검증
+        const workArray = Array.isArray(selectedWorks) 
+            ? selectedWorks.filter(item => typeof item === 'string' && item.trim() !== '') 
+            : [];
         
-        const filteredModules = selectedWorks.length === 0
+        console.log('원본 selectedWorks:', selectedWorks);
+        console.log('필터링된 workArray:', workArray);
+        
+        // 선택된 과목의 work만 업데이트
+        const updatedModules = submitSubjectModule.map((item : {subject : string, publisher : string, work : string[]}) => {
+            if (item.subject === selectSubject) {
+                const newItem = {
+                    subject: item.subject,
+                    publisher: item.publisher,
+                    work: workArray // 새로 생성한 배열 사용
+                };
+                console.log('업데이트할 아이템:', newItem);
+                return newItem;
+            }
+            return {
+                subject: item.subject,
+                publisher: item.publisher,
+                work: Array.isArray(item.work) ? item.work : []
+            };
+        });
+        
+        // 선택된 work가 없으면 해당 과목 제거
+        const filteredModules = workArray.length === 0
             ? updatedModules.filter((item : {subject : string, publisher : string, work : string[]}) => item.subject !== selectSubject)
             : updatedModules;
         
-        submitSubjectModuleSetter(filteredModules);
-        closeWorkModal();
+        console.log('최종 filteredModules:', filteredModules);
+        
+        // 각 모듈의 work 검증
+        const validatedModules = filteredModules.map((module : any) => ({
+            subject: module.subject,
+            publisher: module.publisher,
+            work: Array.isArray(module.work) ? module.work : []
+        }));
+        
+        console.log('검증된 modules:', validatedModules);
+        
+        submitSubjectModuleSetter(validatedModules);
+        
+        // 모달 닫기
+        setIsWorkModalVisible(false);
+        setSelectSubject('');
     };
-
 
     const openWorkModal = (subject: string) => {
         setSelectSubject(subject);
@@ -86,6 +118,7 @@ export default function Work(props: IProps) {
     };
     
     const closeWorkModal = () => {
+        // 취소할 때만 초기화
         setIsWorkModalVisible(false);
         setSelectSubject('');
         setSelectedWorks([]);
