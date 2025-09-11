@@ -20,6 +20,7 @@ import { useState } from "react";
 import ApiClient from "@/http/https";
 import {Alert} from "react-native";
 import { useTokenStore } from "@/store/useToken";
+import { router } from "expo-router";
 
 export default function HomePage() {
 
@@ -218,6 +219,13 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
             text={'로그인'}
             width={'100%'}
             onPress={handleLogin}
+          />
+          <CustomButton
+            text={'회원가입'}
+            width={'100%'}
+            onPress={() => {
+              router.push('/onboard');
+            }}
           />
           <CustomView width='100%' alignItems={'flex-start'} gap={SPACING.superTiny} paddingHorizontal={SPACING.medium}>
             <CustomText fontSize={FONTS.size.head} textColor={COLORS.text.primary}>

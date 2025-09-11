@@ -9,7 +9,6 @@ export default function Header(){
     return(
         <View style={styles.container}>
             <Logo width={30} height={30}/>
-            <Profile width={30} height={30}/>
         </View>
     )
 }
