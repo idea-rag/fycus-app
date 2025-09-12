@@ -80,7 +80,7 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
     // Initialize API client
     //@ts-ignore
-    const {submitEmail, submitPassword, submitName} = useFormStore();
+    const {submitEmail, submitPassword, submitNameSetter, submitName, submitGmailSetter, submitPasswordSetter, submitSchoolSetter, submitGradeSetter, submitSubjectModuleSetter, submitFocusSubjectSetter, submitWhatWeekSetter } = useFormStore();
     const apiClient = new ApiClient(process.env.EXPO_PUBLIC_API_URL);
 
     // Get form data from store
@@ -205,11 +205,43 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
         useTokenStore.setState({ token: response.access_token });
         console.log('Access token saved to AsyncStorage');
       }
+
       
     } catch (error) {
       console.error('Login failed:', error);
       Alert.alert('로그인 실패', '이메일 또는 비밀번호를 확인해주세요.');
     }
+  }
+
+  const handleStoreSave = () => {
+    submitNameSetter("류한석");
+    submitGmailSetter("skyle@gmail.com");
+    submitPasswordSetter("asdfasdf");
+    submitSchoolSetter("선릴중학교");
+    submitGradeSetter("2");
+    submitSubjectModuleSetter([
+      {
+        "subject": "국어",
+        "publisher": "미래엔 (MiraeN)",
+        "work": [
+          "동백꽃",
+          "석시조 세 편",
+          "새해"
+        ]
+      },
+      {
+        "subject": "영어",
+        "publisher": "천재교육 (Chunjae Education)",
+        "work": [
+          "The Most Precious Thing",
+          "The Food Festival",
+          "My School Life"
+        ]
+      }
+    ]);
+    submitFocusSubjectSetter("국어");
+    submitWhatWeekSetter("1주");
+    Alert.alert('저장 완료', 'store에 저장되었습니다.');
   }
 
   return (
@@ -226,6 +258,11 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
             onPress={() => {
               router.push('/onboard');
             }}
+          />
+          <CustomButton
+            text={'store에 저장하기'}
+            width={'100%'}
+            onPress={handleStoreSave}
           />
           <CustomView width='100%' alignItems={'flex-start'} gap={SPACING.superTiny} paddingHorizontal={SPACING.medium}>
             <CustomText fontSize={FONTS.size.head} textColor={COLORS.text.primary}>

@@ -12,16 +12,20 @@ import SubjectSection from "@/components/ProfilePage/SubjectSection/layout";
 import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
+import useFormStore from "@/store/useForm";
 
 export default function ProfilePage() {
+    //@ts-ignore
+    const {submitName, submitGmail, submitPassword, submitSchool, submitGrade, submitSubjectModule, submitFocusSubject, submitWhatWeek} = useFormStore();
+
     return (
         <>
         <PageDefault title={'프로필'}>
             <SectionDefault title={'개인정보 부분'}>
-                <InformationBar title={'이름'} text={'류한석'}/>
-                <InformationBar title={'이메일'} text={'submitEmail@gmail.com'}/>
+                <InformationBar title={'이름'} text={submitName}/>
+                <InformationBar title={'이메일'} text={submitGmail}/>
                 <InformationBar title={'비밀번호'} text={'**********'}/>
-                <InformationBar title={'학년/학교'} text={'1학년/선린고등학교'}/>
+                <InformationBar title={'학년/학교'} text={submitGrade + '학년/' + submitSchool}/>
                 <SubjectSection/>
                 <CustomView
                     width={'100%'}

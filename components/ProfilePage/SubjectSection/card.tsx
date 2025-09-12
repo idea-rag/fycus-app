@@ -12,7 +12,6 @@ export default function SubjectSectionCard({ subject, bookTitle }: SubjectSectio
     return (
         <CustomView style={styles.cardContainer}>
             <CustomText style={styles.subject}>{subject}</CustomText>
-            <View style={styles.imagePlaceholder} />
             <CustomText style={styles.bookTitle} textColor={COLORS.text.primary}>{bookTitle}</CustomText>
         </CustomView>
     )
@@ -20,23 +19,16 @@ export default function SubjectSectionCard({ subject, bookTitle }: SubjectSectio
 
 const styles = StyleSheet.create({
     cardContainer: {
-        width: '30%',
-        marginBottom: 20,
+        width: '100%',
         alignItems: 'flex-start',
+        flexDirection: 'row',
         gap : 4
     },
     subject: {
-        fontSize: 14,
-    },
-    imagePlaceholder: {
-        width: '100%',
-        aspectRatio: 1,
-        backgroundColor: '#D9D9D9',
+        fontSize: 16,
+        fontWeight: '700',
     },
     bookTitle: {
         fontSize: 14,
-    },
-    pageRange: {
-        fontSize: 12,
     },
 });

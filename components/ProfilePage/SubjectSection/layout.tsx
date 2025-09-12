@@ -5,16 +5,6 @@ import { StyleSheet } from "react-native";
 import SubjectSectionCard from "./card";
 
 
-const mockData = [
-    { subject: "국어", bookTitle: "금성 - 문학2" },
-    { subject: "국어", bookTitle: "금성 - 문학2", },
-    { subject: "국어", bookTitle: "금성 - 문학2", },
-    { subject: "국어", bookTitle: "금성 - 문학2", },
-    { subject: "국어", bookTitle: "금성 - 문학2", },
-    { subject: "국어", bookTitle: "금성 - 문학2", },
-];
-
-
 export default function SubjectSection() {
     
     //@ts-ignore
@@ -37,15 +27,20 @@ export default function SubjectSection() {
 }
 
 const styles = StyleSheet.create({
-    container: {    },
+    container: {
+        width: '100%',
+    },
     title: {
         fontSize: 16,
         fontWeight: '600',
         marginBottom: 12,
     },
     gridContainer: {
-        flexDirection: 'row',
+        width: '100%',
+        flexDirection: 'column',
         flexWrap: 'wrap',
-        justifyContent: 'space-between',
+        height: 'auto',
+        justifyContent: 'flex-start',
+        gap : 12,
     }
 });
