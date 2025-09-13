@@ -18,7 +18,7 @@ export default function InformationBar(props : IProps) {
             width={'100%'}
         >
             <CustomText
-                fontSize={FONTS.size.body}
+                fontSize={18}
                 textColor={COLORS.text.primary}
                 fontWeight={'600'}
             >{title}</CustomText>
