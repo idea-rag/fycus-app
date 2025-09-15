@@ -1,9 +1,9 @@
-import CustomView from "@/components/general/CustomView";
 import CustomText from "@/components/general/CustomText";
-import {FONTS} from "@/styles/fonts";
-import {COLORS} from "@/styles/colors";
-import {SPACING} from "@/styles/spacing";
-import {timeConverting} from "@/feature/timeConverting";
+import CustomView from "@/components/general/CustomView";
+import { timeConverting } from "@/feature/timeConverting";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
+import { SPACING } from "@/styles/spacing";
 
 interface IProps {
     time : number, timeType : string
@@ -15,8 +15,8 @@ export default function TimeCard(props: IProps) {
 
     return (
         <CustomView alignItems={'center'} justifyContent={'center'} paddingVertical={SPACING.small} gap={SPACING.tiny}>
-            <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.fifth} >{timeType}</CustomText>
-            <CustomText fontSize={FONTS.size.huge} textColor={COLORS.text.primary} fontWeight={500}>{convertedTime}</CustomText>
+            <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.fifth} fontWeight={600} >{timeType}</CustomText>
+            <CustomText fontSize={FONTS.size.huge} textColor={COLORS.text.primary} fontWeight={600}>{convertedTime}</CustomText>
         </CustomView>
     );
 }

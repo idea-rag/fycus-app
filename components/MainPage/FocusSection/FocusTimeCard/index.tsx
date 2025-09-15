@@ -42,7 +42,7 @@ export default function FocusTimeCard(props: IProps) {
 
 const styles = StyleSheet.create({
     container: {
-        width: 35,
+        width: 'auto',
         height: 70,
         display: "flex",
         justifyContent: "center",
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
         color: COLORS.text.third,
     },
     borderContainer: {
-        width: 45,
+        width: 'auto',
         height: 70,
         display: "flex",
         justifyContent: "center",

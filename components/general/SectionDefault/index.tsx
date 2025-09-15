@@ -21,7 +21,7 @@ export default function SectionDefault(props: IProps) {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "flex-start",
-                    gap: SPACING.superTiny,
+                    gap: 6,
                     flexDirection: 'row',
                 }}
             >
@@ -38,16 +38,28 @@ export default function SectionDefault(props: IProps) {
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        paddingHorizontal: SPACING.medium,
-        paddingVertical: SPACING.superTiny,
-        gap: SPACING.medium,
+        backgroundColor: COLORS.bng.primary,
+        paddingHorizontal: SPACING.small,
+        paddingVertical: SPACING.small,
+        gap: SPACING.superTiny,
+        borderRadius: SPACING.medium,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.07,
+        shadowRadius: 3.84,
+        elevation: 5, // 안드로이드에서의 그림자
     },
     title: {
-        fontSize: FONTS.size.body,
+        fontSize: 18,
         color: COLORS.text.primary,
+        fontWeight: "700",
     },
     linkText: {
         fontSize: FONTS.size.small,
         color: COLORS.brand.primary,
+        fontWeight: "600",
     },
 });

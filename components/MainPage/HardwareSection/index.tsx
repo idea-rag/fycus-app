@@ -2,10 +2,9 @@ import CustomText from "@/components/general/CustomText";
 import CustomView from "@/components/general/CustomView";
 import { batteryStep } from "@/feature/batteryStep";
 import { COLORS } from "@/styles/colors";
-import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
-import { FontAwesome } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
+import Status from "./status";
 
 interface IProps {
     connection?: boolean;
@@ -22,29 +21,14 @@ export default function HardwareSection(props: IProps) {
             justifyContent={'flex-start'}
             alignItems={'flex-start'}
             width='45%'
+            style={styles.container}
         >
-            <CustomText fontSize={FONTS.size.body} textColor={COLORS.text.primary} >하드웨어</CustomText>
-            <CustomView width={'100%'} alignItems={'center'} justifyContent={'center'}>
-                <CustomView width={75} height={75} borderRadius={100} alignItems={'center'} justifyContent={'center'} style={styles.circle}>
-                    <CustomText>a</CustomText>
-                </CustomView>
-            </CustomView>
-            <CustomView width={'100%'} alignItems={'center'} justifyContent={'center'} flexDirection={'row'} gap={SPACING.small}>
-                <CustomView flexDirection={'row'} alignItems={'center'} justifyContent={'center'} gap={SPACING.superTiny}>
-                    <FontAwesome name={`battery-${batteryStepValue}` as any} color={COLORS.text.third} size={12}/>
-                    <CustomText fontSize={FONTS.size.small} textColor={COLORS.text.primary}>{battery}%</CustomText>
-                </CustomView>
-                <CustomView flexDirection={'row'} alignItems={'center'} justifyContent={'center'} gap={SPACING.superTiny}>
-                    <FontAwesome name={'link'} color={COLORS.text.third} size={12}/>
-                    {connection ?
-                        <CustomText fontSize={FONTS.size.small} textColor={COLORS.state.correct}>
-                            양호
-                        </CustomText>
-                        :
-                        <CustomText fontSize={FONTS.size.small} textColor={COLORS.state.uncorrect}>
-                            연결 X
-                        </CustomText>
-                    }
+            <CustomText fontSize={18} textColor={COLORS.text.primary} fontWeight={700} >하드웨어</CustomText>
+            <CustomView gap={SPACING.small} flexDirection={'row'} alignItems={'center'} justifyContent={'center'}>
+                <CustomView width={75} height={75} borderRadius={100} alignItems={'center'} justifyContent={'center'} style={styles.circle}/>
+                <CustomView gap={SPACING.small} alignItems={'flex-start'} justifyContent={'center'}>
+                    <CustomText textColor={COLORS.text.primary} fontSize={14} fontWeight={600}> Fycus-hardware</CustomText>
+                    <Status battery={battery} batteryStepValue={batteryStepValue} connection={connection ?? false}/>
                 </CustomView>
             </CustomView>
         </CustomView>
@@ -52,12 +36,24 @@ export default function HardwareSection(props: IProps) {
 }
 
 const styles = StyleSheet.create({
-    circle:{
-        shadowColor: "rgba(0,0,0,0.25)",
+    container:{
+        width: '100%',  
+        backgroundColor: COLORS.bng.primary,
+        borderRadius: SPACING.medium,
+        paddingHorizontal: SPACING.small,
+        paddingVertical: SPACING.small,
+        shadowColor: "#000",
         shadowOffset: {
-            width: 2,
+            width: 0,
             height: 2,
         },
+        shadowOpacity: 0.1,
+        shadowRadius: 3.84,
+        elevation: 5, // 안드로이드에서의 그림자
+    },
+    circle:{
+        borderWidth: 1,
+        borderColor: '#E8E8E8',
     }
 })
 
