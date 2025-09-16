@@ -266,6 +266,7 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
             <AISection simpleFeedback={'아직 피드백이 없어요!'}/>
             <HardwareSection battery={70} connection={!!connectedDevice}/>
           </CustomView>
+          <CustomView height={140}/>
           </ScrollView>
           <TimeSection focusTime={focusTime} studyTime={studyTime}/>
 
