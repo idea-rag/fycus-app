@@ -12,8 +12,7 @@ export const MonthTasks = {
       { name: '영어 - 비상교육 - From Trash to Treasure', importance: 2, isChecked: false }
     ],
     '2025-07-24': [ 
-      { name: '국어 - 미래엔 - 접동새', importance: 2, isChecked: false },
-      { name: '수학 - 통합 - 부등식', importance: 2, isChecked: false }
+      
     ],
     '2025-07-25': [ 
       { name: '영어 - 비상교육 - The Art of Communication', importance: 3, isChecked: false },

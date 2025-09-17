@@ -12,6 +12,7 @@ export default function CalendarPage() {
         <PageDefault title={'일정'}>
             <SectionDefault title={'오늘의 할일'}>
                 <TaskList tasks={MonthTasks['2025-07-24']}/>
+                {/* @ts-ignore */}
                 <TaskCalendar MonthTasks={MonthTasks}/>
             </SectionDefault>
         </PageDefault>
