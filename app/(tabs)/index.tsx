@@ -4,6 +4,7 @@ import HardwareSection from "@/components/MainPage/HardwareSection";
 import Hero from "@/components/MainPage/Hero";
 import TaskSection from "@/components/MainPage/TaskSection";
 import TimeSection from "@/components/MainPage/TimeSection";
+import CustomButton from "@/components/general/CustomButton";
 import CustomView from "@/components/general/CustomView";
 import { MonthTasks } from "@/data/scehdule";
 import useBLE from "@/feature/useBLE";
@@ -12,6 +13,7 @@ import useFormStore from "@/store/useForm";
 import useStudyTimeStore from "@/store/useStudyTime";
 import { useTokenStore } from "@/store/useToken";
 import { SPACING } from "@/styles/spacing";
+import { router } from "expo-router";
 import { useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -233,7 +235,7 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
         ]
       }
     ]);
-    submitFocusSubjectSetter("국어");
+    submitFocusSubjectSetter("국어 동백꽃에 집중하고 싶어");
     submitWhatWeekSetter("1주");
     Alert.alert('저장 완료', 'store에 저장되었습니다.');
   }
@@ -243,7 +245,7 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
           <ScrollView style={styles.scrollView}
       contentContainerStyle={styles.contentContainerStyle}>
           <Hero name={submitName} time={yesterdayStudyTime}/>
-          {/* <CustomButton
+          <CustomButton
             text={'로그인'}
             width={'100%'}
             onPress={handleLogin}
@@ -259,7 +261,7 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
             text={'store에 저장하기'}
             width={'100%'}
             onPress={handleStoreSave}
-          /> */}
+          />
           <CustomView width='100%' alignItems={'flex-start'} gap={SPACING.medium} paddingHorizontal={SPACING.medium}>
             <FocusSection focusTimeList={focusTimeList}/>
             <TaskSection tasks={tasks}/>

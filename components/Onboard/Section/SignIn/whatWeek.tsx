@@ -15,7 +15,7 @@ export default function WhatWeek(props : IProps) {
     //@ts-ignore
     const { submitWhatWeekSetter } = useFormStore();
 
-    const handleSelectWhatWeek = (whatWeek : string) => {
+    const handleSelectWhatWeek = (whatWeek : number) => {
         submitWhatWeekSetter(whatWeek);
         onNext();
     };
@@ -42,7 +42,7 @@ export default function WhatWeek(props : IProps) {
                         fontSize={FONTS.size.small}
                         textWeight={700}
                         style={{paddingHorizontal : SPACING.medium, paddingVertical : SPACING.small}}
-                        onPress={() => handleSelectWhatWeek(item)}
+                        onPress={() => handleSelectWhatWeek(index + 1)}
                     />
                 ))}
             </CustomView>
