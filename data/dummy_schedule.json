@@ -11,16 +11,8 @@
                                 "subject": "국어",
                                 "publish": "미래엔 (MiraeN)",
                                 "workbook": "국어",
-                                "scope": "소나기",
-                                "importance": 3,
-                                "isFinished": false
-                            },
-                            {
-                                "subject": "수학",
-                                "publish": "비상교육 (Visang)",
-                                "workbook": "수학",
-                                "scope": "방정식 개념 이해",
-                                "importance": 3,
+                                "scope": "운수 좋은 날",
+                                "importance": 2,
                                 "isFinished": false
                             }
                         ],
@@ -29,16 +21,8 @@
                                 "subject": "국어",
                                 "publish": "미래엔 (MiraeN)",
                                 "workbook": "국어",
-                                "scope": "소나기 심화 분석 및 문제 풀이",
-                                "importance": 3,
-                                "isFinished": false
-                            },
-                            {
-                                "subject": "수학",
-                                "publish": "비상교육 (Visang)",
-                                "workbook": "수학",
-                                "scope": "방정식 유형별 문제 풀이 ①",
-                                "importance": 3,
+                                "scope": "나의 모국어는 침묵",
+                                "importance": 2,
                                 "isFinished": false
                             }
                         ],
@@ -47,15 +31,7 @@
                                 "subject": "국어",
                                 "publish": "미래엔 (MiraeN)",
                                 "workbook": "국어",
-                                "scope": "운수 좋은 날",
-                                "importance": 2,
-                                "isFinished": false
-                            },
-                            {
-                                "subject": "수학",
-                                "publish": "비상교육 (Visang)",
-                                "workbook": "수학",
-                                "scope": "방정식 유형별 문제 풀이 ②",
+                                "scope": "소나기 (1)",
                                 "importance": 3,
                                 "isFinished": false
                             }
@@ -65,33 +41,17 @@
                                 "subject": "국어",
                                 "publish": "미래엔 (MiraeN)",
                                 "workbook": "국어",
-                                "scope": "나의 모국어는 침묵",
-                                "importance": 2,
-                                "isFinished": false
-                            },
-                            {
-                                "subject": "수학",
-                                "publish": "비상교육 (Visang)",
-                                "workbook": "수학",
-                                "scope": "방정식 응용 문제 풀이",
+                                "scope": "소나기 (2)",
                                 "importance": 3,
                                 "isFinished": false
                             }
                         ],
                         "day5": [
                             {
-                                "subject": "국어",
-                                "publish": "미래엔 (MiraeN)",
-                                "workbook": "국어",
-                                "scope": "마음을 여는 소통, 공감",
-                                "importance": 1,
-                                "isFinished": false
-                            },
-                            {
                                 "subject": "수학",
                                 "publish": "비상교육 (Visang)",
                                 "workbook": "수학",
-                                "scope": "방정식 단원 총정리",
+                                "scope": "방정식 (개념 정리)",
                                 "importance": 3,
                                 "isFinished": false
                             }
@@ -101,7 +61,7 @@
                                 "subject": "국어",
                                 "publish": "미래엔 (MiraeN)",
                                 "workbook": "국어",
-                                "scope": "소나기 복습 및 오답 정리",
+                                "scope": "소나기 복습",
                                 "importance": 3,
                                 "isFinished": false
                             }
@@ -111,8 +71,85 @@
                                 "subject": "수학",
                                 "publish": "비상교육 (Visang)",
                                 "workbook": "수학",
-                                "scope": "방정식 단원 오답 노트 작성 및 복습",
+                                "scope": "방정식 (핵심 문제 풀이)",
                                 "importance": 3,
+                                "isFinished": false
+                            }
+                        ]
+                    }
+                }
+            ],
+            "2": [
+                {
+                    "name": "skyle@gmail.com",
+                    "weekplan": {
+                        "day1": [
+                            {
+                                "subject": "국어",
+                                "publish": "미래엔 (MiraeN)",
+                                "workbook": "국어",
+                                "scope": "마음을 여는 소통, 공감",
+                                "importance": 2,
+                                "isFinished": false
+                            }
+                        ],
+                        "day2": [
+                            {
+                                "subject": "국어",
+                                "publish": "미래엔 (MiraeN)",
+                                "workbook": "국어",
+                                "scope": "우주 쓰레기, 해결 방법은 없을까",
+                                "importance": 2,
+                                "isFinished": false
+                            }
+                        ],
+                        "day3": [
+                            {
+                                "subject": "국어",
+                                "publish": "미래엔 (MiraeN)",
+                                "workbook": "국어",
+                                "scope": "함께 지키는 저작권",
+                                "importance": 2,
+                                "isFinished": false
+                            }
+                        ],
+                        "day4": [
+                            {
+                                "subject": "국어",
+                                "publish": "미래엔 (MiraeN)",
+                                "workbook": "국어",
+                                "scope": "동물원, 과연 필요한가",
+                                "importance": 2,
+                                "isFinished": false
+                            }
+                        ],
+                        "day5": [
+                            {
+                                "subject": "수학",
+                                "publish": "비상교육 (Visang)",
+                                "workbook": "수학",
+                                "scope": "방정식 (유형 문제 풀이)",
+                                "importance": 3,
+                                "isFinished": false
+                            }
+                        ],
+                        "day6": [
+                            {
+                                "subject": "수학",
+                                "publish": "비상교육 (Visang)",
+                                "workbook": "수학",
+                                "scope": "방정식 (오답/복습)",
+                                "importance": 3,
+                                "isFinished": false
+                            }
+                        ],
+                        "day7": [
+                            {
+                                "subject": "국어",
+                                "publish": "미래엔 (MiraeN)",
+                                "workbook": "국어",
+                                "scope": "1~2주 전체 복습 및 휴식",
+                                "importance": 1,
                                 "isFinished": false
                             }
                         ]

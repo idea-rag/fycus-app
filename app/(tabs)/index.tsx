@@ -214,7 +214,7 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
     submitGmailSetter("skyle@gmail.com");
     submitPasswordSetter("asdfasdf");
     submitSchoolSetter("선릴중학교");
-    submitGradeSetter("2");
+    submitGradeSetter("middleschool-2");
     submitSubjectModuleSetter([
       {
         "subject": "국어",
@@ -236,7 +236,7 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
       }
     ]);
     submitFocusSubjectSetter("국어 동백꽃에 집중하고 싶어");
-    submitWhatWeekSetter("1주");
+    submitWhatWeekSetter(1);
     Alert.alert('저장 완료', 'store에 저장되었습니다.');
   }
 

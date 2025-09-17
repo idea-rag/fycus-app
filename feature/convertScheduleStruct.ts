@@ -1,4 +1,3 @@
-import useFormStore from "@/store/useForm";
 
 interface SubjectModule {
   subject: string;
@@ -6,28 +5,33 @@ interface SubjectModule {
   work: string[];
 }
 
-export default function convertScheduleStruct() {
-  //@ts-ignore
-  const { submitSubjectModule, submitGrade, submitFocusSubject, submitWhatWeek } = useFormStore();
-  
-  const transformData = () => {
-    // Format subjects array from submitSubjectModule
-    const subjects = submitSubjectModule.map((module: SubjectModule) => ({
-      grade: submitGrade[0], // Assuming submitGrade is an array, taking the first item
-      publish: module.publisher,
-      workbook: module.subject,
-      work: module.work || [] // Ensure work is an array even if undefined
-    }));
+interface ConvertScheduleParams {
+  submitSubjectModule: SubjectModule[];
+  submitGrade: string[];
+  submitFocusSubject: string;
+  submitWhatWeek: number;
+}
 
-    // Create the final transformed object
-    const transformedData = {
-      when: submitWhatWeek,
-      subjects,
-      goal: submitFocusSubject
-    };
+export default function convertScheduleStruct({
+  submitSubjectModule,
+  submitGrade,
+  submitFocusSubject,
+  submitWhatWeek
+}: ConvertScheduleParams) {
+  // Format subjects array from submitSubjectModule
+  const subjects = submitSubjectModule.map((module: SubjectModule) => ({
+    grade: submitGrade, // Assuming submitGrade is an array, taking the first item
+    publish: module.publisher,
+    workbook: module.subject,
+    work: module.work || [] // Ensure work is an array even if undefined
+  }));
 
-    return transformedData;
+  // Create the final transformed object
+  const transformedData = {
+    when: submitWhatWeek,
+    subjects,
+    goal: submitFocusSubject
   };
 
-  return transformData();
+  return transformedData;
 }

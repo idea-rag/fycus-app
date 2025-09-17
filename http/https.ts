@@ -52,6 +52,7 @@ interface RegisterDTO {
   interface ScheduleDTO {
     when: number;
     subjects: Record<string, any>[];
+    goal: string;
   }
   
   interface AIResponseDTO {

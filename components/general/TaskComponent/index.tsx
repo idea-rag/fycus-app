@@ -41,7 +41,15 @@ export default function TaskComponent({ name, importance, isChecked, onChange }:
                         <MaterialIcons name="check" size={13} color={COLORS.bng.primary} />
                     )}
                 </Pressable>
-                <Text style={{ color: checked ? COLORS.text.primary : COLORS.text.third , fontSize:FONTS.size.small}}>
+                <Text 
+                    style={[
+                        styles.taskText,
+                        { color: checked ? COLORS.text.primary : COLORS.text.third },
+                        { textDecorationLine: checked ? 'line-through' : 'none' }
+                    ]}
+                    numberOfLines={2}
+                    ellipsizeMode="tail"
+                >
                     {name}
                 </Text>
             </View>
@@ -53,16 +61,25 @@ export default function TaskComponent({ name, importance, isChecked, onChange }:
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: 30,
-        paddingVertical: 5,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
+        minHeight: 35,
+        paddingVertical: 8,
+        paddingHorizontal: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
     },
     headContainer: {
-        flexDirection: "row",
-        alignItems: "center",
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
         gap: 10,
+        marginRight: 10,
+    },
+    taskText: {
+        flex: 1,
+        color: COLORS.text.primary,
+        fontSize: FONTS.size.small,
+        flexWrap: 'wrap',
     },
     checkBox: {
         width: 20,
