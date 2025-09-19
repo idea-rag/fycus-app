@@ -7,6 +7,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { navigate } from "expo-router/build/global-state/routing";
 import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useBeforeStore } from "@/store/useBeforeStore";
+import { usePathname } from "expo-router";
 
 interface IProps {
     title: string;
@@ -16,12 +18,14 @@ interface IProps {
 
 export default function PageDefault(props: IProps) {
     const {title, children, isScrollView = true} = props;
-
+    const pathname = usePathname();
+    //@ts-ignore
+    const { setPreviousPath } = useBeforeStore();
 
     return (
         <SafeAreaView style={styles.container}>
             <CustomView paddingHorizontal={SPACING.medium} flexDirection={"row"} alignItems={"center"}>
-                <TouchableOpacity onPress={() => navigate("/(tabs)")}>
+                <TouchableOpacity onPress={() => {navigate("/(tabs)"); setPreviousPath(pathname); console.log(pathname)}}>
                     <MaterialIcons name={"keyboard-arrow-left"} color={"#000"} size={30} />
                 </TouchableOpacity>
                 <CustomText textColor={COLORS.text.primary} fontSize={FONTS.size.head} fontWeight={"500"}>{title}</CustomText>

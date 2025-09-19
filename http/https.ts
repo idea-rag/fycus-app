@@ -30,7 +30,8 @@ interface RegisterDTO {
   interface FocusStartDTO {
     focusTime: string;
     measureTime?: number;
-    whenTime?: number;
+    startTime: number;  // Unix timestamp for start time
+    endTime: number;    // Unix timestamp for end time
     whenDay?: number;
   }
   

@@ -13,6 +13,7 @@ import { useFocusEffect, useNavigation } from "expo-router";
 import { useCallback, useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useBeforeStore } from "@/store/useBeforeStore";
 
 
 
@@ -375,11 +376,16 @@ export default function FocusPage() {
       setIsConnecting(false);
     }
   };
+  //@ts-ignore
+  const {setPreviousPath} = useBeforeStore();
 
   return (
     <SafeAreaView style={styles.container}>
         <CustomView>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={async () => {
+    await setPreviousPath('/FocusPage');  // 먼저 경로 저장
+    navigation.goBack();  // 그 다음에 네비게이션
+}}>
                 <MaterialIcons name="arrow-back" size={24} color="black" />
             </TouchableOpacity>
         </CustomView>

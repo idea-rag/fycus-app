@@ -17,6 +17,7 @@ export default function AIPage() {
     const router = useRouter();
     const [showFeedback, setShowFeedback] = useState(false);
     const { FindDog, SelectSquare, OrderAction } = useNeurofeedbackStore();
+    //@ts-ignore
     
     const [isLoading, setIsLoading] = useState(false);
 
