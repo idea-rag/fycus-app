@@ -17,54 +17,27 @@ export default function NavBar(){
             width={'100%'}
             flexDirection={'row'}
             alignItems={'center'}
-            justifyContent={'space-between'}
+            justifyContent={'center'}
             paddingHorizontal={SPACING.medium}
+            paddingVertical={SPACING.tiny}
+            gap={28}
             style={{
                 position: 'absolute',
+                borderRadius: SPACING.medium,
                 bottom: 24,
-                borderTopWidth: 1,
-                borderTopColor: COLORS.text.forth,
+                borderWidth: 1,
+                borderColor: COLORS.text.forth,
+                borderBottomWidth: 0,
                 borderStyle: 'solid',
                 zIndex: 1000,
                 backgroundColor : 'white',
             }}
         >
-            <CustomView
-                flexDirection={'row'}
-                gap={20}
-                paddingHorizontal={SPACING.medium}
-                paddingVertical={SPACING.superTiny}
-            >
-                <NavBarIcon name={'시간'} icon={'clock-o'} toGo={'/timePage'}/>
-                <NavBarIcon name={'일정'} icon={'calendar'} toGo={'/taskPage'}/>
-            </CustomView>
-            <CustomView
-                flexDirection={'row'}
-                gap={20}
-                paddingHorizontal={SPACING.medium}
-                paddingVertical={SPACING.superTiny}
-            >
-                <NavBarIcon name={'AI'} icon={'headphones'} toGo={'/AIPage'}/>
-                <NavBarIcon name={'프로필'} icon={'user-circle-o'} toGo={'/ProfilePage'}/>
-            </CustomView>
-            <CustomView
-                width={80}
-                height={80}
-                alignItems={'center'}
-                justifyContent={'center'}
-                style={{
-                    backgroundColor : COLORS.bng.primary,
-                    borderRadius : 50,
-                    position : 'absolute',
-                    top : -40,
-                    left: '50%',
-                    transform: [{ translateX: -24}],
-                    borderWidth : 1,
-                    borderColor : COLORS.text.forth,
-                }}
-            >
-                <MeasureTimeButton width={70} height={70}/>
-            </CustomView>
+            <NavBarIcon name={'시간'} icon={'access-time'} toGo={'/timePage'}/>
+            <NavBarIcon name={'일정'} icon={'event'} toGo={'/taskPage'}/>
+            <MeasureTimeButton width={50} height={50}/>
+            <NavBarIcon name={'AI'} icon={'assistant'} toGo={'/AIPage'}/>
+            <NavBarIcon name={'프로필'} icon={'account-circle'} toGo={'/ProfilePage'}/>
         </CustomView>
     )
 }

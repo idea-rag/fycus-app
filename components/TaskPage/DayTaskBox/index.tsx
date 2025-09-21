@@ -4,6 +4,7 @@ import TaskComponent from "@/components/general/TaskComponent";
 import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
+import useScheduleStore from "@/store/useSchedule";
 
 type TaskType = {
     name: string;
@@ -19,6 +20,12 @@ interface IProps {
 
 export default function DayTaskBox(props: IProps) {
     const { tasks, selectedDate } = props;
+    const updateTaskStatus = useScheduleStore((state: any) => state.updateTaskStatus);
+    
+    const handleTaskCheck = (index: number, isChecked: boolean) => {
+        updateTaskStatus(selectedDate, index, isChecked);
+    };
+    
     return (
        <CustomView
         width={'100%'}
@@ -44,6 +51,7 @@ export default function DayTaskBox(props: IProps) {
                     importance={task.importance}
                     isChecked={task.isChecked}
                     whatDay={task.whatDay || selectedDate} // task에 whatDay가 없으면 selectedDate 사용
+                    onChange={(checked) => handleTaskCheck(index, checked)}
                 />
             ))
         ) : (

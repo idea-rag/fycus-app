@@ -189,7 +189,7 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
           <CustomView width='100%' alignItems={'flex-start'} gap={SPACING.medium} paddingHorizontal={SPACING.medium}>
             <FocusSection focusTimeList={focusTimeList}/>
             <TaskSection tasks={{
-              [today]: todayTasks.map((task, index) => ({
+              [today]: todayTasks.map((task) => ({
                 ...task,
                 whatDay: today
               }))

@@ -12,31 +12,20 @@ import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
 import { useRouter } from "expo-router";
 import { useState } from "react";
+import ApiClient from "@/http/https";
+import { useTokenStore } from "@/store/useToken";
 
 export default function AIPage() {
     const router = useRouter();
     const [showFeedback, setShowFeedback] = useState(false);
     const { FindDog, SelectSquare, OrderAction } = useNeurofeedbackStore();
     //@ts-ignore
+    const token = useTokenStore((state) => state.token);
+    const apiClient = new ApiClient();
     
     const [isLoading, setIsLoading] = useState(false);
 
     const handleGetFeedback = () => {
-        if (showFeedback) {
-            setShowFeedback(false);
-            return;
-        }
-        
-        // 이미 로딩 중이면 무시
-        if (isLoading) return;
-        
-        setIsLoading(true);
-        
-        // 3초 후에 피드백 표시
-        setTimeout(() => {
-            setShowFeedback(true);
-            setIsLoading(false);
-        }, 3000); 
     };
 
     return (

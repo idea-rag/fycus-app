@@ -14,7 +14,7 @@ export default function TimeSection(props : IProps) {
     return (
         <CustomView width='100%' alignItems={'center'} justifyContent={'space-between'} flexDirection={'row'} paddingVertical={SPACING.small} paddingHorizontal={SPACING.superHuge} style={styles.container}>
             <TimeCard time={focusTime} timeType={'순수 집중시간'}/>
-            <MeasureTimeButton/>
+            <MeasureTimeButton width={75} height={75}/>
             <TimeCard time={studyTime} timeType={'공부시간'}/>
         </CustomView>
     );
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         left: '50%',
         transform: [{ translateX: '-50%' }],
         width: '90%',
-        backgroundColor: 'rgba(250, 250, 250, 0.9)',
+        backgroundColor: 'rgba(250, 250, 250, 0.95)',
         borderRadius: SPACING.medium,
         gap: SPACING.superHuge,
         borderWidth: 1,

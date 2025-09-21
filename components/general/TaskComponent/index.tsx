@@ -48,7 +48,7 @@ export default function TaskComponent({ name, importance, isChecked, whatDay, on
                     disabled={!isToday}
                 >
                     {checked && (
-                        <MaterialIcons name="check" size={13} color={COLORS.bng.primary} />
+                        <MaterialIcons name="check" size={13} color={COLORS.brand.primary} />
                     )}
                 </Pressable>
                 <Text 
@@ -98,15 +98,18 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
     },
     checkBox: {
-        width: 20,
-        height: 20,
+        width: 22,
+        height: 22,
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 3,
-        backgroundColor: COLORS.text.forth,
+        borderRadius: 4,
+        borderWidth: 1.5,
+        borderColor: COLORS.brand.primary,
+        backgroundColor: 'transparent',
     },
     checkBoxChecked: {
         backgroundColor: COLORS.brand.primary,
+        borderColor: COLORS.brand.primary,
     },
     disabledTask: {
         opacity: 0.6,
