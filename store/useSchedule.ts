@@ -1,9 +1,10 @@
 import { create } from "zustand";
 
-interface Task {
+export interface Task {
   name: string;
   importance: number;
   isChecked: boolean;
+  whatDay: string;
 }
 
 interface ScheduleState {

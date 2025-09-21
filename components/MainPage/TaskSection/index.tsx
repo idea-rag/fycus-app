@@ -1,14 +1,17 @@
 import TaskFrame from "@/components/MainPage/TaskSection/TaskFrame";
 import SectionDefault from "../../general/SectionDefault";
 
+interface Task {
+    name: string;
+    importance: number;
+    isChecked: boolean;
+    whatDay: string;
+}
+
 interface IProps {
-    tasks : {
-        [key : number] : {
-            name : string;
-            importance : number;
-            isChecked : boolean;
-        }
-    }
+    tasks: {
+        [key: string]: Task[];
+    };
 }
 
 export default function TaskSection(props : IProps) {

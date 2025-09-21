@@ -11,6 +11,7 @@ interface TaskType {
     name: string;
     importance: number;
     isChecked: boolean;
+    whatDay: string;
 }
 
 interface IProps {
@@ -22,6 +23,8 @@ export default function TaskList(props : IProps) {
     const router = useRouter();
     
     const hasTasks = tasks && Object.keys(tasks).length > 0;
+
+    const taskLength = Object.keys(tasks || {}).length;
     
     return (
         <ScrollView
@@ -31,7 +34,7 @@ export default function TaskList(props : IProps) {
                 minHeight: 150,
                 paddingHorizontal: SPACING.tiny,
                 paddingVertical: SPACING.tiny,
-                justifyContent: 'flex-start',
+                justifyContent: taskLength >= 1 ? 'space-between' : 'flex-start',
                 alignItems: 'flex-start',
                 gap: SPACING.tiny,
                 borderRadius: SPACING.tiny
@@ -44,6 +47,7 @@ export default function TaskList(props : IProps) {
                             name={task.name}
                             importance={task.importance}
                             isChecked={task.isChecked}
+                            whatDay={task.whatDay}
                         />
                     ))}
                     <CustomButton

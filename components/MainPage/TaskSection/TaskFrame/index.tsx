@@ -13,15 +13,21 @@ interface TaskType {
     name: string;
     importance: number;
     isChecked: boolean;
+    whatDay: string;
 }
 
 interface IProps {
-    tasks: Record<number, TaskType>;
+    tasks: Record<string, TaskType[]>;
 }
 
 export default function TaskFrame({ tasks }: IProps) {
-    const sortedTaskList = sortTasksByImportance(tasks).slice(0, 3);
-    const remainingTasks = Object.keys(tasks).length - sortedTaskList.length;
+    // 첫 번째 날짜의 태스크를 가져옵니다.
+    const dateKey = Object.keys(tasks)[0];
+    const taskList = tasks[dateKey] || [];
+    const sortedTaskList = sortTasksByImportance(
+        Object.fromEntries(taskList.map((task, index) => [index, task]))
+    ).slice(0, 3);
+    const remainingTasks = taskList.length - sortedTaskList.length;
     const router = useRouter();
 
     return (
@@ -40,6 +46,7 @@ export default function TaskFrame({ tasks }: IProps) {
                     name={task.name}
                     importance={task.importance}
                     isChecked={task.isChecked}
+                    whatDay={task.whatDay}
                 />
             ))}
             <CustomView

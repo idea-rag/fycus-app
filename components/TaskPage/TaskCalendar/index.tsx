@@ -20,6 +20,7 @@ type TaskType = {
     name: string;
     importance: number;
     isChecked: boolean;
+    whatDay: string;
 }
 
 interface IProps {
@@ -28,7 +29,7 @@ interface IProps {
 
 export default function TaskCalendar(props: IProps) {
     const { MonthTasks } = props;
-    const [selected, setSelected] = useState<string>('');
+    const [selectedDate, setSelectedDate] = useState<string>('');
 
     LocaleConfig.locales.kr = {
         monthNames: [
@@ -52,7 +53,7 @@ export default function TaskCalendar(props: IProps) {
     const hasTasks = MonthTasks && Object.keys(MonthTasks).length > 0;
 
     const onDayPress = (day: DateData) => {
-        setSelected(day.dateString);
+        setSelectedDate(day.dateString);
     };
 
     const today = new Date().toISOString().split('T')[0];
@@ -78,9 +79,9 @@ export default function TaskCalendar(props: IProps) {
             dotColor: COLORS.brand.primary, 
             dot: false 
         },
-        ...(selected && {
-          [selected]: { 
-            ...markedDatesFromTasks[selected],
+        ...(selectedDate && {
+          [selectedDate]: { 
+            ...markedDatesFromTasks[selectedDate],
             selected: true, 
             disableTouchEvent: true, 
             selectedColor: COLORS.brand.primary 
@@ -88,14 +89,17 @@ export default function TaskCalendar(props: IProps) {
         })
     };
 
-    const selectedDateTasks = MonthTasks[selected] || [];
+    const selectedDateTasks = MonthTasks[selectedDate] || [];
 
     return (
         <CustomView style={styles.container}>
             {hasTasks ? (
                 <>
                     <Calendar
-                        onDayPress={onDayPress}
+                        onDayPress={(day) => {
+                            console.log('selected day', day);
+                            setSelectedDate(day.dateString);
+                        }}
                         markedDates={markedDates}
                         style={{width : '100%'}}
                         onMonthChange={(month) => {
@@ -108,14 +112,14 @@ export default function TaskCalendar(props: IProps) {
                             todayTextColor: COLORS.brand.primary,
                         }}
                         dayComponent={({date, state, marking}) => {
-                            const isSelected = date && selected === date.dateString;
+                            const isSelected = date && selectedDate === date.dateString;
                             const isToday = date?.dateString === today;
                             const isThisMonth = date?.year === currentYear && 
                                  date?.month === currentMonth;
                             return (
                                 <CustomView 
                                     style={styles.dayContainer}
-                                    onPress={isThisMonth ? () => {date?.dateString && setSelected(date.dateString); modalOpen();} : () => console.log(date)}
+                                    onPress={isThisMonth ? () => {date?.dateString && setSelectedDate(date.dateString); modalOpen();} : () => console.log(date)}
                                 >
                                     <CustomView
                                         width={24}
@@ -124,7 +128,7 @@ export default function TaskCalendar(props: IProps) {
                                         alignItems={'center'}
                                         justifyContent={'center'}
                                         style={{backgroundColor : isSelected ? COLORS.brand.primary : 'transparent'}}
-                                        onPress={isThisMonth ? (() => {date?.dateString && setSelected(date.dateString); modalOpen();}) : () => console.log(date)}
+                                        onPress={isThisMonth ? (() => {date?.dateString && setSelectedDate(date.dateString); modalOpen();}) : () => console.log(date)}
                                     >
                                         <CustomText 
                                             fontSize={FONTS.size.body} 
@@ -138,7 +142,7 @@ export default function TaskCalendar(props: IProps) {
                             );
                         }}
                     />
-                    <DayTaskBox tasks={selectedDateTasks}/>
+                    <DayTaskBox tasks={selectedDateTasks} selectedDate={selectedDate} />
                 </>
             ) : (
                 <View style={styles.emptyContainer}>

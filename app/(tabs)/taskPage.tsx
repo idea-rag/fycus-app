@@ -101,24 +101,39 @@ console.log('====================');
 
     const handleStoreTask = () => {
         if (!response) return;
-        const schedule = responseConvertSchedule(response);
+        const schedule: Record<string, TaskType[]> = responseConvertSchedule(response);
         useScheduleStore.setState({ schedule });
         Alert.alert('성공', '일정이 성공적으로 저장되었습니다.');
         console.log(schedule);
     };
 
 
+    interface TaskType {
+        name: string;
+        importance: number;
+        isChecked: boolean;
+        whatDay: string;
+    }
+
+    // 오늘 날짜의 할 일을 가져오고 Record<number, TaskType> 형식으로 변환
+    const today = new Date().toISOString().split('T')[0];
+    const todayTasks = schedule[today] || [];
+    const tasksRecord: Record<number, TaskType> = {};
+    todayTasks.forEach((task, index) => {
+        tasksRecord[index] = task;
+    });
+
     return (
         <>
         <PageDefault title={'일정'}>
             <SectionDefault title={'오늘의 할일'}>
-                <TaskList tasks={schedule['2025-09-17']}/>
-                <TaskCalendar MonthTasks={schedule}/>
-                <CustomButton
-                    text="오늘의 할일 추가하기"
-                    width={'100%'}
-                    backgroundColor={COLORS.brand.primary}
-                    textColor={COLORS.bng.primary}
+            <TaskList tasks={tasksRecord} />
+            <TaskCalendar MonthTasks={schedule}/>
+            <CustomButton
+                text="오늘의 할일 추가하기"
+                width={'100%'}
+                backgroundColor={COLORS.brand.primary}
+                textColor={COLORS.bng.primary}
                     textWeight={'700'}
                     fontSize={FONTS.size.small}
                     height={30}

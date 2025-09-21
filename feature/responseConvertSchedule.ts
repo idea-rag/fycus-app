@@ -40,26 +40,20 @@ interface SubjectTask {
   // Example us
   // age:
   // const schedule: ScheduleResponse = {...};
-  export default function responseConvertSchedule(data: ScheduleResponse): Record<string, Array<{
-    name: string;
-    importance: number;
-    isChecked: boolean;
-  }>> {
-    const result: Record<string, Array<{
-      name: string;
-      importance: number;
-      isChecked: boolean;
-    }>> = {};
-  
+  import { Task } from "@/store/useSchedule";
+
+export default function responseConvertSchedule(data: ScheduleResponse): Record<string, Task[]> {
+    const result: Record<string, Task[]> = {};
+
     // Get the first date in the schedule
     const date = Object.keys(data.ai_schedule)[0];
     if (!date) return result;
-  
+
     const weekPlans = Object.values(data.ai_schedule[date])[0];
     if (!weekPlans || weekPlans.length === 0) return result;
-  
+
     const weekPlan = weekPlans[0].weekplan;
-  
+
     // Helper function to format task name
     const formatTaskName = (task: SubjectTask) => 
       `${task.workbook} - ${task.publish} - ${task.scope}`;
@@ -75,7 +69,8 @@ interface SubjectTask {
       result[dateString] = tasks.map(task => ({
         name: formatTaskName(task),
         importance: task.importance,
-        isChecked: task.isFinished
+        isChecked: task.isFinished,
+        whatDay: dateString
       }));
     });
   

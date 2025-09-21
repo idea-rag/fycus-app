@@ -19,7 +19,7 @@ import { Alert, StyleSheet, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useBeforeStore } from "@/store/useBeforeStore";
 import FeedbackSelectModal from "@/components/MainPage/FeedbackSelectModal";
-import NavBar from "@/components/general/NavBar";
+import useScheduleStore from "@/store/useSchedule";
 
 export default function HomePage() {
   const router = useRouter();
@@ -29,6 +29,9 @@ export default function HomePage() {
   const {previousPath, setPreviousPath} = useBeforeStore();
   const {studyTime, focusTime} = useStudyTimeStore();
   const { connectedDevice } = useBLE();
+  const { schedule } = useScheduleStore();
+  const today = new Date().toISOString().split('T')[0];
+  const todayTasks = schedule[today] || [];
 
   const focusTimeList = [{
     isFocus : false,
@@ -185,7 +188,12 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
           />
           <CustomView width='100%' alignItems={'flex-start'} gap={SPACING.medium} paddingHorizontal={SPACING.medium}>
             <FocusSection focusTimeList={focusTimeList}/>
-            <TaskSection tasks={tasks}/>
+            <TaskSection tasks={{
+              [today]: todayTasks.map((task, index) => ({
+                ...task,
+                whatDay: today
+              }))
+            }} />
             <AISection simpleFeedback={'아직 피드백이 없어요!'}/>
             <HardwareSection battery={70} connection={!!connectedDevice}/>
           </CustomView>

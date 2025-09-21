@@ -9,19 +9,24 @@ interface Iprops {
     name: string;
     importance: number;
     isChecked: boolean;
+    whatDay: string;
     onChange?: (checked: boolean) => void;
 }
 
-export default function TaskComponent({ name, importance, isChecked, onChange }: Iprops) {
+export default function TaskComponent({ name, importance, isChecked, whatDay, onChange }: Iprops) {
     const [checked, setChecked] = useState(isChecked);
+    const currentDate = new Date().toISOString().split('T')[0];
+    const isToday = whatDay === currentDate;
 
     const toggleCheck = () => {
+        if (!isToday) return;
         const next = !checked;
         setChecked(next);
         onChange?.(next);
     };
 
     const getImportanceColor = () => {
+        if (!isToday) return COLORS.text.forth;
         switch (importance) {
             case 3: return COLORS.brand.high;
             case 2: return COLORS.brand.primary;
@@ -31,11 +36,16 @@ export default function TaskComponent({ name, importance, isChecked, onChange }:
     };
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, !isToday && styles.disabledTask]}>
             <View style={styles.headContainer}>
                 <Pressable
                     onPress={toggleCheck}
-                    style={[styles.checkBox, checked && styles.checkBoxChecked]}
+                    style={[
+                        styles.checkBox, 
+                        checked && styles.checkBoxChecked,
+                        !isToday && styles.disabledCheckbox
+                    ]}
+                    disabled={!isToday}
                 >
                     {checked && (
                         <MaterialIcons name="check" size={13} color={COLORS.bng.primary} />
@@ -44,8 +54,14 @@ export default function TaskComponent({ name, importance, isChecked, onChange }:
                 <Text 
                     style={[
                         styles.taskText,
-                        { color: checked ? COLORS.text.primary : COLORS.text.third },
-                        { textDecorationLine: checked ? 'line-through' : 'none' }
+                        { 
+                            color: !isToday 
+                                ? COLORS.text.forth 
+                                : checked 
+                                    ? COLORS.text.primary 
+                                    : COLORS.text.third,
+                            textDecorationLine: checked ? 'line-through' : 'none'
+                        }
                     ]}
                     numberOfLines={2}
                     ellipsizeMode="tail"
@@ -92,4 +108,11 @@ const styles = StyleSheet.create({
     checkBoxChecked: {
         backgroundColor: COLORS.brand.primary,
     },
+    disabledTask: {
+        opacity: 0.6,
+    },
+    disabledCheckbox: {
+        backgroundColor: COLORS.text.forth,
+        borderColor: COLORS.text.third,
+        },
 });
