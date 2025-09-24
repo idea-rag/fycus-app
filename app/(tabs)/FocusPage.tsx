@@ -4,7 +4,7 @@ import CustomView from "@/components/general/CustomView";
 import { attToText } from "@/feature/attToText";
 import { ParseData, parseRawData } from "@/feature/parseRawData";
 import useBLE from "@/feature/useBLE";
-import useStudyTimeStore from "@/store/useStudyTime";
+import { useStudyTimeStore } from "@/store/useStudyTime";
 import { COLORS } from "@/styles/colors";
 import { SPACING } from "@/styles/spacing";
 import { ChartDataPoint } from "@/types/chart";

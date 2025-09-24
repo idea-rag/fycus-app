@@ -10,7 +10,7 @@ import { MonthTasks } from "@/data/scehdule";
 import useBLE from "@/feature/useBLE";
 import ApiClient from "@/http/https";
 import useFormStore from "@/store/useForm";
-import useStudyTimeStore from "@/store/useStudyTime";
+import { useStudyTimeStore } from "@/store/useStudyTime";
 import { useTokenStore } from "@/store/useToken";
 import { SPACING } from "@/styles/spacing";
 import { useRouter } from "expo-router";
@@ -27,7 +27,7 @@ export default function HomePage() {
   const yesterdayStudyTime = 0;
   //@ts-ignore
   const {previousPath, setPreviousPath} = useBeforeStore();
-  const {studyTime, focusTime} = useStudyTimeStore();
+  const {focusData} = useStudyTimeStore();
   const { connectedDevice } = useBLE();
   const { schedule } = useScheduleStore();
   const today = new Date().toISOString().split('T')[0];
@@ -71,7 +71,7 @@ export default function HomePage() {
   },
   {
     isFocus : false,
-    time : studyTime,
+    time : focusData.totalFocusTime ,
     day : 9,
     isNotPassed : true
   }
@@ -199,7 +199,8 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
           </CustomView>
           <CustomView height={140}/>
           </ScrollView>
-          <TimeSection focusTime={focusTime} studyTime={studyTime}/>
+          {/* @ts-ignore */}
+          <TimeSection focusTime={focusData.totalFocusTime} studyTime={focusData.totalMeasureTime}/>
           <FeedbackSelectModal
             visible={isModalVisible}
             onClose={handleModalClose}
