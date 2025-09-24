@@ -35,9 +35,26 @@ interface RegisterDTO {
     whenDay?: number;
   }
   
+  interface TimeSlot {
+    measureTime: number;
+    focusTime: number;
+  }
+
+  interface StudyTask {
+    name: string;
+    importance: number;
+    isChecked: boolean;
+    whatDay: string;
+  }
+
+  interface StudyData {
+    [date: string]: StudyTask[];
+  }
+
   interface FocusFeedbackDTO {
-    whenTime: number;
-    focus_data: Record<string, any>;
+    whenDay: string;
+    timeSlots: Record<string, TimeSlot>;
+    studyData: StudyData;
   }
   
   interface NeurofeedbackSendDTO {
@@ -258,69 +275,3 @@ interface RegisterDTO {
   
   // Usage example
   export default ApiClient;
-  
-  // Example usage:
-  /*
-  const client = new ApiClient('http://localhost:8000');
-  
-  // Login example
-  async function loginUser() {
-    try {
-      const loginData: LoginDTO = {
-        userID: 'testuser',
-        password: 'password123'
-      };
-      
-      const response = await client.login(loginData);
-      console.log('Login successful:', response.message);
-      console.log('Token:', response.access_token);
-    } catch (error) {
-      console.error('Login error:', error);
-    }
-  }
-  
-  // Register example
-  async function registerUser() {
-    try {
-      const registerData: RegisterDTO = {
-        userID: 'newuser',
-        name: 'John Doe',
-        school: 'Test School',
-        grade: '12',
-        email: 'john@example.com',
-        password: 'password123',
-        subject_name: ['Math', 'Science'],
-        subject_publish: ['Publisher1', 'Publisher2'],
-        subject_BookList: ['Book1', 'Book2'],
-        focus_Grade: ['A', 'B'],
-        Subject_Module: [{ name: 'Module1' }, { name: 'Module2' }],
-        Focus_Subject: 'Math',
-        WhatWeek: 'Week1'
-      };
-      
-      const response = await client.register(registerData);
-      console.log('Registration successful:', response.message);
-    } catch (error) {
-      console.error('Registration error:', error);
-    }
-  }
-  
-  // Create schedule example
-  async function createSchedule() {
-    try {
-      const scheduleData: ScheduleDTO = {
-        when: Date.now(),
-        subjects: [
-          { name: 'Math', duration: 60 },
-          { name: 'Science', duration: 45 }
-        ]
-      };
-      
-      const response = await client.createSchedule(scheduleData);
-      console.log('Schedule created:', response.message);
-      console.log('AI Schedule:', response.ai_schedule);
-    } catch (error) {
-      console.error('Schedule creation error:', error);
-    }
-  }
-  */

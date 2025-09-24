@@ -1,13 +1,14 @@
 import CustomView from "@/components/general/CustomView";
 import FocusByHourCard from "@/components/TimePage/FocusByHourSection/FocusByHourCard";
-import useStudyTimeStore from "@/store/useStudyTime";
+import { useStudyTimeStore } from "@/store/useStudyTime";
 import { SPACING } from "@/styles/spacing";
 import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
 
 export default function FocusByHourSection() {
 
-    const {focusTime, studyTime} = useStudyTimeStore();
+    const {focusData} = useStudyTimeStore();
+    const {totalFocusTime : focusTime, totalMeasureTime : studyTime} = focusData;
     return (
         <CustomView
             width={"100%"}
@@ -19,13 +20,23 @@ export default function FocusByHourSection() {
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={styles.scrollContent}
             >
-                <FocusByHourCard hour={8} isFocused={false} timeBarType={{ measureTime: 0, focusTime: 0 }} />
-                <FocusByHourCard hour={9} isFocused={false} timeBarType={{ measureTime: 0, focusTime: 0 }} />
-                <FocusByHourCard hour={10} isFocused={false} timeBarType={{ measureTime: 0, focusTime: 0 }} />
-                <FocusByHourCard hour={11} isFocused={true} timeBarType={{ measureTime: studyTime/60, focusTime: focusTime/60 }} />
-                <FocusByHourCard hour={12} isFocused={false} timeBarType={{ measureTime: 0, focusTime: 0 }} />
-                <FocusByHourCard hour={13} isFocused={false} timeBarType={{ measureTime: 0, focusTime: 0 }} />
-                <FocusByHourCard hour={14} isFocused={false} timeBarType={{ measureTime: 0, focusTime: 0 }} />
+                {[8, 9, 10, 11, 12, 13, 14].map((hour) => {
+                    const isCurrentHour = hour === 11; // Example: 11시가 현재 시간이라고 가정
+                    const measureTime = isCurrentHour && typeof studyTime === 'number' ? studyTime / 60 : 0;
+                    const focusTimeVal = isCurrentHour && typeof focusTime === 'number' ? focusTime / 60 : 0;
+                    
+                    return (
+                        <FocusByHourCard 
+                            key={hour}
+                            hour={hour}
+                            isFocused={isCurrentHour}
+                            timeBarType={{ 
+                                measureTime: Number.isNaN(measureTime) ? 0 : measureTime, 
+                                focusTime: Number.isNaN(focusTimeVal) ? 0 : focusTimeVal 
+                            }} 
+                        />
+                    );
+                })}
             </ScrollView>
         </CustomView>
     );

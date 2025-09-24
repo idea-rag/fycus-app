@@ -14,18 +14,55 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import ApiClient from "@/http/https";
 import { useTokenStore } from "@/store/useToken";
+import { getFeedback } from "@/feature/getFeedback";
+import useScheduleStore from "@/store/useSchedule";
+import { useStudyTimeStore } from "@/store/useStudyTime";
 
 export default function AIPage() {
     const router = useRouter();
     const [showFeedback, setShowFeedback] = useState(false);
     const { FindDog, SelectSquare, OrderAction } = useNeurofeedbackStore();
+    const { schedule } = useScheduleStore();
+    const { focusData } = useStudyTimeStore();
     //@ts-ignore
     const token = useTokenStore((state) => state.token);
     const apiClient = new ApiClient();
     
     const [isLoading, setIsLoading] = useState(false);
+    const [feedbackText, setFeedbackText] = useState('');
 
-    const handleGetFeedback = () => {
+    const handleGetFeedback = async () => {
+        try {
+            setIsLoading(true);
+            
+            // 전달할 데이터 구조 확인을 위한 로그
+            console.log('Sending to getFeedback:', {
+                token: token ? 'Token exists' : 'No token',
+                focusData: focusData,
+                studyData: schedule
+            });
+            
+            const response = await getFeedback({
+                token,
+                focusData,
+                studyData: schedule
+            });
+            
+            console.log('Feedback response:', response);
+            
+            // 서버로부터 받은 피드백 텍스트를 상태에 저장
+            if (response && response.ai_feedback) {
+                setFeedbackText(response.ai_feedback);
+            } else {
+                setFeedbackText('피드백을 받아오지 못했습니다.');
+            }
+            
+            setShowFeedback(true);
+        } catch (error) {
+            console.error('Error getting feedback:', error);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -81,9 +118,9 @@ export default function AIPage() {
                         <CustomText
                             fontSize={14}
                             fontWeight={400}
-                            style={{ marginBottom: 16 }}
+                            style={{ marginBottom: 16, whiteSpace: 'pre-line' }}
                         >
-                        국어의 달성률이 많이 적어요,총 3개의 할 일 중 1개만 달성하였어요, 하지만 나머지 영어, 수학은 훌륭히 달성하셨어요! 이 데이터를 기반으로 스케줄을 다시 만들까요?
+                            {feedbackText || '피드백을 불러오는 중입니다...'}
                         </CustomText>
                     )}
                     {showFeedback ? (

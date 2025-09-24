@@ -8,8 +8,8 @@ interface TimeSlot {
     focusData: {
       whenDay: string;
       timeSlots: Record<string, TimeSlot>;
-      totalMeasureTime: number;
-      totalFocusTime: number;
+      totalMeasureTime: number | 0;
+      totalFocusTime: number | 0;
     };
     updateFocusData: (timeSlot: string, measureTime: number, focusTime: number) => void;
     resetDailyData: () => void;
@@ -32,14 +32,21 @@ interface TimeSlot {
           }
         };
         
-        // Calculate totals
-        const totalMeasureTime = Object.values(newTimeSlots).reduce(
-            //@ts-ignore
-          (sum, slot) => sum + slot.measureTime, 0
+        // Calculate totals with type safety
+        const totalMeasureTime = Object.values(newTimeSlots).reduce<number>(
+          (sum, slot) => {
+            const measureTime = Number(slot?.measureTime) || 0;
+            return sum + measureTime;
+          },
+          0
         );
-        const totalFocusTime = Object.values(newTimeSlots).reduce(
-            //@ts-ignore
-          (sum, slot) => sum + slot.focusTime, 0
+        
+        const totalFocusTime = Object.values(newTimeSlots).reduce<number>(
+          (sum, slot) => {
+            const focusTime = Number(slot?.focusTime) || 0;
+            return sum + focusTime;
+          },
+          0
         );
   
         return {
