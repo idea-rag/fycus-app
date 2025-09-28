@@ -10,7 +10,7 @@ import { SPACING } from "@/styles/spacing";
 import { ChartDataPoint } from "@/types/chart";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useFocusEffect, useNavigation } from "expo-router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import { ActivityIndicator, FlatList, Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useBeforeStore } from "@/store/useBeforeStore";
@@ -94,13 +94,25 @@ export default function FocusPage() {
   const [showDeviceList, setShowDeviceList] = useState(false);
   const [isConnecting, setIsConnecting] = useState(true); 
   const [parsedData, setParsedData] = useState<ParseData | null>(null);
-  const [chartData, setChartData] = useState<ChartDataPoint[]>([]);
+  const [chartData, setChartData] = useState<ChartDataPoint[]>(() => {
+    // Initialize with empty data points for smoother initial rendering
+    return Array(MAX_POINTS).fill(0).map((_, i) => ({
+      time: i,
+      focusTime: 0,
+      timestamp: Date.now(),
+      Att: 0,
+      Med: 0,
+      Var: 0,
+      rawHex: ''
+    }));
+  });
   const [timeCounter, setTimeCounter] = useState(0.5);
   const navigation = useNavigation();
-  //@ts-ignore
-  const {focusTime, focusTimeSetter, studyTime, studyTimeSetter} = useStudyTimeStore();
+  const { focusData, updateFocusData } = useStudyTimeStore();
   const [lastIncrementTime, setLastIncrementTime] = useState<number | null>(null);
   const [isFocused, setIsFocused] = useState(false);
+  const [studyTime, setStudyTime] = useState(0);
+  const [focusTime, setFocusTime] = useState(0);
 
   
   useEffect(() => {
@@ -117,34 +129,83 @@ export default function FocusPage() {
   const MAX_POINTS = 15; 
   const [lastUpdateTime, setLastUpdateTime] = useState<number>(Date.now());
   const [dataPoints, setDataPoints] = useState<number>(0);
+  const lastDataRef = useRef<number | null>(null);
+  const updateIntervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  useEffect(() => {
-    if (parsedData && parsedData.Att >= 0) {
-      const now = Date.now();
-      
-      
-      if (now - lastUpdateTime < 100) return;
-      
+  // Smoother data processing with less aggressive smoothing
+  const smoothValue = (current: number, previous: number | null, baseFactor: number = 0.2) => {
+    if (previous === null) return current;
+    
+    // Less aggressive smoothing for better responsiveness
+    return previous * (1 - baseFactor) + current * baseFactor;
+  };
+
+  // More responsive update function
+  const updateChartData = useCallback((newValue: number) => {
+    const now = Date.now();
+    
+    // Only update if enough time has passed since last update
+    if (updateIntervalRef.current) {
+      clearTimeout(updateIntervalRef.current);
+    }
+    
+    updateIntervalRef.current = setTimeout(() => {
       setChartData(prevData => {
-        const newDataPoint = {
+        const smoothedValue = smoothValue(newValue, lastDataRef.current || newValue);
+        lastDataRef.current = smoothedValue;
+
+        const newDataPoint: ChartDataPoint = {
           time: dataPoints % MAX_POINTS,
-          focusTime: parsedData.Att,
-          ...parsedData,
-          timestamp: now
+          focusTime: smoothedValue,
+          timestamp: now,
+          Att: smoothedValue,
+          Med: 0,
+          Var: 0,
+          rawHex: ''
         };
 
-        const updated = [...prevData, newDataPoint].slice(-MAX_POINTS);
+        // Add new data point and limit the array size
+        const updated = [...prevData, newDataPoint];
+        if (updated.length > MAX_POINTS) {
+          updated.shift();
+        }
         
+        // Update time indices for proper x-axis display
         return updated.map((item, index) => ({
           ...item,
           time: index
         }));
       });
-      
+
       setDataPoints(prev => (prev + 1) % MAX_POINTS);
-      setLastUpdateTime(now);
+      updateIntervalRef.current = null;
+    }, 100); // Reduced update interval for better responsiveness
+  }, [dataPoints]);
+
+  // Update chart when parsed data changes
+  useEffect(() => {
+    if (parsedData?.Att !== undefined && parsedData.Att >= 0) {
+      console.log('Updating chart with value:', parsedData.Att);
+      updateChartData(parsedData.Att);
+      
+      // Update focus state with a small threshold to prevent rapid toggling
+      const newFocusState = parsedData.Att >= 3;
+      if (newFocusState !== isFocused) {
+        // Add a small delay to prevent rapid toggling
+        const timer = setTimeout(() => {
+          console.log('Updating focus state to:', newFocusState);
+          setIsFocused(newFocusState);
+        }, 300);
+        return () => clearTimeout(timer);
+      }
     }
-  }, [parsedData?.Att]); 
+
+    return () => {
+      if (updateIntervalRef.current) {
+        clearTimeout(updateIntervalRef.current);
+      }
+    };
+  }, [parsedData?.Att, updateChartData, isFocused]); 
 
 
   
@@ -183,25 +244,30 @@ export default function FocusPage() {
     let focusInterval: ReturnType<typeof setInterval> | null = null;
 
     if (connectedDevice) {
-      
       studyInterval = setInterval(() => {
-        studyTimeSetter((prev: number) => prev + 1);
-      }, 1000); 
+        setStudyTime(prev => prev + 1);
+      }, 1000);
 
-      
       if (isFocused) {
         focusInterval = setInterval(() => {
-          focusTimeSetter((prev: number) => prev + 1);
+          setFocusTime(prev => prev + 1);
         }, 1000);
       }
     }
 
-    
+    // Save to store when component unmounts or when time changes
+    const saveToStore = () => {
+      const timeSlot = new Date().toISOString().split('T')[1].split(':')[0]; // Current hour
+      updateFocusData(timeSlot, studyTime, focusTime);
+    };
+
+    // Cleanup function
     return () => {
+      saveToStore();
       if (studyInterval) clearInterval(studyInterval);
       if (focusInterval) clearInterval(focusInterval);
     };
-  }, [connectedDevice, isFocused, studyTimeSetter, focusTimeSetter]);
+  }, [connectedDevice, isFocused, studyTime, focusTime, updateFocusData]);
 
   
   useFocusEffect(
