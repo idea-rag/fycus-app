@@ -14,7 +14,8 @@ import { useEffect, useState } from "react";
 import { Alert, TouchableOpacity } from "react-native";
 
 interface IProps {
-    onNext: () => void;
+    onNext: (data?: any) => void;
+    initialData?: any;
 }
 
 export default function Work(props: IProps) {
@@ -22,7 +23,7 @@ export default function Work(props: IProps) {
     const [selectSubject, setSelectSubject] = useState('');
     const [workList, setWorkList] = useState<string[]>([]);
     const [selectedWorks, setSelectedWorks] = useState<string[]>([]);
-    const { onNext } = props;
+    const { onNext, initialData } = props;
 
     //@ts-ignore
     const { submitSubjectModule, submitSchool, submitGrade, submitSubjectModuleSetter } = useFormStore();
@@ -59,7 +60,7 @@ export default function Work(props: IProps) {
     };
 
     const finishedWork = () => {
-        onNext();
+        onNext(selectedWorks);
     };
     
     const handleCompleteSelection = () => {

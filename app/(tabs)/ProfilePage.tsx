@@ -1,5 +1,5 @@
-//@ts-ignore
-import testIcon from "@/assets/images/icon.png";
+import { useState } from 'react';
+import { Alert } from 'react-native';
 import CustomButton from "@/components/general/CustomButton";
 import CustomImage from "@/components/general/CustomImage";
 import CustomText from "@/components/general/CustomText";
@@ -13,10 +13,36 @@ import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
 import useFormStore from "@/store/useForm";
+import EditProfileModal from "@/components/EditProfileModal";
+
+type SubjectModule = {
+  subject: string;
+  color: string;
+  scope?: string;
+};
 
 export default function ProfilePage() {
+    const {
+
+        //@ts-ignore
+        submitName, submitGmail, submitPassword, submitSchool, submitGrade, submitSubjectModule = [], submitFocusSubject, submitWhatWeek, setFormData
+    } = useFormStore();
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    
+    // 과목 모듈을 가져오거나 기본값 설정
     //@ts-ignore
-    const {submitName, submitGmail, submitPassword, submitSchool, submitGrade, submitSubjectModule, submitFocusSubject, submitWhatWeek} = useFormStore();
+    const initialSubjects: SubjectModule[] = Array.isArray(submitSubjectModule) 
+        ? submitSubjectModule 
+        : [];
+
+    const handleUpdateSubjects = (updatedSubjects: SubjectModule[]) => {
+        // Zustand 스토어 업데이트
+        setFormData({
+            submitSubjectModule: updatedSubjects,
+        });
+        Alert.alert('성공', '과목이 성공적으로 업데이트되었습니다.');
+    };
 
     return (
         <>
@@ -33,10 +59,10 @@ export default function ProfilePage() {
                     justifyContent={'center'}
                 >
                     <CustomButton
-                        text={'수정하기'}
-                        onPress={() => {console.log('수정하기');}}
+                        text={'과목 수정'}
+                        onPress={() => setIsModalVisible(true)}
                         backgroundColor={COLORS.brand.primary}
-                        style={{borderRadius : SPACING.tiny}}
+                        style={{borderRadius: SPACING.tiny}}
                         width={127}
                         height={43}
                         fontSize={FONTS.size.body}
@@ -54,7 +80,7 @@ export default function ProfilePage() {
                     gap={SPACING.small}
                 >
                     <CustomImage
-                        source={testIcon}
+                        source={require('@/assets/images/icon.png')}
                         width={300}
                         height={300}
                     />
@@ -65,6 +91,10 @@ export default function ProfilePage() {
             </SectionDefault>
         </PageDefault>
         <NavBar/>
+        <EditProfileModal
+            visible={isModalVisible}
+            onClose={() => setIsModalVisible(false)}
+        />
         </>
     );
 }

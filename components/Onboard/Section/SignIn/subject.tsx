@@ -14,14 +14,15 @@ import { TouchableOpacity } from "react-native";
 import SubjectCard from "./subjectCard";
 
 interface IProps {
-    onNext: () => void;
+    onNext: (data?: any) => void;
+    initialData?: any[];
 }
 
 
 export default function Subject(props: IProps) {
-    const { onNext } = props;
+    const { onNext, initialData = [] } = props;
     const [isSubjectModalVisible, setIsSubjectModalVisible] = useState(false);
-    const [subjectModuleList, setSubjectModuleList] = useState([{subject: '', publisher: '', work: []}]);
+    const [subjectModuleList, setSubjectModuleList] = useState(initialData.length > 0 ? initialData : [{subject: '', publisher: '', work: []}]);
     const [selectSubject, setSelectSubject] = useState('');
     const [newSubject, setNewSubject] = useState(''); 
     const [isSubjectSelectorVisible, setIsSubjectSelectorVisible] = useState(false);
@@ -56,9 +57,9 @@ export default function Subject(props: IProps) {
         );
     };
 
-    const finalSubjectSubmit =() => {
-        submitSubjectModuleSetter(subjectModuleList)
-        onNext()
+    const finalSubjectSubmit = () => {
+        submitSubjectModuleSetter(subjectModuleList);
+        onNext(subjectModuleList);
     }
 
     const handlePublisherSelect = (publisher: string) => {

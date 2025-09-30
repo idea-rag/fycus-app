@@ -1,4 +1,4 @@
-import { create } from "zustand/react";
+import { create } from "zustand";
 
 interface FormState {
     submitName: string;
@@ -36,7 +36,7 @@ interface FormState {
     submitEndTimeSetter: (submitEndTime: string) => void;
 }
 
-const useFormStore = create((set) => ({
+const useFormStore = create<FormState>((set) => ({
     
     submitName: '',
     submitSchool: '',
@@ -52,6 +52,9 @@ const useFormStore = create((set) => ({
     submitWhatWeek: 0,
     submitStartTime: '',
     submitEndTime: '',
+    
+    // Add setFormData function
+    setFormData: (data: Partial<FormState>) => set((state) => ({ ...state, ...data })),
 
     
     submitNameSetter: (submitName: string) => set({ submitName }),
