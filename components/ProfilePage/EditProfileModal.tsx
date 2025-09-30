@@ -51,6 +51,7 @@ export default function EditProfileModal({
       transparent={true}
       visible={visible}
       onRequestClose={onClose}
+      style={{zIndex:999999}}
     >
       <CustomView
         alignItems={'center'}

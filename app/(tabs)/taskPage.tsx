@@ -85,6 +85,10 @@ console.log('====================');
                 const message = response.data?.message || response.message;
                 console.log('일정이 성공적으로 생성되었습니다:', message);
                 Alert.alert('성공', '일정이 성공적으로 생성되었습니다.');
+                const schedule: Record<string, TaskType[]> = responseConvertSchedule(response);
+                useScheduleStore.setState({ schedule });
+                Alert.alert('성공', '일정이 성공적으로 저장되었습니다.');
+                console.log(schedule);
             } else {
                 console.error('서버 응답에 오류가 있습니다:', response);
                 Alert.alert('오류', '서버 응답을 처리하는 중 오류가 발생했습니다.');
@@ -98,14 +102,6 @@ console.log('====================');
                     : '알 수 없는 오류가 발생했습니다.'
             );
         }
-    };
-
-    const handleStoreTask = () => {
-        if (!response) return;
-        const schedule: Record<string, TaskType[]> = responseConvertSchedule(response);
-        useScheduleStore.setState({ schedule });
-        Alert.alert('성공', '일정이 성공적으로 저장되었습니다.');
-        console.log(schedule);
     };
 
 
@@ -139,16 +135,6 @@ console.log('====================');
                     fontSize={FONTS.size.small}
                     height={30}
                     onPress={handleAddTask}
-                />
-                <CustomButton
-                    text="오늘의 할일 저장하기"
-                    width={'100%'}
-                    backgroundColor={COLORS.brand.primary}
-                    textColor={COLORS.bng.primary}
-                    textWeight={'700'}
-                    fontSize={FONTS.size.small}
-                    height={30}
-                    onPress={handleStoreTask}
                 />
             </SectionDefault>
         </PageDefault>

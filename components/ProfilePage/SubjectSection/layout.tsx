@@ -3,6 +3,8 @@ import CustomView from "@/components/general/CustomView";
 import useSFormStore from "@/store/useForm";
 import { StyleSheet } from "react-native";
 import SubjectSectionCard from "./card";
+import { COLORS } from "@/styles/colors";
+import { FONTS } from "@/styles/fonts";
 
 
 export default function SubjectSection() {
@@ -15,11 +17,20 @@ export default function SubjectSection() {
             <CustomText style={styles.title}>공부 범위</CustomText>
             <CustomView style={styles.gridContainer}>
                 {submitSubjectModule.map((item :{subject : string, publisher : string, work : string[]}, index : number) => (
+                    <>
                     <SubjectSectionCard
                         key={index}
                         subject={item.subject}
                         bookTitle={item.publisher}
                     />
+                    <CustomText
+                        fontSize={FONTS.size.small}
+                        textColor={COLORS.text.second}
+                        fontWeight={500}
+                    >
+                        {item.work.join(', ')}
+                    </CustomText>
+                    </>
                 ))}
             </CustomView>
         </CustomView>
