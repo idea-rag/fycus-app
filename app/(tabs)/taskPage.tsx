@@ -34,6 +34,7 @@ export default function CalendarPage() {
         try {
             const taskData = convertScheduleStruct({
                 submitSubjectModule: submitSubjectModule,
+                //@ts-ignore
                 submitGrade: submitGrade,
                 submitFocusSubject: submitFocusSubject,
                 submitWhatWeek: submitWhatWeek

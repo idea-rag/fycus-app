@@ -16,17 +16,9 @@ export function getWorkList(
     }
 
     
-    let schoolLevel = '';
     const { school, grade } = schoolInfo;
+    let schoolLevel = grade;
     
-    if (school.includes('고등학교')) {
-        schoolLevel = 'highschool-' + grade;
-    } else if (school.includes('중학교')) {
-        schoolLevel = 'middleschool-' + grade;
-    } else {
-        schoolLevel = 'elementary-' + grade;
-    }
-
     console.log('School Level:', schoolLevel);
     console.log('Subject:', selectedSubject);
     console.log('Publisher:', subjectModule.publisher);

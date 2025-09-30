@@ -11,7 +11,7 @@ import { SPACING } from "@/styles/spacing";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import { TouchableOpacity } from "react-native";
-import SubjectCard from "./subjectCard";
+import SubjectCard from "@/components/Onboard/Section/SignIn/subjectCard";
 import modifyData from "@/assets/data/modify.json";
 
 interface IProps {

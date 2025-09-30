@@ -3,12 +3,12 @@ import { Modal, StyleSheet, View, TouchableOpacity, Text, ScrollView, TextInput 
 import { COLORS } from '@/styles/colors';
 import { FONTS } from '@/styles/fonts';
 import { SPACING } from '@/styles/spacing';
-import CustomButton from './general/CustomButton';
+import CustomButton from '../general/CustomButton';
 import useFormStore from '@/store/useForm';
-import CustomText from './general/CustomText';
-import Work from './Onboard/Section/SignIn/work';
-import Subject from './Onboard/Section/SignIn/subject';
-import CustomView from './general/CustomView';
+import CustomText from '../general/CustomText';
+import Work from '../ProfilePage/Work';
+import Subject from '../ProfilePage/Subject';
+import CustomView from '../general/CustomView';
 
 type SubjectModule = {
   subject: string;
@@ -29,19 +29,14 @@ export default function EditProfileModal({
   //@ts-ignore
   const { submitSubjectModule, submitWork, submitWorkSetter } = useFormStore();
 
-  const handleWorkNext = (workData?: any) => {
-    if (workData) {
-      submitWorkSetter(workData);
-    }
-    setCurrentStep('work');
+  const handleWorkNext = () => {
+    setCurrentStep('done');
   };
 
   const handleSubjectNext = () => {
-    setCurrentStep('done');
-    onClose();
+    setCurrentStep('work');
   };
 
-  // Reset to subject step when modal is opened
   useEffect(() => {
     if (visible) {
       setCurrentStep('subject');
@@ -80,7 +75,7 @@ export default function EditProfileModal({
             <CustomButton
               text="완료"
               onPress={onClose}
-              width="100%"
+              width="80%"
               height={50}
               backgroundColor={COLORS.brand.primary}
               textColor="white"

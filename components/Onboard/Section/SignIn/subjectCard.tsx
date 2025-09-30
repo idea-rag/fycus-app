@@ -29,31 +29,64 @@ export default function SubjectCard(props: IProps) {
     const [filterSubjectName, setFilterSubjectName] = useState('')
     const [subjectData, setSubjectData] = useState<SubjectData>(null)
     
-    const filterData = () => {
-        if (submitSchool.includes('고등학교')) {
-            setFilterSubjectName('highschool-' + submitGrade)
-        } else if (submitSchool.includes('중학교')) {
-            setFilterSubjectName('middleschool-' + submitGrade)
-        } else {
-            setFilterSubjectName('elementary-' + submitGrade)
+    useEffect(() => {
+        if (!submitSchool || !submitGrade) {
+            console.log('School or grade not set yet', { submitSchool, submitGrade });
+            return;
         }
-    }
+
+        let schoolType;
+        if (submitSchool.includes('고등학교')) {
+            schoolType = 'highschool';
+        } else if (submitSchool.includes('중학교')) {
+            schoolType = 'middleschool';
+        } else {
+            schoolType = 'elementary';
+        }
+
+        const newFilterName = `${submitGrade}`;
+        console.log('Setting filterSubjectName to:', newFilterName);
+        setFilterSubjectName(newFilterName);
+    }, [submitGrade, submitSchool]);
 
     useEffect(() => {
-        filterData()
+        if (!filterSubjectName) {
+            console.log('filterSubjectName is not set yet');
+            return;
+        }
+        
+        console.log('filterSubjectName:', filterSubjectName);
+        console.log('Current subject name:', name);
+        
         //@ts-ignore
-        const gradeData = modifyData[filterSubjectName] as Record<string, Record<string, { work: string[] }>>
-        if (gradeData) {
-            const formattedData = Object.entries(gradeData).map(([subject, publishers]) => ({
+        const gradeData = modifyData[filterSubjectName];
+        
+        if (!gradeData) {
+            console.log('No grade data found for:', filterSubjectName);
+            console.log('Available keys:', Object.keys(modifyData));
+            setSubjectData(null);
+            return;
+        }
+        
+        console.log('Found grade data for:', filterSubjectName);
+        
+        const subjects = Object.entries(gradeData).map(([subject, publishers]) => {
+            const publisherEntries = Object.entries(publishers as Record<string, { work: string[] }>);
+            return {
                 subject,
-                publishers: Object.entries(publishers).map(([publisher, data]) => ({
+                publishers: publisherEntries.map(([publisher, data]) => ({
                     publisher,
                     work: data.work
                 }))
-            }))
-            setSubjectData(formattedData.find(item => item.subject === name) || null)
-        }
-    }, [filterSubjectName])
+            };
+        });
+        
+        console.log('All subjects in grade:', subjects.map(s => s.subject));
+        const foundSubject = subjects.find(item => item.subject === name);
+        console.log('Found subject data for', name + ':', foundSubject);
+        
+        setSubjectData(foundSubject || null);
+    }, [filterSubjectName, name])
 
 
 

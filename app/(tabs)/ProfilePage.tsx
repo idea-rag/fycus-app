@@ -13,7 +13,7 @@ import { COLORS } from "@/styles/colors";
 import { FONTS } from "@/styles/fonts";
 import { SPACING } from "@/styles/spacing";
 import useFormStore from "@/store/useForm";
-import EditProfileModal from "@/components/EditProfileModal";
+import EditProfileModal from "@/components/ProfilePage/EditProfileModal";
 
 type SubjectModule = {
   subject: string;
