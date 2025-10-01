@@ -11,7 +11,7 @@ export default function Loading() {
                 position : "absolute",
                 justifyContent : "center",
                 alignItems : "center",
-                zIndex : 9999
+                zIndex : 99999
             }}
         >
             <CustomText

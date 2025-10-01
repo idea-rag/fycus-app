@@ -26,7 +26,7 @@ export default function FocusByHourCard(props: IProps) {
                 paddingVertical={SPACING.superTiny}
                 paddingHorizontal={SPACING.tiny}
                 gap={SPACING.superTiny}
-                width={45}
+                width={47}
                 height={85}
                 borderRadius={SPACING.tiny}
                 style={styles.containerBorder}
@@ -53,7 +53,7 @@ export default function FocusByHourCard(props: IProps) {
                 paddingVertical={SPACING.superTiny}
                 paddingHorizontal={SPACING.tiny}
                 gap={SPACING.superTiny}
-                width={40}
+                width={47}
                 height={85}
             >
                 <TimeBar

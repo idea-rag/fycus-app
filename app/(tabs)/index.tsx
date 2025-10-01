@@ -159,7 +159,7 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
         ]
       }
     ]);
-    submitFocusSubjectSetter("국어 동백꽃에 집중하고 싶어");
+    submitFocusSubjectSetter("모두 균형있게 공부하고 싶어, 하지만 국어의 비율을 약간 높여줘");
     submitWhatWeekSetter(1);
     Alert.alert('저장 완료', 'store에 저장되었습니다.');
   }

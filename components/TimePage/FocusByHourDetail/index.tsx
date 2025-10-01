@@ -12,7 +12,7 @@ export default function FocusByHourDetail() {
             gap={SPACING.medium}
             justifyContent={'center'}
             >
-            <HourSection time={11}/> 
+            <HourSection time={new Date().getHours()}/> 
         </CustomView>
     )
 }

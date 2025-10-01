@@ -60,18 +60,12 @@ console.log('====================');
             apiClient.setToken(token);
             console.log('Token set in apiClient');
     
-            // Add timeout handling (20 seconds)
-            const timeoutDuration = 20000;
-            const timeoutPromise = new Promise((_, reject) => 
-                setTimeout(() => reject(new Error('요청 시간이 초과되었습니다. 다시 시도해주세요.')), timeoutDuration)
-            );
-    
+
             console.log('Sending request to server...');
             
             // Race between the API call and the timeout
             const response = await Promise.race([
                 apiClient.createSchedule(taskData),
-                timeoutPromise
             ]) as any; // Type assertion since we know the response type from the API
     
             console.log('===== Server Response =====');
