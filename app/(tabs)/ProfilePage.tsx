@@ -19,11 +19,13 @@ import InformationBar from '@/components/ProfilePage/InformationBar';
 import SubjectSection from '@/components/ProfilePage/SubjectSection/layout';
 import responseConvertSchedule from '@/feature/responseConvertSchedule';
 import useScheduleStore from '@/store/useSchedule';
+import Loading from '@/components/general/Loading';
 
 
 export default function ProfilePage() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [response, setResponse] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const apiClient = new ApiClient();
   const token = useTokenStore((state : any) => state.token);
   
@@ -37,6 +39,7 @@ export default function ProfilePage() {
   // 스케줄 재생성 함수
   
   const regenerateSchedule = async () => {
+          setIsLoading(true);
           try {
               const taskData = convertScheduleStruct({
                   submitSubjectModule: submitSubjectModule,
@@ -94,10 +97,12 @@ export default function ProfilePage() {
                   const schedule: Record<string, any> = responseConvertSchedule(response);
                   useScheduleStore.setState({ schedule });
                   Alert.alert('성공', '일정이 성공적으로 저장되었습니다.');
-                  console.log(schedule);  
+                  console.log(schedule);
+                  setIsLoading(false);
               } else {
                   console.error('서버 응답에 오류가 있습니다:', response);
                   Alert.alert('오류', '서버 응답을 처리하는 중 오류가 발생했습니다.');
+                  setIsLoading(false);
               }
           } catch (error) {
               console.error('일정 생성 중 오류 발생:', error);
@@ -107,6 +112,7 @@ export default function ProfilePage() {
                       ? `일정 생성 중 오류가 발생했습니다: ${error.message}` 
                       : '알 수 없는 오류가 발생했습니다.'
               );
+              setIsLoading(false);
           }
       };
      
@@ -117,6 +123,7 @@ const {submitName, submitGmail, submitSchool} = useFormStore();
   return (
     <>
       <PageDefault title="프로필">
+        {isLoading && <Loading />}
         <ScrollView 
           style={styles.scrollView}
           contentContainerStyle={styles.scrollViewContent}
