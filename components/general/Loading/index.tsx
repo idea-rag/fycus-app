@@ -7,7 +7,7 @@ export default function Loading() {
             width={'100%'}
             height={'100%'}
             style={{
-                backgroundColor : 'rgba(255, 255, 255, 0.5)',
+                backgroundColor : '#ffffff',
                 position : "absolute",
                 justifyContent : "center",
                 alignItems : "center",
