@@ -172,23 +172,6 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
           <ScrollView style={styles.scrollView}
       contentContainerStyle={styles.contentContainerStyle}>
           <Hero name={submitName} time={yesterdayStudyTime}/>
-          <CustomButton
-            text={'로그인'}
-            width={'100%'}
-            onPress={handleLogin}
-          />
-          <CustomButton
-            text={'회원가입'}
-            width={'100%'}
-            onPress={() => {
-              router.push('/onboard');
-            }}
-          />
-          <CustomButton
-            text={'store에 저장하기'}
-            width={'100%'}
-            onPress={handleStoreSave}
-          />
           <CustomView width='100%' alignItems={'flex-start'} gap={SPACING.medium} paddingHorizontal={SPACING.medium}>
             <FocusSection focusTimeList={focusTimeList}/>
             <TaskSection tasks={{
@@ -206,7 +189,24 @@ const [errorMsg, setErrorMsg] = useState<string | null>(null);
                   : '아직 피드백이 없어요!'
               }
             />
-            <HardwareSection battery={70} connection={!!connectedDevice}/>
+            <HardwareSection connection={!!connectedDevice}/>
+            <CustomButton
+            text={'로그인'}
+            width={'100%'}
+            onPress={handleLogin}
+          />
+          <CustomButton
+            text={'회원가입'}
+            width={'100%'}
+            onPress={() => {
+              router.push('/onboard');
+            }}
+          />
+          <CustomButton
+            text={'store에 저장하기'}
+            width={'100%'}
+            onPress={handleStoreSave}
+          />
           </CustomView>
           <CustomView height={140}/>
           </ScrollView>

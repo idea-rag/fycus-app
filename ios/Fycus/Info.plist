@@ -44,12 +44,6 @@
     <string>12.0</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
-    <key>NSBluetoothAlwaysUsageDescription</key>
-    <string>This app requires Bluetooth to connect to your device</string>
-    <key>NSBluetoothPeripheralUsageDescription</key>
-    <string>This app requires Bluetooth to connect to your device</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>This app requires location services to scan for Bluetooth devices</string>
     <key>NSAppTransportSecurity</key>
     <dict>
       <key>NSAllowsArbitraryLoads</key>
@@ -60,19 +54,23 @@
       <dict>
         <key>3.39.21.12</key>
         <dict>
-            <key>NSExceptionAllowsInsecureHTTPLoads</key>
-            <true/>
-            <key>NSIncludesSubdomains</key>
-            <true/>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
+          <key>NSIncludesSubdomains</key>
+          <true/>
         </dict>
       </dict>
     </dict>
     <key>NSBluetoothAlwaysUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to connect to bluetooth devices</string>
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>This app requires Bluetooth to connect to your device</string>
     <key>NSCalendarsFullAccessUsageDescription</key>
     <string>The app needs to access your calendar.</string>
     <key>NSCalendarsUsageDescription</key>
     <string>The app needs to access your calendar.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app requires location services to scan for Bluetooth devices</string>
     <key>NSRemindersFullAccessUsageDescription</key>
     <string>Allow $(PRODUCT_NAME) to access your reminders</string>
     <key>NSRemindersUsageDescription</key>

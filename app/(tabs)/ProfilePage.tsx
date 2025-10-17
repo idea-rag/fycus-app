@@ -183,7 +183,6 @@ const {submitName, submitGmail, submitSchool} = useFormStore();
                 Fycus-hardware
               </CustomText>
             </CustomView>
-            <InformationBar title="연결 상태" text="연결 안됨" />
             <InformationBar title="배터리" text="70%" />
           </SectionDefault>
         </ScrollView>

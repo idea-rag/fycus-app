@@ -12,7 +12,7 @@ interface IProps {
 
 export default function Loading(props: IProps) {
     const { onNext } = props;
-    const [loadingText, setLoadingText] = useState('스케줄 생성 중...');
+    const [loadingText, setLoadingText] = useState('회원가입 중...');
     const scaleValue = new Animated.Value(1);
 
     const startPulseAnimation = () => {
@@ -38,7 +38,7 @@ export default function Loading(props: IProps) {
         startPulseAnimation();
         
         const textTimer = setTimeout(() => {
-            setLoadingText('스케줄 생성 완료!');
+            setLoadingText('회원가입 완료!');
         }, 2500);
         
         const navigateTimer = setTimeout(() => {
