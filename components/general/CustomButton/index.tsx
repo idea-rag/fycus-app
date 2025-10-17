@@ -18,8 +18,8 @@ type ButtonProps = {
 
 export default function CustomButton({
                                         width, height,
-                                         backgroundColor,
-                                         borderColor,
+                                        backgroundColor,
+                                        borderColor,
                                          hasBorder = false, 
                                          text = "", 
                                          textColor = "#111", 

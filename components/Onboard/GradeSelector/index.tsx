@@ -31,7 +31,7 @@ export default function GradeSelector({ onFinish }: IProps) {
 
     const handleConfirm = () => {
         onFinish();
-        const schoolType = school.includes('고등') ? 'highSchool' : 'middleSchool';
+        const schoolType = school.includes('고등') ? 'highschool' : 'middleschool';
         submitGradeSetter(`${schoolType}-${selectedGrade}`);
     };
 

@@ -24,13 +24,16 @@ export default function NavBar(){
             style={{
                 position: 'absolute',
                 borderRadius: SPACING.medium,
-                bottom: 24,
-                borderWidth: 1,
+                bottom: 0,
+                borderTopWidth: 1,
+                borderLeftWidth : 1,
+                borderRightWidth:1,
                 borderColor: COLORS.text.forth,
                 borderBottomWidth: 0,
                 borderStyle: 'solid',
                 zIndex: 1000,
                 backgroundColor : 'white',
+                paddingBottom:24
             }}
         >
             <NavBarIcon name={'시간'} icon={'access-time'} toGo={'/timePage'}/>

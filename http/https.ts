@@ -103,7 +103,7 @@ interface RegisterDTO {
     private baseUrl: string;
     private token: string | null = null;
   
-    constructor(baseUrl: string = process.env.BASE_URL || 'http://localhost:8000') {
+    constructor(baseUrl: string = process.env.EXPO_PUBLIC_API_URL || 'http://fycus.kr') {
       this.baseUrl = baseUrl;
     }
   

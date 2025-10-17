@@ -17,6 +17,7 @@ import { useTokenStore } from "@/store/useToken";
 import { getFeedback } from "@/feature/getFeedback";
 import useScheduleStore from "@/store/useSchedule";
 import { useStudyTimeStore } from "@/store/useStudyTime";
+import { useFeedbackStore } from "@/store/useFeedbackStore";
 
 export default function AIPage() {
     const router = useRouter();
@@ -24,6 +25,7 @@ export default function AIPage() {
     const { FindDog, SelectSquare, OrderAction } = useNeurofeedbackStore();
     const { schedule } = useScheduleStore();
     const { focusData } = useStudyTimeStore();
+    const { setFeedback } = useFeedbackStore();
     //@ts-ignore
     const token = useTokenStore((state) => state.token);
     const apiClient = new ApiClient();
@@ -53,6 +55,7 @@ export default function AIPage() {
             // 서버로부터 받은 피드백 텍스트를 상태에 저장
             if (response && response.ai_feedback) {
                 setFeedbackText(response.ai_feedback);
+                setFeedback(response.ai_feedback);
             } else {
                 setFeedbackText('피드백을 받아오지 못했습니다.');
             }
