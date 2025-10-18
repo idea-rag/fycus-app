@@ -34,51 +34,51 @@ export default function HomePage() {
   const today = new Date().toISOString().split('T')[0];
   const todayTasks = schedule[today] || [];
 
-  const focusTimeList = [{
-    isFocus : false,
-    time : 12,
-    day : 3,
-    isNotPassed : false
-  },
+  const focusTimeList = [
+    {
+      isFocus : false,
+      time : 1,
+      day : 15,
+      isNotPassed : false
+    },
+    {
+      isFocus : false,
+      time : 1,
+      day : 16,
+      isNotPassed : false
+    },
   {
     isFocus : false,
-    time : 10,
-    day : 4,
-    isNotPassed : false
-  },
-  {
-    isFocus : false,
-    time : 12,
-    day : 5,
-    isNotPassed : false
-  },
-  {
-    isFocus : false,
-    time : 12,
-    day : 6,
-    isNotPassed : false
-  },
-  {
-    isFocus : false,
-    time : 12,
-    day : 7,
+    time : 1,
+    day : 17,
     isNotPassed : false
   },
   {
     isFocus : true,
-    time : 0,
-    day : 8,
+    time : focusData.totalFocusTime ,
+    day : 18,
     isNotPassed : false
   },
   {
     isFocus : false,
-    time : focusData.totalFocusTime ,
-    day : 9,
+    time : 1,
+    day : 19,
     isNotPassed : true
-  }
+  },
+  {
+    isFocus : false,
+    time : 1,
+    day : 20,
+    isNotPassed : true
+  },
+  {
+    isFocus : false,
+    time : 1,
+    day : 21,
+    isNotPassed : true
+  },
 ]
 
-const tasks = MonthTasks['2025-07-24'];
 
 const [isRegistering, setIsRegistering] = useState(false);
 const [errorMsg, setErrorMsg] = useState<string | null>(null);

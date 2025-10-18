@@ -105,7 +105,9 @@ export default function AIPage() {
                     >
                         Fics의 한마디
                     </CustomText>
-                    
+                    {showFeedback ? (
+                        null
+                    ) : (
                         <CustomText
                             fontSize={FONTS.size.title}
                             fontWeight={600}
@@ -113,7 +115,7 @@ export default function AIPage() {
                         >
                         피드백을 받아보세요.
                         </CustomText>
-                    
+                    )}
                 </CustomView>
             </SectionDefault>
             <SectionDefault title="AI의 피드백">

@@ -115,8 +115,8 @@ const {submitName, submitGmail, submitSchool} = useFormStore();
 
   return (
     <>
+      {isLoading && <Loading />}
       <PageDefault title="프로필">
-        {isLoading && <Loading />}
         <ScrollView 
           style={styles.scrollView}
           contentContainerStyle={styles.scrollViewContent}
@@ -192,8 +192,6 @@ const {submitName, submitGmail, submitSchool} = useFormStore();
         visible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
       />
-
-      
     </>
   );
 }

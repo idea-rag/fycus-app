@@ -16,10 +16,12 @@ import { useTokenStore } from "@/store/useToken";
 import { useState } from "react";
 import useScheduleStore from "@/store/useSchedule";
 import responseConvertSchedule from "@/feature/responseConvertSchedule";
+import Loading from "@/components/general/Loading";
 
 export default function CalendarPage() {
     const router = useRouter();
-    const [response,setResponse] = useState()
+    const [response, setResponse] = useState();
+    const [isLoading, setIsLoading] = useState(false);
     const apiClient = new ApiClient();
     
     // Get token from the store
@@ -31,6 +33,7 @@ export default function CalendarPage() {
     const {submitSubjectModule, submitGrade, submitFocusSubject, submitWhatWeek} = useFormStore();
 
     const handleAddTask = async () => {
+        setIsLoading(true);
         try {
             const taskData = convertScheduleStruct({
                 submitSubjectModule: submitSubjectModule,
@@ -95,6 +98,8 @@ console.log('====================');
                     ? `일정 생성 중 오류가 발생했습니다: ${error.message}` 
                     : '알 수 없는 오류가 발생했습니다.'
             );
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -113,6 +118,10 @@ console.log('====================');
     todayTasks.forEach((task, index) => {
         tasksRecord[index] = task;
     });
+
+    if (isLoading) {
+        return <Loading />;
+    }
 
     return (
         <>

@@ -42,7 +42,7 @@ export const getFeedback = async ({ token, focusData    , studyData }: FeedbackP
       whenDay: whenDay,
       timeSlots:  {
         "14-30": { "measureTime": 10, "focusTime": 2 },
-        "14-35": { "measureTime": 10, "focusTime": 8 }
+        "14-40": { "measureTime": 10, "focusTime": 8 }
       },  // focus_data 대신 timeSlots을 직접 전달
       studyData: studyData
     };
